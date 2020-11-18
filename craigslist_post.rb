@@ -32,7 +32,24 @@ class CraigslistPost
     @post.css('.housing').children.first.text.split('-').map(&:strip).first
   end
 
-  def square_ft
-    @post.css('.housing').children.first.text.split('-').map(&:strip).second
+  def square_feet
+    @post.css('.housing').children.first.text.split('-').map(&:strip).last
+  end
+
+  def description
+    parsed_description = parsed_html.css('#postingbody')
+    qrcode_div = parsed_description.css('.print-qrcode-container')
+
+    (parsed_description.children - qrcode_div).text.strip
+  end
+
+  private
+
+  def html
+    `torify curl "#{link}"`
+  end
+
+  def parsed_html
+    @parsed_html ||= Nokogiri::HTML(html)
   end
 end
