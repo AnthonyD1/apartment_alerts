@@ -6,7 +6,7 @@ class CraigslistQuery
   attr_accessor :search_params
 
   def initialize(params)
-    @city = params[:city]
+    @city = parsed_city
     @search_params = params[:search_params]
   end
 
@@ -21,6 +21,10 @@ class CraigslistQuery
   end
 
   private
+
+  def parsed_city
+    params[:city].downcase.strip.delete(' ')
+  end
 
   def nearby_area_node_index
     node = parsed_html.css('.rows').children.css('.ban.nearby').first
