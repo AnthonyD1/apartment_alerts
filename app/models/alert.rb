@@ -9,7 +9,13 @@ class Alert < ApplicationRecord
   def pull_posts
     @posts ||= CraigslistQuery.new(city: city, search_params: search_params).posts
 
-    self.craigslist_posts = @posts
+    self.craigslist_posts << new_posts
   end
+
+  private
+
   # TODO: Need to only add the new posts that match criteria to association.
+  def new_posts
+    @posts - self.craigslist_posts
+  end
 end
