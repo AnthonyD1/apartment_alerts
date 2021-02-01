@@ -1,12 +1,9 @@
 class CraigslistQuery
-  require 'nokogiri'
-  require './craigslist_post.rb'
-
   attr_accessor :city
   attr_accessor :search_params
 
   def initialize(params)
-    @city = parsed_city
+    @city = parsed_city(params)
     @search_params = params[:search_params]
   end
 
@@ -16,13 +13,13 @@ class CraigslistQuery
 
   def posts
     non_duplicate_non_nearby_posts.map do |post|
-      CraigslistPost.new(post)
+      CraigslistPost.new(post: post)
     end
   end
 
   private
 
-  def parsed_city
+  def parsed_city(params)
     params[:city].downcase.strip.delete(' ')
   end
 
