@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_01_025023) do
+ActiveRecord::Schema.define(version: 2021_02_01_044624) do
+
+  create_table "alerts", force: :cascade do |t|
+    t.string "city"
+    t.text "search_params"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "craigslist_posts", force: :cascade do |t|
     t.string "post"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "alert_id", null: false
+    t.index ["alert_id"], name: "index_craigslist_posts_on_alert_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -30,4 +39,5 @@ ActiveRecord::Schema.define(version: 2021_02_01_025023) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "craigslist_posts", "alerts"
 end
