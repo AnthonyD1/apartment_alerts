@@ -1,5 +1,6 @@
 class Alert < ApplicationRecord
-  has_many :craigslist_posts
+  belongs_to :user
+  has_many :craigslist_posts, dependent: :destroy
 
   serialize :search_params
 
@@ -14,7 +15,6 @@ class Alert < ApplicationRecord
 
   private
 
-  # TODO: Need to only add the new posts that match criteria to association.
   def new_posts
     @posts - self.craigslist_posts
   end

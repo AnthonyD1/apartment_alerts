@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+  <h2 style="margin-bottom: 3rem;"> New Alerts </h2>
+
+  <%= form_with(model: @alert, url: {action: 'create'}) do |f| %>
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+      </br>
+      <%= f.fields_for :search_params do |ff| %>
+        <%= ff.label :hasPic, 'Has picture' %>
+        <%= ff.text_field :hasPic %>
+        </br>
+        <%= ff.label :postedToday, 'Posted today' %>
+        <%= ff.text_field :postedToday %>
+        </br>
+        <%= ff.label :max_price, 'Max price' %>
+        <%= ff.number_field :max_price %>
+        </br>
+        <%= ff.label :max_bedrooms, 'Max bedrooms' %>
+        <%= ff.number_field :max_bedrooms %>
+      <% end %>
+      </br>
+      <%= f.submit 'Create' %>
+    <% end %>
+
+</html>

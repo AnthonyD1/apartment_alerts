@@ -1,1 +1,36 @@
-Hello World
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}
+    </style>
+  </head>
+
+  <h2> Alerts
+    <%= button_to('New', new_alert_path, method: :get, form: { style: 'display:inline-block;'}) %>
+  </h2>
+
+  <table style="width: 100%">
+    <tr>
+      <th>City</th>
+      <th>Search Params</th>
+      <th>Matches</th>
+    </tr>
+    <% @alerts.each do |alert| %>
+      <tr>
+        <td><%= link_to(alert.city, alert_path(alert)) %></td>
+        <td><%= alert.search_params %></td>
+        <td><%= alert.craigslist_posts.count %></td>
+      </tr>
+    <% end %>
+  </table>
+</html>

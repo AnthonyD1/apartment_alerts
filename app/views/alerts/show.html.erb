@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}
+    </style>
+  </head>
+
+  <h2> Alert </h2>
+
+  <div>
+    <%= label_tag('Filters:')%>
+    <%= @alert.search_params %>
+  </div>
+  <br>
+
+  <table style="width: 100%">
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Bedrooms</th>
+      <th>Square Feet</th>
+      <th>Neighborhood</th>
+      <th>Date</th>
+    </tr>
+    <% @alert.craigslist_posts.each do |post| %>
+      <tr>
+        <td><%= link_to(post.title, post.link, target: :_blank) %></td>
+        <td><%= post.price %></td>
+        <td><%= post.bedrooms %></td>
+        <td><%= post.square_feet %></td>
+        <td><%= post.hood %></td>
+        <td><%= post.date %></td>
+      </tr>
+    <% end %>
+  </table>
+</html>
