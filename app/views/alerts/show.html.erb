@@ -20,6 +20,7 @@ th {
   <div>
     <%= label_tag('Filters:')%>
     <%= @alert.search_params %>
+    <%= button_to('Refresh', refresh_alert_path(@alert), method: :post, form: { style: 'display:inline-block;'}) %>
   </div>
   <br>
 
@@ -31,8 +32,9 @@ th {
       <th>Square Feet</th>
       <th>Neighborhood</th>
       <th>Date</th>
+      <th/>
     </tr>
-    <% @alert.craigslist_posts.each do |post| %>
+    <% @alert.craigslist_posts.order(created_at: :desc).each do |post| %>
       <tr>
         <td><%= link_to(post.title, post.link, target: :_blank) %></td>
         <td><%= post.price %></td>
@@ -40,6 +42,7 @@ th {
         <td><%= post.square_feet %></td>
         <td><%= post.hood %></td>
         <td><%= post.date %></td>
+        <td><%= button_to('Delete', craigslist_post_path(post), method: :delete, form: { style: 'display:inline-block;'}) %></td>
       </tr>
     <% end %>
   </table>

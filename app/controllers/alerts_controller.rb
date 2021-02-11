@@ -4,8 +4,6 @@ class AlertsController < ApplicationController
 
   def show
     @alert = Alert.find(params[:id])
-
-    @alert.pull_posts
   end
 
   def new
@@ -22,6 +20,14 @@ class AlertsController < ApplicationController
       flash[:error] = 'Something went wrong; please try again.'
       redirect_to new_alert_path
     end
+  end
+
+  def refresh
+    @alert = Alert.find(params[:id])
+
+    @alert.pull_posts
+
+    redirect_to alert_path(@alert)
   end
 
   private

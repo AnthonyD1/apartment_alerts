@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   get 'dashboard/index'
   root 'dashboard#index'
 
-  resources :alerts
+  resources :alerts do
+    member do
+      post :refresh
+    end
+  end
+  resources :craigslist_posts, only: [:destroy]
 end

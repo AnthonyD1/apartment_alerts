@@ -11,7 +11,7 @@ class CraigslistPost < ApplicationRecord
     post.css('.result-title').attribute('href').text
   end
 
-  def id
+  def post_id
     post.css('.result-title').attribute('data-id').text
   end
 
