@@ -4,6 +4,8 @@ class AlertsController < ApplicationController
 
   def show
     @alert = Alert.find(params[:id])
+
+    @alert.pull_posts
   end
 
   def new
