@@ -28,11 +28,15 @@ class CraigslistPost < ApplicationRecord
   end
 
   def bedrooms
-    post.css('.housing').children.first.text.split('-').map(&:strip).first
+    return if housing_info.nil?
+
+    housing_info.text.split('-').map(&:strip).first
   end
 
   def square_feet
-    post.css('.housing').children.first.text.split('-').map(&:strip).last
+    return if housing_info.nil?
+
+    housing_info.text.split('-').map(&:strip).last
   end
 
   def description
@@ -47,6 +51,10 @@ class CraigslistPost < ApplicationRecord
   end
 
   private
+
+  def housing_info
+    post.css('.housing').children.first
+  end
 
   def html
     `torify curl "#{link}"`
