@@ -10,6 +10,9 @@ class Alert < ApplicationRecord
   def pull_posts
     @posts ||= CraigslistQuery.new(city: city, search_params: search_params).posts
 
+    p '#' * 100
+    p new_posts
+    p '#' * 100
     self.craigslist_posts << new_posts
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_033250) do
+ActiveRecord::Schema.define(version: 2021_03_21_064825) do
 
   create_table "alerts", force: :cascade do |t|
     t.string "city"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 2021_02_02_033250) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "alert_id", null: false
+    t.string "title"
+    t.string "link"
+    t.integer "post_id"
+    t.datetime "date"
+    t.integer "price"
+    t.string "hood"
+    t.integer "bedrooms"
+    t.integer "square_feet"
     t.index ["alert_id"], name: "index_craigslist_posts_on_alert_id"
   end
 

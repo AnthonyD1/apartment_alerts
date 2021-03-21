@@ -1,44 +1,20 @@
 class CraigslistPost < ApplicationRecord
   belongs_to :alert
 
+  before_create :assign_values
+
   validates :post, presence: true
 
-  def title
-    post.css('.result-title').text
+  def assign_values
+    p '*' * 100
+    p self.id
+    p '*' * 100
+    self.assign_attributes(CraigslistPostParams.new(post).call)
   end
 
-  def link
-    post.css('.result-title').attribute('href').text
-  end
-
-  def post_id
-    post.css('.result-title').attribute('data-id').text
-  end
-
-  def date
-    post.css('.result-date').attribute('title').text
-  end
-
-  def price
-    post.css('.result-price').text
-  end
-
-  def hood
-    post.css('.result-hood').text
-  end
-
-  def bedrooms
-    return if housing_info.nil?
-
-    housing_info.text.split('-').map(&:strip).first
-  end
-
-  def square_feet
-    return if housing_info.nil?
-
-    housing_info.text.split('-').map(&:strip).last
-  end
-
+  # TODO: Store in database. Make sure not to pull html page upon creation, otherwise
+  # could be costly when creating dozens of posts at a time. Consider only pulling when
+  # filtering relies on info in the description.
   def description
     parsed_description = parsed_html.css('#postingbody')
     qrcode_div = parsed_description.css('.print-qrcode-container')
@@ -51,10 +27,6 @@ class CraigslistPost < ApplicationRecord
   end
 
   private
-
-  def housing_info
-    post.css('.housing').children.first
-  end
 
   def html
     `torify curl "#{link}"`

@@ -15,7 +15,7 @@ class CraigslistQuery
 
   def posts
     non_duplicate_non_nearby_posts.map do |post|
-      CraigslistPost.new(post: post)
+      CraigslistPost.new(CraigslistPostParams.new(post).call)
     end
   end
 
@@ -75,6 +75,7 @@ class CraigslistQuery
       return response
     else
       generate_new_tor_circuit
+      sleep(5)
       self.html
     end
   end
