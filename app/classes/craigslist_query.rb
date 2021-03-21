@@ -1,6 +1,6 @@
-require 'socksify/http'
-
 class CraigslistQuery
+  include Tor
+
   attr_accessor :city
   attr_accessor :search_params
 
@@ -64,13 +64,13 @@ class CraigslistQuery
   end
 
   def html
-    http = Net::HTTP::SOCKSProxy('127.0.0.1', 9050)
     response = http.get(URI(search_url))
 
     p '*' * 100
     p response.size
     p http.get(URI('https://ifconfig.me'))
     p '*' * 100
+   
     if ip_blocked?(response)
       return response
     else
@@ -81,12 +81,5 @@ class CraigslistQuery
 
   def ip_blocked?(response)
     response.size > 300
-  end
-
-  def generate_new_tor_circuit
-		localhost = Net::Telnet::new("Host" => "localhost","Port" => "#{9051}", "Timeout" => 10, "Prompt" => /250 OK\n/)
-		localhost.cmd('AUTHENTICATE ""') { |c| print c; throw "Cannot authenticate to Tor" if c != "250 OK\n" }
-		localhost.cmd('signal NEWNYM') { |c| print c; throw "Cannot switch Tor to new route" if c != "250 OK\n" }
-		localhost.close
   end
 end
