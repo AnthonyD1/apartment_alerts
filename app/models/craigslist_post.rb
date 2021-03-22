@@ -1,16 +1,8 @@
 class CraigslistPost < ApplicationRecord
   belongs_to :alert
 
-  before_create :assign_values
-
   validates :post, presence: true
-
-  def assign_values
-    p '*' * 100
-    p self.id
-    p '*' * 100
-    self.assign_attributes(CraigslistPostParams.new(post).call)
-  end
+  validates :post_id, uniqueness: true
 
   # TODO: Store in database. Make sure not to pull html page upon creation, otherwise
   # could be costly when creating dozens of posts at a time. Consider only pulling when
