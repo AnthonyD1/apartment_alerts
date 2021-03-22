@@ -26,15 +26,15 @@ th {
 
   <table style="width: 100%">
     <tr>
-      <th>Title</th>
-      <th>Price</th>
-      <th>Bedrooms</th>
-      <th>Square Feet</th>
-      <th>Neighborhood</th>
-      <th>Date</th>
+      <th><%= sort_link @q, :title %></th>
+      <th><%= sort_link @q, :price %></th>
+      <th><%= sort_link @q, :bedrooms %></th>
+      <th><%= sort_link @q, :square_feet %></th>
+      <th><%= sort_link @q, :hood %></th>
+      <th><%= sort_link @q, :date %></th>
       <th/>
     </tr>
-    <% @alert.craigslist_posts.order(created_at: :desc).each do |post| %>
+    <% @craigslist_posts.order(created_at: :desc).each do |post| %>
       <tr>
         <td><%= link_to(post.title, post.link, target: :_blank) %></td>
         <td><%= post.price %></td>

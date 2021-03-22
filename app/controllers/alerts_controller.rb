@@ -4,6 +4,10 @@ class AlertsController < ApplicationController
 
   def show
     @alert = Alert.find(params[:id])
+
+    @q = @alert.craigslist_posts.ransack(params[:q])
+    @q.sorts = 'date desc' if @q.sorts.empty?
+    @craigslist_posts = @q.result
   end
 
   def new
