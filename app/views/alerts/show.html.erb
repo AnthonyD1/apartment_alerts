@@ -34,7 +34,7 @@ th {
       <th><%= sort_link @q, :date %></th>
       <th/>
     </tr>
-    <% @craigslist_posts.order(created_at: :desc).each do |post| %>
+    <% craigslist_posts.order(created_at: :desc).each do |post| %>
       <tr>
         <td><%= link_to(post.title, post.link, target: :_blank) %></td>
         <td><%= post.price %></td>

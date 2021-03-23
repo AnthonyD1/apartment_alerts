@@ -1,4 +1,6 @@
 class AlertsController < ApplicationController
+  decorates_assigned :craigslist_posts
+
   def index
   end
 
