@@ -34,6 +34,19 @@ th {
       <th><%= sort_link @q, :date %></th>
       <th/>
     </tr>
+    <tr>
+      <th>
+      <th>
+      <th>
+      <th>
+      <th>
+        <%= search_form_for @q, url: alert_path do |f| %>
+          <%= f.text_field :hood_cont %>
+        <% end %>
+      </th>
+      <th>
+      <th>
+    </tr>
     <% craigslist_posts.order(created_at: :desc).each do |post| %>
       <tr>
         <td><%= link_to(post.title, post.link, target: :_blank) %></td>
