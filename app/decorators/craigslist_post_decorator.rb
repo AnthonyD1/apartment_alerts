@@ -10,8 +10,7 @@ class CraigslistPostDecorator < ApplicationDecorator
   end
 
   def date
-    cst_time = model.date.in_time_zone('Central Time (US & Canada)')
-    cst_time.strftime("%m-%d-%Y %I:%M:%S %P")
+    model.date.strftime("%m-%d-%Y %I:%M:%S %P")
   end
 
   def hood
