@@ -6,6 +6,8 @@ class CraigslistPostDecorator < ApplicationDecorator
   end
 
   def square_feet
+    return '' if model.square_feet.blank?
+
     model.square_feet.to_s << ' ft'
   end
 
@@ -18,6 +20,8 @@ class CraigslistPostDecorator < ApplicationDecorator
   end
 
   def bedrooms
+    return '' if model.bedrooms.blank?
+
     model.bedrooms.to_s << ' br'
   end
 end

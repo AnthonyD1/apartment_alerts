@@ -14,8 +14,8 @@ class CraigslistPostParams
       date: DateTime.parse(date),
       price: price.gsub(/[$,]/, '').to_i,
       hood: hood,
-      bedrooms: bedrooms.gsub(/[br]/, '').to_i,
-      square_feet: square_feet.gsub(/[ft]/, '').to_i
+      bedrooms: bedrooms,
+      square_feet: square_feet
     }
   end
 
@@ -44,21 +44,22 @@ class CraigslistPostParams
   end
 
   def bedrooms
-    return '' if housing_info.nil?
+    return nil unless housing_info.any? { |ele| ele.include?('br') }
 
-    housing_info.text.split('-').map(&:strip).first
+    housing_info.first.gsub(/[br]/, '').to_i
   end
 
   def square_feet
-    return '' if housing_info.nil?
+    return nil unless housing_info.any? { |ele| ele.include?('ft') }
 
-    housing_info.text.split('-').map(&:strip).last
+    housing_info.last.gsub(/[ft]/, '').to_i
   end
 
   private
 
   def housing_info
-    post.css('.housing').children.first
-  end
+    return [] if post.css('.housing').children.first.blank?
 
+    post.css('.housing').children.first.text.split('-').map(&:strip)
+  end
 end
