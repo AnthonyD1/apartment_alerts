@@ -1,111 +1,108 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  </head>
+  <body>
+    <h2> New Alerts </h2>
 
-  <h2 style="margin-bottom: 3rem;"> New Alerts </h2>
-
-  <%= form_with(model: @alert, url: {action: 'create'}) do |f| %>
-    <div>
-      <%= f.label :city %>
-      <%= f.text_field :city %>
-    </div>
-    <%= f.fields_for :search_params do |ff| %>
+    <%= form_with(model: @alert, url: {action: 'create'}) do |f| %>
       <div style='margin-bottom: 1rem'>
-        <%= ff.label :hasPic do %>
-          <%= ff.check_box :hasPic %>
-          Has picture
-        <% end %>
-        <%= ff.label :postedToday do %>
-          <%= ff.check_box :postedToday %>
-          Posted today
-        <% end %>
+        <%= f.label :city %>
+        <%= f.text_field :city %>
       </div>
-      <div>
-        <%= ff.label :search_distance, 'Miles From' %>
-        <%= ff.number_field :search_distance %>
-        <%= ff.label :postal, 'Zip' %>
-        <%= ff.number_field :postal %>
-      </div>
-      <div>
-        <%= ff.label :min_price %>
-        <%= ff.number_field :min_price %>
-        <%= ff.label :max_price %>
-        <%= ff.number_field :max_price %>
-      </div>
-      <div>
-        <%= ff.label :min_bedrooms %>
-        <%= ff.number_field :min_bedrooms %>
-        <%= ff.label :max_bedrooms %>
-        <%= ff.number_field :max_bedrooms %>
-      </div>
-      <div>
-        <%= ff.label :min_bathrooms %>
-        <%= ff.number_field :min_bathrooms %>
-        <%= ff.label :max_bathrooms %>
-        <%= ff.number_field :max_bathrooms %>
-      </div>
-      <div>
-        <%= ff.label :minSqft, 'Min sq ft'%>
-        <%= ff.number_field :minSqft %>
-        <%= ff.label :maxSquft, 'Max sq ft' %>
-        <%= ff.number_field :maxSquft %>
-      </div>
+      <%= f.fields_for :search_params do |ff| %>
+        <div>
+          <%= f.label :query, 'Keywords' %>
+          <%= ff.text_field :query, title: 'Search titles and descriptions for keywords' %>
+        </div>
+        <div style='margin-top: 1rem'>
+          <%= ff.label :hasPic do %>
+            <%= ff.check_box :hasPic %>
+            Has picture
+          <% end %>
+          <%= ff.label :postedToday do %>
+            <%= ff.check_box :postedToday %>
+            Posted today
+          <% end %>
+        </div>
+        <div>
+          <p> Miles From Zip </p>
+          <%= ff.number_field :search_distance, placeholder: 'miles' %>
+          <%= ff.number_field :postal, placeholder: 'from zip' %>
+        </div>
+        <div>
+          <p> Price </p>
+          <%= ff.number_field :min_price, placeholder: 'min' %>
+          <%= ff.number_field :max_price, placeholder: 'max' %>
+        </div>
+        <div>
+          <p> Bedrooms </p>
+          <%= ff.number_field :min_bedrooms, placeholder: 'min' %>
+          <%= ff.number_field :max_bedrooms, placeholder: 'max' %>
+        </div>
+        <div>
+          <p> Bathrooms </p>
+          <%= ff.number_field :min_bathrooms, placeholder: 'min' %>
+          <%= ff.number_field :max_bathrooms, placeholder: 'max' %>
+        </div>
+        <div>
+          <p> Square Footage </p>
+          <%= ff.number_field :minSqft, placeholder: 'min' %>
+          <%= ff.number_field :maxSquft, placeholder: 'max' %>
+        </div>
 
-      <div id='checkboxes'>
-        <li>
-          <%= ff.label :pets_cat do %>
-            <%= ff.check_box :pets_cat %>
-            Cats
-          <% end %>
-        </li>
-        <li>
-          <%= ff.label :pets_dog do %>
-            <%= ff.check_box :pets_dog %>
-            Dogs
-          <% end %>
-        </li>
-        <li>
-          <%= ff.label :is_furnished do %>
-            <%= ff.check_box :is_furnished %>
-            Furnished
-          <% end %>
-        </li>
-        <li>
-          <%= ff.label :no_smoking do %>
-            <%= ff.check_box :no_smoking %>
-            No smoking
-          <% end %>
-        </li>
-        <li>
-          <%= ff.label :wheelchaccess do %>
-            <%= ff.check_box :wheelchaccess %>
-            Wheelchair access
-          <% end %>
-        </li>
-        <li>
-          <%= ff.label :ev_charging do %>
-            <%= ff.check_box :ev_charging %>
-            Ev charging
-          <% end %>
-        </li>
-        <li>
-          <%= ff.label :application_fee do %>
-            <%= ff.check_box :application_fee %>
-            No application fee
-          <% end %>
-        </li>
-        <li>
-          <%= ff.label :broker_fee do %>
-            <%= ff.check_box :broker_fee %>
-            No broker fee
-          <% end %>
-        </li>
+        <div id='checkboxes'>
+          <li>
+            <%= ff.label :pets_cat do %>
+              <%= ff.check_box :pets_cat %>
+              Cats
+            <% end %>
+          </li>
+          <li>
+            <%= ff.label :pets_dog do %>
+              <%= ff.check_box :pets_dog %>
+              Dogs
+            <% end %>
+          </li>
+          <li>
+            <%= ff.label :is_furnished do %>
+              <%= ff.check_box :is_furnished %>
+              Furnished
+            <% end %>
+          </li>
+          <li>
+            <%= ff.label :no_smoking do %>
+              <%= ff.check_box :no_smoking %>
+              No smoking
+            <% end %>
+          </li>
+          <li>
+            <%= ff.label :wheelchaccess do %>
+              <%= ff.check_box :wheelchaccess %>
+              Wheelchair access
+            <% end %>
+          </li>
+          <li>
+            <%= ff.label :ev_charging do %>
+              <%= ff.check_box :ev_charging %>
+              Ev charging
+            <% end %>
+          </li>
+          <li>
+            <%= ff.label :application_fee do %>
+              <%= ff.check_box :application_fee %>
+              No application fee
+            <% end %>
+          </li>
+          <li>
+            <%= ff.label :broker_fee do %>
+              <%= ff.check_box :broker_fee %>
+              No broker fee
+            <% end %>
+          </li>
+        </div>
+      <% end %>
+      <div>
+        <%= f.submit 'Create' %>
       </div>
     <% end %>
-    <div>
-      <%= f.submit 'Create' %>
-    </div>
-  <% end %>
-
+  </body>
 </html>

@@ -68,7 +68,7 @@ class CraigslistQuery
 
     p '*' * 100
     p response.size
-    p http.get(URI('https://ifconfig.me'))
+    p http.get(URI('https://ipinfo.io/ip'))
     p '*' * 100
    
     if ip_blocked?(response)
