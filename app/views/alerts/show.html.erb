@@ -48,14 +48,26 @@ th {
       <th>
     </tr>
     <% craigslist_posts.order(created_at: :desc).each do |post| %>
-      <tr>
+      <tr style='<%= post.read? ? '' : 'background-color: lightskyblue' %>'>
         <td><%= link_to(post.title, post.link, target: :_blank) %></td>
         <td><%= post.price %></td>
         <td><%= post.bedrooms %></td>
         <td><%= post.square_feet %></td>
         <td><%= post.hood %></td>
         <td><%= post.date %></td>
-        <td><%= button_to('Delete', craigslist_post_path(post), method: :delete, form: { style: 'display:inline-block;'}) %></td>
+        <td>
+          <%= button_to('Mark seen',
+                        craigslist_post_path(id: post.id, post: { read: true }),
+                        method: :patch,
+                        disabled: post.read?,
+                        form: { style: 'display:inline-block;'})
+                      %>
+          <%= button_to('Delete',
+                        craigslist_post_path(post),
+                        method: :delete,
+                        form: { style: 'display:inline-block;'})
+                      %>
+        </td>
       </tr>
     <% end %>
   </table>

@@ -9,5 +9,5 @@ Rails.application.routes.draw do
       post :refresh
     end
   end
-  resources :craigslist_posts, only: [:destroy]
+  resources :craigslist_posts, only: [:update, :destroy]
 end
