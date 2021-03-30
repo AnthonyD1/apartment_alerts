@@ -28,6 +28,6 @@ class CraigslistPostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:read)
+    params.require(:post).permit(:seen)
   end
 end

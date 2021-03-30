@@ -48,7 +48,7 @@ th {
       <th>
     </tr>
     <% craigslist_posts.order(created_at: :desc).each do |post| %>
-      <tr style='<%= post.read? ? '' : 'background-color: lightskyblue' %>'>
+      <tr style='<%= post.seen? ? '' : 'background-color: lightskyblue' %>'>
         <td><%= link_to(post.title, post.link, target: :_blank) %></td>
         <td><%= post.price %></td>
         <td><%= post.bedrooms %></td>
@@ -57,9 +57,9 @@ th {
         <td><%= post.date %></td>
         <td>
           <%= button_to('Mark seen',
-                        craigslist_post_path(id: post.id, post: { read: true }),
+                        craigslist_post_path(id: post.id, post: { seen: true }),
                         method: :patch,
-                        disabled: post.read?,
+                        disabled: post.seen?,
                         form: { style: 'display:inline-block;'})
                       %>
           <%= button_to('Delete',
