@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_031548) do
+ActiveRecord::Schema.define(version: 2021_04_01_022740) do
 
   create_table "alerts", force: :cascade do |t|
     t.string "city"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_03_30_031548) do
     t.integer "bedrooms"
     t.integer "square_feet"
     t.boolean "seen"
+    t.boolean "favorite", default: false
     t.index ["alert_id"], name: "index_craigslist_posts_on_alert_id"
     t.index ["post_id"], name: "index_craigslist_posts_on_post_id", unique: true
   end

@@ -26,13 +26,14 @@ th {
 
   <table style="width: 100%">
     <tr>
-      <th><%= sort_link @q, :title %></th>
-      <th><%= sort_link @q, :price %></th>
-      <th><%= sort_link @q, :bedrooms %></th>
-      <th><%= sort_link @q, :square_feet %></th>
-      <th><%= sort_link @q, :hood %></th>
-      <th><%= sort_link @q, :date %></th>
-      <th/>
+      <th>
+      <th><%= sort_link @q, :title, ['favorite desc', :title] %></th>
+      <th><%= sort_link @q, :price, ['favorite desc', :price] %></th>
+      <th><%= sort_link @q, :bedrooms, ['favorite desc', :bedrooms] %></th>
+      <th><%= sort_link @q, :square_feet, ['favorite desc', :square_feet] %></th>
+      <th><%= sort_link @q, :hood, ['favorite desc', :hood] %></th>
+      <th><%= sort_link @q, :date, ['favorite desc', :date] %></th>
+      <th>
     </tr>
     <tr>
       <th>
@@ -40,7 +41,9 @@ th {
       <th>
       <th>
       <th>
+      <th>
         <%= search_form_for @q, url: alert_path do |f| %>
+          <%= f.hidden_field :s, value: params[:q].try(:[], :s) %>
           <%= f.text_field :hood_cont %>
         <% end %>
       </th>
@@ -49,6 +52,13 @@ th {
     </tr>
     <% craigslist_posts.order(created_at: :desc).each do |post| %>
       <tr style='<%= post.seen? ? '' : 'background-color: lightskyblue' %>'>
+        <td>
+          <%= button_to("#{post.favorite? ? 'Unfav' : 'Fav'}",
+                        craigslist_post_path(id: post.id, post: { favorite: !post.favorite? }),
+                        method: :patch,
+                        form: { style: 'display:inline-block;'})
+                      %>
+        </td>
         <td><%= link_to(post.title, post.link, target: :_blank) %></td>
         <td><%= post.price %></td>
         <td><%= post.bedrooms %></td>
