@@ -1,12 +1,12 @@
 class AlertsController < ApplicationController
+  before_action :load_alert, only: %i(show)
+  before_action :check_user_authorization, only: %i(show)
   decorates_assigned :craigslist_posts
 
   def index
   end
 
   def show
-    @alert = Alert.find(params[:id])
-
     parse_ransack_multiple_sort_params_to_array
 
     @q = @alert.craigslist_posts.ransack(params[:q])
@@ -39,6 +39,16 @@ class AlertsController < ApplicationController
   end
 
   private
+
+  def load_alert
+    @alert = Alert.find(params[:id])
+  end
+
+  def check_user_authorization
+    if current_user != @alert.user
+      redirect_to root_path, alert: 'You do not have permission.'
+    end
+  end
 
   def parse_ransack_multiple_sort_params_to_array
     return if params[:q].blank?

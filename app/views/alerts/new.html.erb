@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <body>
+    <%= link_to 'Home', root_path %>
     <h2> New Alerts </h2>
 
     <%= form_with(model: @alert, url: {action: 'create'}) do |f| %>
