@@ -23,6 +23,16 @@ th {
       <%= label_tag('Filters:')%>
       <%= @alert.search_params %>
       <%= button_to('Refresh', refresh_alert_path(@alert), method: :post, form: { style: 'display:inline-block;'}) %>
+      <span>
+        Average price:
+        <%= @alert.average_price %>
+        Median price:
+        <%= @alert.median_price %>
+        Min price:
+        <%= @alert.min_price %>
+        Max price:
+        <%= @alert.max_price %>
+      </span>
     </div>
     <br>
 

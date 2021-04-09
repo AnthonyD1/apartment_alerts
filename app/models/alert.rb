@@ -13,6 +13,30 @@ class Alert < ApplicationRecord
     self.craigslist_posts << new_posts
   end
 
+  def average_price
+    craigslist_posts.pluck(:price).sum / craigslist_posts.count
+  end
+
+  def median_price
+    size = craigslist_posts.size
+    sorted_prices = craigslist_posts.pluck(:price).sort
+    mid = size / 2
+
+    if size % 2 == 1
+      (sorted_prices[mid] + sorted_prices[mid - 1]) / 2
+    else
+      sorted_prices[mid]
+    end
+  end
+
+  def max_price
+    craigslist_posts.pluck(:price).sort.max
+  end
+
+  def min_price
+    craigslist_posts.pluck(:price).sort.min
+  end
+
   private
 
   def new_posts
