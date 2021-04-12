@@ -12,12 +12,14 @@ class CraigslistPostsController < ApplicationController
   end
 
   def destroy
-    if @post.destroy
-      flash[:notice] = 'Post deleted.'
-      redirect_to alert_path(@post.alert)
-    else
-      flash[:error] = 'Could not delete post.'
-      redirect_to alert_path(@post.alert)
+    respond_to do |format|
+      if @post.destroy
+        format.html { redirect_to alert_path(@post.alert), notice: 'Post deleted.' }
+        format.js
+      else
+        format.html { redirect_to alert_path(@post.alert), notice: 'Could not delete post.' }
+        format.js
+      end
     end
   end
 

@@ -63,7 +63,7 @@ th {
         <th>
       </tr>
       <% craigslist_posts.order(created_at: :desc).each do |post| %>
-        <tr style='<%= post.seen? ? '' : 'background-color: lightskyblue' %>'>
+        <tr id="post_<%= post.id %>" style="<%= post.seen? ? '' : 'background-color: lightskyblue' %>">
           <td>
             <%= button_to("#{post.favorite? ? 'Unfav' : 'Fav'}",
                           craigslist_post_path(id: post.id, post: { favorite: !post.favorite? }),
@@ -87,7 +87,9 @@ th {
             <%= button_to('Delete',
                           craigslist_post_path(post),
                           method: :delete,
-                          form: { style: 'display:inline-block;'})
+                          form: { style: 'display:inline-block;'},
+                          data: { disable_with: 'deleting...'},
+                          remote: true)
                         %>
           </td>
         </tr>
