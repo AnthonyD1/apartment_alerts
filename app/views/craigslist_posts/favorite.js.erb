@@ -1,0 +1,5 @@
+if (<%= @post.saved_change_to_favorite? %>) {
+  var post = document.querySelector("#post_<%= @post.id %>");
+  var favoriteButtonText = <%= @post.favorite? %> ? 'Unfav' : 'Fav';
+  post.querySelector('.favorite').value = favoriteButtonText;
+}

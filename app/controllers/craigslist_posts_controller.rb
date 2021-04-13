@@ -1,5 +1,5 @@
 class CraigslistPostsController < ApplicationController
-  before_action :set_craigslist_post, only: %i(update destroy)
+  before_action :set_craigslist_post, only: %i(update destroy favorite)
 
   def update
     respond_to do |format|
@@ -19,6 +19,17 @@ class CraigslistPostsController < ApplicationController
         format.js
       else
         format.html { redirect_to(alert_path(@post.alert), notice: 'Could not delete post.') }
+      end
+    end
+  end
+
+  def favorite
+    respond_to do |format|
+      if @post.toggle(:favorite).save
+        format.html { redirect_to(alert_path(@post.alert), notice: 'Post favorited.') }
+        format.js
+      else
+        format.html { redirect_to(alert_path(@post.alert), notice: 'Post could not be favorited.') }
       end
     end
   end

@@ -9,5 +9,7 @@ Rails.application.routes.draw do
       post :refresh
     end
   end
-  resources :craigslist_posts, only: [:update, :destroy]
+  resources :craigslist_posts, only: [:update, :destroy] do
+    post :favorite, on: :member
+  end
 end

@@ -66,9 +66,10 @@ th {
         <tr id="post_<%= post.id %>" style="<%= post.seen? ? '' : 'background-color: lightskyblue' %>">
           <td>
             <%= button_to("#{post.favorite? ? 'Unfav' : 'Fav'}",
-                          craigslist_post_path(id: post.id, post: { favorite: !post.favorite? }),
-                          method: :patch,
-                          form: { style: 'display:inline-block;'})
+                          favorite_craigslist_post_path(post),
+                          class: 'favorite',
+                          form: { style: 'display:inline-block;'},
+                          remote: true)
                         %>
           </td>
           <td><%= link_to(post.title, post.link, target: :_blank) %></td>
@@ -90,7 +91,6 @@ th {
                           craigslist_post_path(post),
                           method: :delete,
                           form: { style: 'display:inline-block;'},
-                          data: { disable_with: 'deleting...'},
                           remote: true)
                         %>
           </td>
