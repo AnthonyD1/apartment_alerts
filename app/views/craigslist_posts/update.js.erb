@@ -1,0 +1,5 @@
+if (<%= @post.seen? %>) {
+  var post = document.querySelector("#post_<%= @post.id %>");
+  post.style.removeProperty('background-color');
+  post.querySelector('.mark_seen').disabled = true;
+}

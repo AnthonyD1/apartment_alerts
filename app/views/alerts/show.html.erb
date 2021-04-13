@@ -82,7 +82,9 @@ th {
                           craigslist_post_path(id: post.id, post: { seen: true }),
                           method: :patch,
                           disabled: post.seen?,
-                          form: { style: 'display:inline-block;'})
+                          class: 'mark_seen',
+                          form: { style: 'display:inline-block;'},
+                          remote: true)
                         %>
             <%= button_to('Delete',
                           craigslist_post_path(post),
