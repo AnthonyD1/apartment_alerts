@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
+<style>
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -12,90 +9,86 @@ th, td {
 th {
   text-align: left;
 }
-    </style>
-  </head>
+</style>
 
-  <body>
-    <%= link_to 'Home', root_path %>
-    <h2> Alert </h2>
+<%= link_to 'Home', root_path %>
+<h2> Alert </h2>
 
-    <div>
-      <%= label_tag('Filters:')%>
-      <%= @alert.search_params %>
-      <%= button_to('Refresh', refresh_alert_path(@alert), method: :post, form: { style: 'display:inline-block;'}) %>
-      <span>
-        Average price:
-        <%= @alert.average_price %>
-        Median price:
-        <%= @alert.median_price %>
-        Min price:
-        <%= @alert.min_price %>
-        Max price:
-        <%= @alert.max_price %>
-      </span>
-    </div>
-    <br>
+<div>
+  <%= label_tag('Filters:')%>
+  <%= @alert.search_params %>
+  <%= button_to('Refresh', refresh_alert_path(@alert), method: :post, form: { style: 'display:inline-block;'}) %>
+  <span>
+    Average price:
+    <%= @alert.average_price %>
+    Median price:
+    <%= @alert.median_price %>
+    Min price:
+    <%= @alert.min_price %>
+    Max price:
+    <%= @alert.max_price %>
+  </span>
+</div>
+<br>
 
-    <table style="width: 100%">
-      <tr>
+<table style="width: 100%">
+  <tr>
+    <th>
+      <th><%= sort_link @q, :title, ['favorite desc', :title] %></th>
+      <th><%= sort_link @q, :price, ['favorite desc', :price] %></th>
+      <th><%= sort_link @q, :bedrooms, ['favorite desc', :bedrooms] %></th>
+      <th><%= sort_link @q, :square_feet, ['favorite desc', :square_feet] %></th>
+      <th><%= sort_link @q, :hood, ['favorite desc', :hood] %></th>
+      <th><%= sort_link @q, :date, ['favorite desc', :date] %></th>
+      <th>
+  </tr>
+  <tr>
+    <th>
+      <th>
         <th>
-        <th><%= sort_link @q, :title, ['favorite desc', :title] %></th>
-        <th><%= sort_link @q, :price, ['favorite desc', :price] %></th>
-        <th><%= sort_link @q, :bedrooms, ['favorite desc', :bedrooms] %></th>
-        <th><%= sort_link @q, :square_feet, ['favorite desc', :square_feet] %></th>
-        <th><%= sort_link @q, :hood, ['favorite desc', :hood] %></th>
-        <th><%= sort_link @q, :date, ['favorite desc', :date] %></th>
-        <th>
-      </tr>
-      <tr>
-        <th>
-        <th>
-        <th>
-        <th>
-        <th>
-        <th>
-          <%= search_form_for @q, url: alert_path do |f| %>
-            <%= f.hidden_field :s, value: params[:q].try(:[], :s) %>
-            <%= f.text_field :hood_cont %>
-          <% end %>
-        </th>
-        <th>
-        <th>
-      </tr>
-      <% craigslist_posts.order(created_at: :desc).each do |post| %>
-        <tr id="post_<%= post.id %>" style="<%= post.seen? ? '' : 'background-color: lightskyblue' %>">
-          <td>
-            <%= button_to("#{post.favorite? ? 'Unfav' : 'Fav'}",
-                          favorite_craigslist_post_path(post),
-                          class: 'favorite',
-                          form: { style: 'display:inline-block;'},
-                          remote: true)
-                        %>
-          </td>
-          <td><%= link_to(post.title, post.link, target: :_blank) %></td>
-          <td><%= post.price %></td>
-          <td><%= post.bedrooms %></td>
-          <td><%= post.square_feet %></td>
-          <td><%= post.hood %></td>
-          <td><%= post.date %></td>
-          <td>
-            <%= button_to('Mark seen',
-                          craigslist_post_path(id: post.id, post: { seen: true }),
-                          method: :patch,
-                          disabled: post.seen?,
-                          class: 'mark_seen',
-                          form: { style: 'display:inline-block;'},
-                          remote: true)
-                        %>
-            <%= button_to('Delete',
-                          craigslist_post_path(post),
-                          method: :delete,
-                          form: { style: 'display:inline-block;'},
-                          remote: true)
-                        %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-  </body>
-</html>
+          <th>
+            <th>
+              <th>
+                <%= search_form_for @q, url: alert_path do |f| %>
+                  <%= f.hidden_field :s, value: params[:q].try(:[], :s) %>
+                  <%= f.text_field :hood_cont %>
+                <% end %>
+              </th>
+              <th>
+                <th>
+  </tr>
+  <% craigslist_posts.order(created_at: :desc).each do |post| %>
+    <tr id="post_<%= post.id %>" style="<%= post.seen? ? '' : 'background-color: lightskyblue' %>">
+      <td>
+        <%= button_to("#{post.favorite? ? 'Unfav' : 'Fav'}",
+                      favorite_craigslist_post_path(post),
+                      class: 'favorite',
+                      form: { style: 'display:inline-block;'},
+                      remote: true)
+                    %>
+      </td>
+      <td><%= link_to(post.title, post.link, target: :_blank) %></td>
+      <td><%= post.price %></td>
+      <td><%= post.bedrooms %></td>
+      <td><%= post.square_feet %></td>
+      <td><%= post.hood %></td>
+      <td><%= post.date %></td>
+      <td>
+        <%= button_to('Mark seen',
+                      craigslist_post_path(id: post.id, post: { seen: true }),
+                      method: :patch,
+                      disabled: post.seen?,
+                      class: 'mark_seen',
+                      form: { style: 'display:inline-block;'},
+                      remote: true)
+                    %>
+                  <%= button_to('Delete',
+                                craigslist_post_path(post),
+                                method: :delete,
+                                form: { style: 'display:inline-block;'},
+                                remote: true)
+                              %>
+      </td>
+    </tr>
+  <% end %>
+</table>
