@@ -13,7 +13,13 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-  <body>
-    <%= yield %>
-  </body>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <body>
+          <%= yield %>
+        </body>
+      </div>
+    </div>
+  </div>
 </html>
