@@ -1,0 +1,15 @@
+<nav class="navbar navbar-light bg-light">
+  <%= link_to('Apartment Alerts', root_path, class: 'navbar-brand') %>
+
+  <% if user_signed_in? %>
+    <%= button_to('log out',
+                  destroy_user_session_path,
+                  method: :delete,
+                  class: 'btn btn-primary') %>
+  <% else %>
+    <div>
+      <%= link_to('guest', '#', class: 'btn btn-outline-primary') %>
+      <%= link_to('log in', user_session_path, class: 'btn btn-primary') %>
+    </div>
+  <% end %>
+</nav>
