@@ -59,12 +59,9 @@ th {
   <% craigslist_posts.order(created_at: :desc).each do |post| %>
     <tr id="post_<%= post.id %>" style="<%= post.seen? ? '' : 'background-color: lightskyblue' %>">
       <td>
-        <%= button_to("#{post.favorite? ? 'Unfav' : 'Fav'}",
-                      favorite_craigslist_post_path(post),
-                      class: 'favorite',
-                      form: { style: 'display:inline-block;'},
-                      remote: true)
-                    %>
+        <%= link_to(favorite_craigslist_post_path(post), class: 'favorite', method: :post, remote: true) do %>
+          <%= post.favorite? ? fa_icon('star 2x', class: 'star-outline') : fa_icon('star-o 2x') %>
+        <% end %>
       </td>
       <td><%= link_to(post.title, post.link, target: :_blank) %></td>
       <td><%= post.price %></td>

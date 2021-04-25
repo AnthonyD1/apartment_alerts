@@ -1,5 +1,11 @@
 if (<%= @post.saved_change_to_favorite? %>) {
   var post = document.querySelector("#post_<%= @post.id %>");
-  var favoriteButtonText = <%= @post.favorite? %> ? 'Unfav' : 'Fav';
-  post.querySelector('.favorite').value = favoriteButtonText;
+
+  if (<%= @post.favorite? %>) {
+    post.querySelector('.fa').classList.remove('fa-star-o');
+    post.querySelector('.fa').classList.add('fa-star', 'star-outline');
+  } else {
+    post.querySelector('.fa').classList.remove('fa-star', 'star-outline');
+    post.querySelector('.fa').classList.add('fa-star-o');
+  }
 }

@@ -1,1 +1,8 @@
 @import 'bootstrap/scss/bootstrap';
+@import 'font-awesome';
+
+.star-outline {
+  color: yellow;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: orange;
+}
