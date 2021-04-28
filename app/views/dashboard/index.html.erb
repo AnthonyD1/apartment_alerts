@@ -15,17 +15,23 @@ th {
   <%= button_to('New', new_alert_path, method: :get, form: { style: 'display:inline-block;'}) %>
 </h2>
 
-<table style="width: 100%">
-  <tr>
-    <th>City</th>
-    <th>Search Params</th>
-    <th>Matches</th>
-  </tr>
-  <% @alerts.each do |alert| %>
-    <tr>
-      <td><%= link_to(alert.city, alert_path(alert)) %></td>
-      <td><%= alert.search_params %></td>
-      <td><%= alert.craigslist_posts.count %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="table-responsive">
+  <table class="table table-hover table-bordered table-sm">
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Search Params</th>
+        <th>Matches</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @alerts.each do |alert| %>
+        <tr>
+          <td><%= link_to(alert.city, alert_path(alert)) %></td>
+          <td><%= alert.search_params %></td>
+          <td><%= alert.craigslist_posts.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
