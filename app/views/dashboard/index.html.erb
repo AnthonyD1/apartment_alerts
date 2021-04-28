@@ -12,11 +12,13 @@ th {
 </style>
 
 <h2> Alerts
-  <%= button_to('New', new_alert_path, method: :get, form: { style: 'display:inline-block;'}) %>
+  <%= link_to(new_alert_path) do %>
+    <%= fa_icon('plus-circle') %>
+  <% end %>
 </h2>
 
 <div class="table-responsive">
-  <table class="table table-hover table-bordered table-sm">
+  <table class="table table-hover table-bordered">
     <thead>
       <tr>
         <th>City</th>
