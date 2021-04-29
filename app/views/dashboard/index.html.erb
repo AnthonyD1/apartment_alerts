@@ -11,14 +11,20 @@
         <th>City</th>
         <th>Search Params</th>
         <th>Matches</th>
+        <th>
       </tr>
     </thead>
     <tbody>
       <% @alerts.each do |alert| %>
-        <tr>
+        <tr id="post_<%= alert.id %>">
           <td><%= link_to(alert.city, alert_path(alert)) %></td>
           <td><%= alert.search_params %></td>
           <td><%= alert.craigslist_posts.count %></td>
+          <td>
+            <%= link_to(alert_path(alert), method: :delete, data: {confirm: 'Are you sure?'}, remote: true) do %>
+              <%= fa_icon('trash 2x', style: 'color: red') %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

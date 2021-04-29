@@ -1,5 +1,5 @@
 class AlertsController < ApplicationController
-  before_action :load_alert, only: %i(show)
+  before_action :load_alert, only: %i(show destroy refresh)
   before_action :check_user_authorization, only: %i(show)
   decorates_assigned :craigslist_posts
 
@@ -28,9 +28,18 @@ class AlertsController < ApplicationController
     end
   end
 
-  def refresh
-    @alert = Alert.find(params[:id])
+  def destroy
+    respond_to do |format|
+      if @alert.destroy
+        format.html { redirect_to(root_path, notice: 'Alert deleted.') }
+        format.js
+      else
+        format.html { redirect_to(root_path, notice: 'Alert could not be deleted.') }
+      end
+    end
+  end
 
+  def refresh
     @alert.pull_posts
 
     redirect_to alert_path(@alert)
