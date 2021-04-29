@@ -22,11 +22,9 @@ class AlertsController < ApplicationController
     @alert = Alert.new(alert_params)
 
     if @alert.save
-      flash[:notice] = 'Alert created successfully.'
-      redirect_to root_path
+      redirect_to root_path, flash: { success: 'Alert created successfully.' } 
     else
-      flash[:error] = 'Something went wrong; please try again.'
-      redirect_to new_alert_path
+      redirect_to new_alert_path, flash: { error: 'Something went wrong; please try again.' }
     end
   end
 
