@@ -5,7 +5,7 @@ class CraigslistQuery
   attr_accessor :search_params
 
   def initialize(params)
-    @city = parsed_city(params)
+    @city = normalize_city(params[:city])
     @search_params = params[:search_params]
   end
 
@@ -21,8 +21,8 @@ class CraigslistQuery
 
   private
 
-  def parsed_city(params)
-    params[:city].downcase.strip.delete(' ')
+  def normalize_city(city)
+    city.downcase.strip.delete(' ')
   end
 
   def nearby_area_node_index
@@ -54,7 +54,7 @@ class CraigslistQuery
 
   def search_params_string
     search = ''
-    search_params.each do |param|
+    search_params.reject { |k,v| v.to_i.zero? }.each do |param|
       search << param.first.to_s
       search << '='
       search << param.last.to_s

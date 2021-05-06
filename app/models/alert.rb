@@ -8,12 +8,13 @@ class Alert < ApplicationRecord
   validates :search_params, presence: true
 
   def pull_posts
-    @posts ||= CraigslistQuery.new(city: city, search_params: search_params).posts
+    @posts ||= CraigslistQuery.new(city: city, search_params: filtered_search_params).posts
 
     self.craigslist_posts << new_posts
   end
 
   def average_price
+    return if craigslist_posts.count.zero?
     craigslist_posts.pluck(:price).sum / craigslist_posts.count
   end
 
@@ -35,6 +36,10 @@ class Alert < ApplicationRecord
 
   def min_price
     craigslist_posts.pluck(:price).sort.min
+  end
+
+  def filtered_search_params
+    search_params.reject { |k,v| v.to_i.zero? }
   end
 
   private

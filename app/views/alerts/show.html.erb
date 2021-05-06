@@ -2,7 +2,7 @@
 
 <div>
   <%= label_tag('Filters:')%>
-  <%= @alert.search_params %>
+  <%= @alert.filtered_search_params %>
   <%= link_to(refresh_alert_path(@alert), method: :post) do %>
     <%= fa_icon('refresh') %>
   <% end %>
