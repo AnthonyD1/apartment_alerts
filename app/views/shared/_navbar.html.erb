@@ -9,7 +9,7 @@
 
 		<% if user_signed_in? %>
 			<li class="nav-item dropdown">
-				<%= link_to('Account', '#', id: 'NavbarDropdown', role: 'button', 'data-toggle': 'dropdown', aria: { haspopup: true, expanded: false}, class: 'nav-link dropdown-toggle') %>
+				<%= link_to(current_user.username, '#', id: 'NavbarDropdown', role: 'button', 'data-toggle': 'dropdown', aria: { haspopup: true, expanded: false}, class: 'nav-link dropdown-toggle') %>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<%= link_to('Edit Account', edit_user_registration_path, class: 'dropdown-item') %>
 				</div>
