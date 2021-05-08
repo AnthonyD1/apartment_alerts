@@ -26,6 +26,9 @@
       </div>
     <% end %>
 
+    <div>
+      <%= link_to("Log in as a Guest", root_path(guest: true)) %>
+    </div>
     <%= render "devise/shared/links" %>
   </div>
   <div class="col-sm"></div>
