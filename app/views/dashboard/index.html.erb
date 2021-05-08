@@ -8,6 +8,7 @@
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
+        <th>Name</th>
         <th>City</th>
         <th>Search Params</th>
         <th>Matches</th>
@@ -17,7 +18,8 @@
     <tbody>
       <% @alerts.each do |alert| %>
         <tr id="post_<%= alert.id %>">
-          <td><%= link_to(alert.city, alert_path(alert)) %></td>
+          <td><%= link_to(alert.name, alert_path(alert)) %></td>
+          <td><%= alert.city %></td>
           <td><%= alert.filtered_search_params %></td>
           <td><%= alert.craigslist_posts.count %></td>
           <td>

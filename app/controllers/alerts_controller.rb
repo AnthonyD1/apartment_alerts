@@ -71,7 +71,7 @@ class AlertsController < ApplicationController
   end
 
   def alert_params
-    params.require(:alert).permit(:city, search_params: {}).merge(user_id: current_user.id)
+    params.require(:alert).permit(:name, :city, search_params: {}).merge(user_id: current_user.id)
   end
 
 end
