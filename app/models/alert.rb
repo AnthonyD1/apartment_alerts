@@ -49,9 +49,9 @@ class Alert < ApplicationRecord
   end
 
   def deduped_post_ids
-    post_ids = @posts.pluck(:post_id)
-    @existing_post_ids ||= self.craigslist_posts.pluck(:post_id)
+    new_post_ids = @posts.pluck(:post_id)
+    duplicate_post_ids ||= CraigslistPost.where(post_id: new_post_ids).pluck(:post_id)
 
-    post_ids - @existing_post_ids
+    new_post_ids - duplicate_post_ids
   end
 end
