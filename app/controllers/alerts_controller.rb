@@ -11,7 +11,7 @@ class AlertsController < ApplicationController
 
     @q = @alert.craigslist_posts.ransack(params[:q])
     @q.sorts = ['favorite desc', 'date desc'] if @q.sorts.empty?
-    @craigslist_posts = @q.result
+    @pagy, @craigslist_posts = pagy(@q.result, items: 15)
   end
 
   def new

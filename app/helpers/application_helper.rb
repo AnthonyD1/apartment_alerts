@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   BOOTSTRAP_FLASH_MSG = {
     error: 'danger',
     alert: 'warning',

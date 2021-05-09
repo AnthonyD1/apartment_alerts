@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
 
   def index
-    @alerts = current_user.alerts
+    @pagy, @alerts = pagy(current_user.alerts, items: 10)
   end
 end
