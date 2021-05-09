@@ -1,34 +1,45 @@
-<h2> Alerts
-  <%= link_to(new_alert_path) do %>
-    <%= fa_icon('plus-circle') %>
-  <% end %>
-</h2>
+<% if @alerts.present? %>
+  <h2> Alerts
+    <%= link_to(new_alert_path) do %>
+      <%= fa_icon('plus-circle') %>
+    <% end %>
+  </h2>
 
-<div class="table-responsive">
-  <table class="table table-hover table-bordered">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>City</th>
-        <th>Search Params</th>
-        <th>Matches</th>
-        <th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @alerts.each do |alert| %>
-        <tr id="post_<%= alert.id %>">
-          <td><%= link_to(alert.name, alert_path(alert)) %></td>
-          <td><%= alert.city %></td>
-          <td><%= alert.filtered_search_params %></td>
-          <td><%= alert.craigslist_posts.count %></td>
-          <td>
-            <%= link_to(alert_path(alert), method: :delete, data: {confirm: 'Are you sure?'}, remote: true) do %>
-              <%= fa_icon('trash 2x', style: 'color: red') %>
-            <% end %>
-          </td>
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th>Search Params</th>
+          <th>Matches</th>
+          <th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
+      <tbody>
+        <% @alerts.each do |alert| %>
+          <tr id="post_<%= alert.id %>">
+            <td><%= link_to(alert.name, alert_path(alert)) %></td>
+            <td><%= alert.city %></td>
+            <td><%= alert.filtered_search_params %></td>
+            <td><%= alert.craigslist_posts.count %></td>
+            <td>
+              <%= link_to(alert_path(alert), method: :delete, data: {confirm: 'Are you sure?'}, remote: true) do %>
+                <%= fa_icon('trash 2x', style: 'color: red') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <%= link_to(new_alert_path) do %>
+    <div class="alert alert-warning text-center">
+      <div class="text-center">
+        <%= fa_icon('meh-o 4x') %>
+      </div>
+      Things look empty. Click to make a new Alert!
+    </div>
+  <% end %>
+<% end %>
