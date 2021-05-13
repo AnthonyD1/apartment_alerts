@@ -52,7 +52,7 @@
         <tr scope="row" id="post_<%= post.id %>" class="<%= post.seen? ? '' : 'table-primary' %>">
           <td>
             <%= link_to(favorite_craigslist_post_path(post), class: 'favorite', method: :post, remote: true) do %>
-              <%= post.favorite? ? fa_icon('star 2x', class: 'star-outline') : fa_icon('star-o 2x') %>
+              <%= post.favorite? ? fa_icon('star', size: 'lg', class: 'star-outline') : fa_icon('star', size: 'lg', type: :regular) %>
             <% end %>
           </td>
           <td><%= link_to(post.title, post.link, target: :_blank) %></td>
@@ -63,10 +63,10 @@
           <td><%= post.date %></td>
           <td width="7%">
             <%= link_to(craigslist_post_path(id: post.id, post: { seen: true }), method: :patch, class: 'mark_seen', title: 'Mark seen', remote: true) do %>
-              <%= fa_icon('eye 2x') %>
+              <%= fa_icon('eye', size: 'lg') %>
             <% end %>
             <%= link_to( craigslist_post_path(post), method: :delete, title: 'Delete', remote: true) do %>
-              <%= fa_icon('trash 2x', style: 'color: red') %>
+              <%= fa_icon('trash', size: 'lg',  style: 'color: red') %>
             <% end %>
           </td>
         </tr>

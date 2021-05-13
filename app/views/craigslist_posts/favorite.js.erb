@@ -2,10 +2,10 @@ if (<%= @post.saved_change_to_favorite? %>) {
   var post = document.querySelector("#post_<%= @post.id %>");
 
   if (<%= @post.favorite? %>) {
-    post.querySelector('.fa').classList.remove('fa-star-o');
-    post.querySelector('.fa').classList.add('fa-star', 'star-outline');
+    post.querySelector('.fa-star').classList.remove('far');
+    post.querySelector('.fa-star').classList.add('fas', 'star-outline');
   } else {
-    post.querySelector('.fa').classList.remove('fa-star', 'star-outline');
-    post.querySelector('.fa').classList.add('fa-star-o');
+    post.querySelector('.fa-star').classList.remove('fas', 'star-outline');
+    post.querySelector('.fa-star').classList.add('far');
   }
 }

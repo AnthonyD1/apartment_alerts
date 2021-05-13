@@ -32,7 +32,7 @@ gem 'socksify'
 gem 'net-telnet'
 gem 'ransack'
 gem 'draper'
-gem 'font-awesome-rails'
+gem 'font_awesome5_rails'
 gem 'pagy'
 
 group :development, :test do
