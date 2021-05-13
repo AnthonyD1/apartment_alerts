@@ -1,12 +1,15 @@
-<h2> <%= @alert.name %> </h2>
-
-<div>
-  <%= label_tag('Filters:')%>
-  <%= @alert.filtered_search_params %>
+<h2>
+  <%= @alert.name %>
   <%= link_to(refresh_alert_path(@alert), method: :post) do %>
-    <%= fa_icon('refresh') %>
+    <%= fa_icon('sync-alt', size: 'xs', title: 'Refresh listings') %>
   <% end %>
-  <div>
+</h2>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= render 'shared/tags', tags_hash: @alert.filtered_search_params %>
+  </div>
+  <div class="col-md">
     Average price:
     <%= @alert.average_price %>
     Median price:

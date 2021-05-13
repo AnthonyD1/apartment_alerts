@@ -21,7 +21,9 @@
           <tr id="post_<%= alert.id %>">
             <td><%= link_to(alert.name, alert_path(alert)) %></td>
             <td><%= alert.city %></td>
-            <td><%= alert.filtered_search_params %></td>
+            <td>
+              <%= render 'shared/tags', tags_hash: alert.filtered_search_params %>
+            </td>
             <td><%= alert.craigslist_posts.count %></td>
             <td>
               <%= link_to(alert_path(alert), method: :delete, data: {confirm: 'Are you sure?'}, remote: true) do %>
