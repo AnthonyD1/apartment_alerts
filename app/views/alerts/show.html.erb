@@ -22,7 +22,7 @@
 </div>
 
 <div class="table-responsive">
-  <table class="table table-hover table-bordered table-sm">
+  <table class="table table-hover table-bordered">
     <thead>
       <tr>
         <th>
@@ -58,16 +58,13 @@
               <%= post.favorite? ? fa_icon('star', size: 'lg', class: 'star-outline') : fa_icon('star', size: 'lg', type: :regular) %>
             <% end %>
           </td>
-          <td><%= link_to(post.title, post.link, target: :_blank) %></td>
+          <td><%= link_to(post.title, post.link, target: :_blank, onmouseup: "markSeen(event, #{post.id});") %></td>
           <td><%= post.price %></td>
           <td><%= post.bedrooms %></td>
           <td><%= post.square_feet %></td>
           <td><%= post.hood %></td>
           <td><%= post.date %></td>
-          <td width="7%">
-            <%= link_to(craigslist_post_path(id: post.id, post: { seen: true }), method: :patch, class: 'mark_seen', title: 'Mark seen', remote: true) do %>
-              <%= fa_icon('eye', size: 'lg') %>
-            <% end %>
+          <td>
             <%= link_to( craigslist_post_path(post), method: :delete, title: 'Delete', remote: true) do %>
               <%= fa_icon('trash', size: 'lg',  style: 'color: red') %>
             <% end %>
@@ -78,3 +75,4 @@
   </table>
 </div>
 <%== pagy_bootstrap_nav(@pagy) %>
+<%= javascript_pack_tag('alerts/show') %>

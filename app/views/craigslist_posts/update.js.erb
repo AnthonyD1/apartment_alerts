@@ -1,5 +1,4 @@
 if (<%= @post.seen? %>) {
   var post = document.querySelector("#post_<%= @post.id %>");
   post.classList.remove('table-primary');
-  post.querySelector('.mark_seen').disabled = true;
 }
