@@ -34,6 +34,17 @@ class CraigslistPostsController < ApplicationController
     end
   end
 
+  def batch_delete
+    posts = CraigslistPost.where(id: batch_delete_params[:posts])
+    alert_id = posts.first.alert_id
+
+    if posts.delete_all
+      redirect_to(alert_path(alert_id), notice: 'Posts deleted.')
+    else
+      redirect_to(alert_path(alert_id), notice: 'Posts could not be deleted.')
+    end
+  end
+
   private
 
   def set_craigslist_post
@@ -42,5 +53,9 @@ class CraigslistPostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:seen, :favorite)
+  end
+
+  def batch_delete_params
+    params.permit(posts: [])
   end
 end

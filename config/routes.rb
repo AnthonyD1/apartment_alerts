@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   end
   resources :craigslist_posts, only: [:update, :destroy] do
     post :favorite, on: :member
+    patch :batch_delete, on: :collection
   end
 end

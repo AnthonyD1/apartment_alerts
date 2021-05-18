@@ -5,3 +5,14 @@ window.markSeen = function (event, post_id) {
     data: "post[seen]=true"
   })
 }
+
+window.toggleMassDeleteButton = function () {
+  checkedBoxes = document.querySelectorAll('#posts_:checked')
+  deleteSelectedButton = document.querySelector('#delete-all')
+
+  if (checkedBoxes.length > 0) {
+    deleteSelectedButton.disabled = false;
+  } else {
+    deleteSelectedButton.disabled = true;
+  }
+}
