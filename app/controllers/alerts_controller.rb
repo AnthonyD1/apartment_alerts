@@ -1,7 +1,7 @@
 class AlertsController < ApplicationController
   before_action :load_alert, only: %i(show destroy refresh)
   before_action :check_user_authorization, only: %i(show)
-  decorates_assigned :craigslist_posts
+  decorates_assigned :craigslist_posts, :alert
 
   def index
   end

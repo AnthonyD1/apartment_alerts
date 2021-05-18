@@ -17,12 +17,12 @@
         </tr>
       </thead>
       <tbody>
-        <% @alerts.each do |alert| %>
+        <% alerts.each do |alert| %>
           <tr id="post_<%= alert.id %>">
             <td><%= link_to(alert.name, alert_path(alert)) %></td>
             <td><%= alert.city %></td>
             <td>
-              <%= render 'shared/tags', tags_hash: alert.filtered_search_params %>
+              <%= render 'shared/tags', tags_hash: alert.search_param_tags %>
             </td>
             <td><%= alert.craigslist_posts.count %></td>
             <td>
