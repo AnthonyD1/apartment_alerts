@@ -10,6 +10,8 @@ class Alert < ApplicationRecord
   def pull_posts
     @posts ||= CraigslistQuery.new(city: city, search_params: filtered_search_params).posts
 
+    update_average_post_time if new_posts.count > 1
+
     self.craigslist_posts << new_posts
   end
 
@@ -43,6 +45,28 @@ class Alert < ApplicationRecord
   end
 
   private
+
+  def update_average_post_time
+    return if new_posts.count < 1
+
+    old_average       = average_post_time
+    old_count         = average_post_time_count
+    new_posts_average = calc_average_post_time(new_posts)
+    new_posts_count   = new_posts.count - 1
+    total_count       = old_count + new_posts_count
+
+    new_average = ((old_average * old_count) + (new_posts_average * new_posts_count)) / total_count
+
+    update_columns(average_post_time: new_average, average_post_time_count: total_count)
+  end
+
+  def calc_average_post_time(posts)
+    return 0 if posts.count < 1
+
+    sorted_posts = posts.pluck(:date).sort
+
+    (sorted_posts.max - sorted_posts.min) / (posts.count - 1)
+  end
 
   def new_posts
     @posts.select { |post| deduped_post_ids.include?(post.post_id) }
