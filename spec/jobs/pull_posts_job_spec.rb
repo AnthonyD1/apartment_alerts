@@ -9,9 +9,9 @@ RSpec.describe PullPostsJob do
     it 'calls Alert#pull_posts' do
       alert = spy('alert')
 
-      described_class.perform_later(alert)
+      described_class.perform_now(alert)
 
-      expect(alert).to receive(:pull_posts)
+      expect(alert).to have_received(:pull_posts)
     end
 
     it 'enqueues another PullPostsJob for the future' do
