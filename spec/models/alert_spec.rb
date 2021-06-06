@@ -33,13 +33,26 @@ RSpec.describe Alert do
 
         expect(@alert.craigslist_posts.count).to eq(0)
       end
+
+      it 'adds new posts to #craigslist_posts when there is 1 post' do
+        user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
+        posts = [ CraigslistPost.new(post_id: 123, date: DateTime.current, post: {})]
+        @alert = Alert.create(city: 'des moines',
+                             search_params: { hasPic: '1' },
+                             user_id: 1)
+        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return(posts)
+
+        @alert.pull_posts
+
+        expect(@alert.craigslist_posts.count).to eq(1)
+      end
     end
 
     context 'more than 1 new posts' do
       before do
         user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
-        posts = [ CraigslistPost.new(post_id: 123, date: DateTime.current),
-                   CraigslistPost.new(post_id: 1234, date: DateTime.current + 300.seconds)]
+        posts = [ CraigslistPost.new(post_id: 123, date: DateTime.current, post: {}),
+                   CraigslistPost.new(post_id: 1234, date: DateTime.current + 300.seconds, post: {})]
         @alert = Alert.create(city: 'des moines',
                              search_params: { hasPic: '1', max_bedrooms: '1' },
                              average_post_time: 600,

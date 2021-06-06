@@ -14,7 +14,7 @@ class CraigslistPost < ApplicationRecord
   end
 
   def post
-    Nokogiri::XML(self[:post])
+    Nokogiri::XML(self[:post]) if self[:post].present?
   end
 
   private
