@@ -44,6 +44,10 @@ class Alert < ApplicationRecord
     search_params.reject { |k,v| v.to_i.zero? }
   end
 
+  def repull_delay
+    average_post_time.zero? ? 1.hour.seconds : average_post_time
+  end
+
   private
 
   def update_average_post_time

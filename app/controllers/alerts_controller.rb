@@ -22,6 +22,7 @@ class AlertsController < ApplicationController
     @alert = Alert.new(alert_params)
 
     if @alert.save
+      PullPostsJob.perform_later(@alert)
       redirect_to root_path, flash: { success: 'Alert created successfully.' } 
     else
       redirect_to new_alert_path, flash: { error: 'Something went wrong; please try again.' }

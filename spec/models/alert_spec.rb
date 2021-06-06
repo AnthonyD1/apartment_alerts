@@ -63,4 +63,23 @@ RSpec.describe Alert do
       end
     end
   end
+
+  describe '#repull_delay' do
+    context 'average_pull_time is zero' do
+      it 'returns the default delay' do
+        alert = Alert.new
+        default_delay = 1.hour.seconds
+
+        expect(alert.repull_delay).to eq(default_delay)
+      end
+    end
+
+    context 'average_pull_time is not zero' do
+      it 'returns the average_post_time' do
+        alert = Alert.new(average_post_time: 600)
+
+        expect(alert.repull_delay).to eq(600)
+      end
+    end
+  end
 end

@@ -2,7 +2,6 @@ class CraigslistPost < ApplicationRecord
   belongs_to :alert
 
   validates :post, presence: true
-  validates :post_id, uniqueness: true
 
   # TODO: Store in database. Make sure not to pull html page upon creation, otherwise
   # could be costly when creating dozens of posts at a time. Consider only pulling when
