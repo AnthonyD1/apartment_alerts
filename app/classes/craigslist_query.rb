@@ -31,6 +31,7 @@ class CraigslistQuery
   end
 
   def non_duplicate_non_nearby_posts
+    return [] if nearby_area_node_index.zero?
     return non_duplicate_posts if nearby_area_node_index.blank?
 
     # Divide by 2 to account for the newline nodes
