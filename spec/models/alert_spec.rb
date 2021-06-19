@@ -6,6 +6,7 @@ RSpec.describe Alert do
       @alert = Alert.new(city: 'des moines',
                          search_params: { hasPic: '1', max_bedrooms: '1' },
                          average_post_time: 600)
+      allow(@alert).to receive(:touch)
     end
 
     context '1 or less new posts' do
@@ -73,6 +74,16 @@ RSpec.describe Alert do
         @alert.pull_posts
 
         expect(@alert.craigslist_posts.count).to eq(2)
+      end
+    end
+
+    context '#last_pulled_at' do
+      it 'is updated' do
+        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([])
+
+        @alert.pull_posts
+
+        expect(@alert).to have_received(:touch).with(:last_pulled_at)
       end
     end
   end

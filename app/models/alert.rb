@@ -13,6 +13,7 @@ class Alert < ApplicationRecord
     update_average_post_time if new_posts.count > 1
 
     self.craigslist_posts << new_posts
+    touch(:last_pulled_at)
   end
 
   def average_price
