@@ -88,6 +88,14 @@ RSpec.describe Alert do
     end
   end
 
+  describe '#filtered_search_params' do
+    it 'returns non empty params' do
+      alert = Alert.new(search_params: { hasPic: '0', postal: '', postedToday: '1'})
+
+      expect(alert.filtered_search_params).to eq({postedToday: '1'})
+    end
+  end
+
   describe '#repull_delay' do
     context 'average_pull_time is zero' do
       it 'returns the default delay' do
