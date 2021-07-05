@@ -14,6 +14,11 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  VCR.configure do |config|
+    config.allow_http_connections_when_no_cassette = false
+    config.cassette_library_dir = "fixtures/vcr_cassettes"
+    config.hook_into :webmock
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

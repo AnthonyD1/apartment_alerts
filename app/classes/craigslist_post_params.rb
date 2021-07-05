@@ -10,9 +10,9 @@ class CraigslistPostParams
       post: post,
       title: title,
       link: link,
-      post_id: post_id.to_i,
-      date: DateTime.parse(date),
-      price: price.gsub(/[$,]/, '').to_i,
+      post_id: post_id,
+      date: date,
+      price: price,
       hood: hood,
       bedrooms: bedrooms,
       square_feet: square_feet
@@ -28,15 +28,17 @@ class CraigslistPostParams
   end
 
   def post_id
-    post.css('.result-title').attribute('data-id').text
+    post.css('.result-title').attribute('data-id').text.to_i
   end
 
   def date
-    post.css('.result-date').attribute('title').text
+    raw_date = post.css('.result-date').attribute('title').text
+    DateTime.parse(raw_date)
   end
 
   def price
-    post.css('.result-price').text
+    raw_price = post.css('.result-price').text
+    raw_price.gsub(/[$,]/, '').to_i
   end
 
   def hood
@@ -58,8 +60,13 @@ class CraigslistPostParams
   private
 
   def housing_info
-    return [] if post.css('.housing').children.first.blank?
+    housing_info_array = post.css('.housing').children
+    return [] if housing_info_array.first.blank?
 
-    post.css('.housing').children.first.text.split('-').map(&:strip)
+    if housing_info_array.first.text.include?('-')
+      housing_info_array.first.text.split('-').map(&:strip)
+    else
+      [housing_info_array.first.text.strip]
+    end
   end
 end
