@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://ipinfo.io/ip
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - ipinfo.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '15'
+      Date:
+      - Sat, 10 Jul 2021 17:10:42 GMT
+      X-Envoy-Upstream-Service-Time:
+      - '3'
+      Via:
+      - 1.1 google
+      Alt-Svc:
+      - clear
+    body:
+      encoding: UTF-8
+      string: 205.185.117.149
+  recorded_at: Sat, 10 Jul 2021 17:10:42 GMT
+recorded_with: VCR 6.0.0
