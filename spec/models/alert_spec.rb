@@ -40,7 +40,7 @@ RSpec.describe Alert do
         posts = [ CraigslistPost.new(post_id: 123, date: DateTime.current, post: {})]
         @alert = Alert.create(city: 'des moines',
                              search_params: { hasPic: '1' },
-                             user_id: 1)
+                             user_id: user.id)
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return(posts)
 
         @alert.pull_posts
@@ -58,7 +58,7 @@ RSpec.describe Alert do
                              search_params: { hasPic: '1', max_bedrooms: '1' },
                              average_post_time: 600,
                              average_post_time_count: 1,
-                             user_id: 1)
+                             user_id: user.id)
 
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return(posts)
       end

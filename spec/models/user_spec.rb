@@ -1,4 +1,12 @@
 RSpec.describe 'User' do
+  context 'validations' do
+    it 'is valid' do
+      user = User.new(email: 'a@example.com', username: 'foo', password: 'password')
+
+      expect(user).to be_valid
+    end
+  end
+
   describe '#guest?' do
     it 'returns true when User is a guest' do
       user = User.new(username: 'guest')
