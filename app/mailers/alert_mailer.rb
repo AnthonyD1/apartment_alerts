@@ -1,0 +1,11 @@
+class AlertMailer < ApplicationMailer
+  default from: 'apartmentalerts@example.com'
+
+  def new_posts_email
+    @user = params[:user]
+    @alert = params[:alert]
+    @new_posts = params[:new_posts]
+
+    mail(to: @user.email, subject: "#{@new_posts.count} New Listings Found for #{@alert.name}")
+  end
+end

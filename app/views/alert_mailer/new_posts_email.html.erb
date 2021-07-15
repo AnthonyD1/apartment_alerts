@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+    <%= @new_posts.count %> new listing have been found for <%= @alert.name %>. See them at ApartmentAlerts: <%= link_to("#{@alert.name}", alert_url(@alert)) %>
+    </p>
+
+    <%= @new_posts.each_with_object(nil) do |post| %>
+      <p> <%= link_to(post.title, post.link) %></p>
+    <% end %>
+  </body>
+</html>

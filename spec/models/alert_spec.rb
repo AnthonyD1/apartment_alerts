@@ -3,22 +3,38 @@ require 'rails_helper'
 RSpec.describe Alert do
   describe '#pull_posts' do
     before do
-      @alert = Alert.new(city: 'des moines',
-                         search_params: { hasPic: '1', max_bedrooms: '1' },
-                         average_post_time: 600)
+      ActiveJob::Base.queue_adapter = :test
+      @user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
+      @alert = Alert.create(user: @user,
+                            city: 'des moines',
+                            search_params: { hasPic: '1', max_bedrooms: '1' },
+                            average_post_time: 600)
       allow(@alert).to receive(:touch)
     end
 
-    context '1 or less new posts' do
-      it 'does not update the average when no new posts' do
+    context 'no new posts' do
+      before do
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([])
+        @alert.pull_posts
+      end
 
-       @alert.pull_posts
-
+      it 'does not update the average' do
         expect(@alert.average_post_time).to eq(600)
       end
 
-      it 'does not update the average when only one new post' do
+      it 'does not add any posts to #craigslist_posts' do
+        expect(@alert.craigslist_posts.count).to eq(0)
+      end
+
+      it 'does not send new posts email' do
+        enqueued_jobs = ActiveJob::Base.queue_adapter.enqueued_jobs
+
+        expect(enqueued_jobs.count).to eq(0)
+      end
+    end
+
+    context '1 new post' do
+      it 'does not update the average' do
         post = CraigslistPost.new
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
 
@@ -27,43 +43,39 @@ RSpec.describe Alert do
         expect(@alert.average_post_time).to eq(600)
       end
 
-      it 'does not add any posts to #craigslist_posts' do
-        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([])
-
-        @alert.pull_posts
-
-        expect(@alert.craigslist_posts.count).to eq(0)
-      end
-
-      it 'adds new posts to #craigslist_posts when there is 1 post' do
-        user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
+      it 'adds new posts to #craigslist_posts' do
         posts = [ CraigslistPost.new(post_id: 123, date: DateTime.current, post: {})]
-        @alert = Alert.create(city: 'des moines',
-                             search_params: { hasPic: '1' },
-                             user_id: user.id)
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return(posts)
 
         @alert.pull_posts
 
         expect(@alert.craigslist_posts.count).to eq(1)
       end
+
+      it 'enqueues new posts email' do
+        post = CraigslistPost.new
+        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
+
+        @alert.pull_posts
+
+        enqueued_jobs = ActiveJob::Base.queue_adapter.enqueued_jobs
+
+        expect(enqueued_jobs.count).to eq(1)
+      end
     end
 
     context 'more than 1 new posts' do
       before do
-        user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
         posts = [ CraigslistPost.new(post_id: 123, date: DateTime.current, post: {}),
                    CraigslistPost.new(post_id: 1234, date: DateTime.current + 300.seconds, post: {})]
-        @alert = Alert.create(city: 'des moines',
-                             search_params: { hasPic: '1', max_bedrooms: '1' },
-                             average_post_time: 600,
-                             average_post_time_count: 1,
-                             user_id: user.id)
 
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return(posts)
       end
 
-      it 'updates the average post time when more than 1 new post' do
+      it 'updates the average post time' do
+        @alert.average_post_time = 600
+        @alert.average_post_time_count = 1
+
         @alert.pull_posts
 
         expect(@alert.average_post_time).to eq(450)
@@ -74,6 +86,17 @@ RSpec.describe Alert do
         @alert.pull_posts
 
         expect(@alert.craigslist_posts.count).to eq(2)
+      end
+
+      it 'enqueues new posts email' do
+        post = CraigslistPost.new
+        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
+
+        @alert.pull_posts
+
+        enqueued_jobs = ActiveJob::Base.queue_adapter.enqueued_jobs
+
+        expect(enqueued_jobs.count).to eq(1)
       end
     end
 

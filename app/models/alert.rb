@@ -9,11 +9,13 @@ class Alert < ApplicationRecord
 
   def pull_posts
     @posts ||= CraigslistQuery.new(city: city, search_params: filtered_search_params).posts
+    touch(:last_pulled_at)
+
+    return if new_posts.count.zero?
 
     update_average_post_time if new_posts.count > 1
-
     self.craigslist_posts << new_posts
-    touch(:last_pulled_at)
+    send_new_posts_email
   end
 
   def average_price
@@ -51,6 +53,10 @@ class Alert < ApplicationRecord
 
   private
 
+  def send_new_posts_email
+    AlertMailer.with(user: self.user, alert: self, new_posts: new_posts).new_posts_email.deliver_later
+  end
+
   def update_average_post_time
     return if new_posts.count < 1
 
@@ -74,12 +80,12 @@ class Alert < ApplicationRecord
   end
 
   def new_posts
-    @posts.select { |post| deduped_post_ids.include?(post.post_id) }
+    @new_posts ||= @posts.select { |post| deduped_post_ids.include?(post.post_id) }
   end
 
   def deduped_post_ids
     new_post_ids = @posts.pluck(:post_id)
-    duplicate_post_ids ||= craigslist_posts.where(post_id: new_post_ids).pluck(:post_id)
+    duplicate_post_ids = craigslist_posts.where(post_id: new_post_ids).pluck(:post_id)
 
     new_post_ids - duplicate_post_ids
   end

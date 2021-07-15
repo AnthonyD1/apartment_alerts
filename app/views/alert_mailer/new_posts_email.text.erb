@@ -1,0 +1,5 @@
+  <%= @new_posts.count %> new listing have been found for <%= @alert.name %>. See them at ApartmentAlerts: <%= alert_url(@alert) %>
+
+<%= @new_posts.each_with_object(nil) do |post| %>
+  <%= post.link %>
+<% end %>
