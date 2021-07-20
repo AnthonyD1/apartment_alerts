@@ -1,5 +1,5 @@
 class AlertMailer < ApplicationMailer
-  default from: 'apartmentalerts@example.com'
+  default from: 'apartmentalertsupdates@gmail.com'
 
   def new_posts_email
     @user = params[:user]

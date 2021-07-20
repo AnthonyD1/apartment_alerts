@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'rexml'
+  gem 'dotenv-rails'
 end
 
 group :development do

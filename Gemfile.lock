@@ -97,6 +97,10 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     draper (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -275,6 +279,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   delayed_job_active_record
   devise
+  dotenv-rails
   draper
   font_awesome5_rails
   jbuilder (~> 2.7)
