@@ -31,11 +31,11 @@ RSpec.describe CraigslistPost do
     end
   end
 
-  describe '#post' do
+  describe '#parsed_post' do
     it 'returns a Nokogiri object' do
       craigslist_post = described_class.new(post: 'Foobar')
 
-      expect(craigslist_post.post.class).to eq('Nokogiri::XML::Document')
+      expect(craigslist_post.parsed_post.class).to eq(Nokogiri::XML::Document)
     end
   end
 end

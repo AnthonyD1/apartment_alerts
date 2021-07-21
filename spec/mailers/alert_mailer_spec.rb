@@ -13,7 +13,7 @@ RSpec.describe AlertMailer do
 
     context 'headers' do
       it 'renders the sender email' do
-        expect(@mailer.from).to eq(['apartmentalerts@example.com'])
+        expect(@mailer.from).to eq(['apartmentalertsupdates@gmail.com'])
       end
 
       it 'renders the receiver email' do

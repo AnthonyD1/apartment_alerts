@@ -35,7 +35,7 @@ RSpec.describe Alert do
 
     context '1 new post' do
       it 'does not update the average' do
-        post = CraigslistPost.new
+        post = CraigslistPost.new(id: 1)
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
 
         @alert.pull_posts
@@ -53,7 +53,7 @@ RSpec.describe Alert do
       end
 
       it 'enqueues new posts email' do
-        post = CraigslistPost.new
+        post = CraigslistPost.new(id: 1)
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
 
         @alert.pull_posts
@@ -89,7 +89,7 @@ RSpec.describe Alert do
       end
 
       it 'enqueues new posts email' do
-        post = CraigslistPost.new
+        post = CraigslistPost.new(id: 1)
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
 
         @alert.pull_posts

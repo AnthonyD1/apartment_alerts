@@ -3,7 +3,7 @@ class CraigslistPost < ApplicationRecord
 
   validates :post, presence: true
 
-  def post
+  def parsed_post
     Nokogiri::XML(self[:post])
   end
 end
