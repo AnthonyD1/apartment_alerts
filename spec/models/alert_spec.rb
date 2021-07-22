@@ -1,17 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Alert do
-  describe '#pull_posts' do
-    before do
-      ActiveJob::Base.queue_adapter = :test
-      @user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
-      @alert = Alert.create(user: @user,
-                            city: 'des moines',
-                            search_params: { hasPic: '1', max_bedrooms: '1' },
-                            average_post_time: 600)
-      allow(@alert).to receive(:touch)
-    end
+  before do
+    @user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
+    @alert = Alert.create(user: @user,
+                          city: 'des moines',
+                          search_params: { hasPic: '1', max_bedrooms: '1' },
+                          average_post_time: 600,
+                          emails_enabled: true)
+    ActiveJob::Base.queue_adapter = :test
+  end
 
+  describe '#pull_posts' do
     context 'no new posts' do
       before do
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([])
@@ -100,14 +100,29 @@ RSpec.describe Alert do
       end
     end
 
-    context '#last_pulled_at' do
-      it 'is updated' do
-        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([])
+    context 'emails not enabled' do
+      it 'does not enqueue new posts email' do
+        @alert.emails_enabled = false
+        post = CraigslistPost.new(id: 1)
+        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
 
         @alert.pull_posts
 
-        expect(@alert).to have_received(:touch).with(:last_pulled_at)
+        enqueued_jobs = ActiveJob::Base.queue_adapter.enqueued_jobs
+
+        expect(enqueued_jobs.count).to eq(0)
       end
+    end
+  end
+
+  context '#last_pulled_at' do
+    it 'is updated' do
+      allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([])
+      allow(@alert).to receive(:touch)
+
+      @alert.pull_posts
+
+      expect(@alert).to have_received(:touch).with(:last_pulled_at)
     end
   end
 

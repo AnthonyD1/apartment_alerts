@@ -54,6 +54,8 @@ class Alert < ApplicationRecord
   private
 
   def send_new_posts_email
+    return unless emails_enabled?
+
     AlertMailer.with(user: self.user, alert: self, new_posts: new_posts).new_posts_email.deliver_later
   end
 
