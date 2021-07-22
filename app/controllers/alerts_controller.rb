@@ -72,7 +72,7 @@ class AlertsController < ApplicationController
   end
 
   def alert_params
-    @alert_params = params.require(:alert).permit(:name, :city, search_params: {}).merge(user_id: current_user.id)
+    @alert_params = params.require(:alert).permit(:name, :city, :emails_enabled, search_params: {}).merge(user_id: current_user.id)
     @alert_params[:search_params].merge!('postedToday' => '1')
     @alert_params
   end
