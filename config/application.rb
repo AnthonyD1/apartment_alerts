@@ -19,5 +19,8 @@ module ApartmentAlerts
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Sets default queue for mailers
+    config.action_mailer.deliver_later_queue_name = 'mailers'
   end
 end

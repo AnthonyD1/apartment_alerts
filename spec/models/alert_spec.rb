@@ -2,13 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Alert do
   before do
+    ActiveJob::Base.queue_adapter = :delayed_job
+
     @user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
     @alert = Alert.create(user: @user,
                           city: 'des moines',
                           search_params: { hasPic: '1', max_bedrooms: '1' },
                           average_post_time: 600,
                           emails_enabled: true)
-    ActiveJob::Base.queue_adapter = :test
   end
 
   describe '#pull_posts' do
@@ -27,9 +28,7 @@ RSpec.describe Alert do
       end
 
       it 'does not send new posts email' do
-        enqueued_jobs = ActiveJob::Base.queue_adapter.enqueued_jobs
-
-        expect(enqueued_jobs.count).to eq(0)
+        expect(enqueued_jobs(queue: 'mailers').count).to eq(0)
       end
     end
 
@@ -58,9 +57,7 @@ RSpec.describe Alert do
 
         @alert.pull_posts
 
-        enqueued_jobs = ActiveJob::Base.queue_adapter.enqueued_jobs
-
-        expect(enqueued_jobs.count).to eq(1)
+        expect(enqueued_jobs(queue: 'mailers').count).to eq(1)
       end
     end
 
@@ -94,9 +91,7 @@ RSpec.describe Alert do
 
         @alert.pull_posts
 
-        enqueued_jobs = ActiveJob::Base.queue_adapter.enqueued_jobs
-
-        expect(enqueued_jobs.count).to eq(1)
+        expect(enqueued_jobs(queue: 'mailers').count).to eq(1)
       end
     end
 
@@ -108,9 +103,7 @@ RSpec.describe Alert do
 
         @alert.pull_posts
 
-        enqueued_jobs = ActiveJob::Base.queue_adapter.enqueued_jobs
-
-        expect(enqueued_jobs.count).to eq(0)
+        expect(enqueued_jobs(queue: 'mailers').count).to eq(0)
       end
     end
   end

@@ -20,7 +20,7 @@ RSpec.describe PullPostsJob do
       allow(alert).to receive(:pull_posts)
 
       described_class.perform_now(alert)
-      enqueued_job = ActiveJob::Base.queue_adapter.enqueued_jobs.first
+      enqueued_job = enqueued_jobs.first
       future = Time.at(enqueued_job[:at])
 
       expect(described_class).to have_been_enqueued.with(alert)
