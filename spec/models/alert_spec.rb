@@ -12,6 +12,40 @@ RSpec.describe Alert do
                           emails_enabled: true)
   end
 
+  describe '#after_commit' do
+    context 'after create' do
+      it 'sets the job_id on the alert' do
+        expect(@alert.job_id).to_not be_nil
+      end
+
+      it 'enqueues pull posts job' do
+        expect(enqueued_jobs(queue: 'pull_posts').count).to eq(1)
+      end
+    end
+
+    context 'after update' do
+      before do
+        @old_job_id = @alert.job_id
+
+        @alert.update(name: 'foobar')
+      end
+
+      it 'destroys old pull posts job' do
+        expect{ Delayed::Job.find(@old_job_id) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it 'enqueues new pull posts job' do
+        new_job = Delayed::Job.find(@alert.job_id)
+
+        expect(new_job).to_not be_nil
+      end
+
+      it 'updates the job_id on the alert' do
+        expect(@alert.job_id).to_not eq(@old_job_id)
+      end
+    end
+  end
+
   describe '#pull_posts' do
     context 'no new posts' do
       before do

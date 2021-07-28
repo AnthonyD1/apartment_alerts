@@ -26,7 +26,10 @@
             </td>
             <td><%= alert.craigslist_posts.count %></td>
             <td>
-              <%= link_to(alert_path(alert), method: :delete, data: {confirm: 'Are you sure?'}, remote: true) do %>
+              <%= link_to(edit_alert_path(alert)) do %>
+                <%= fa_icon('edit', size: 'lg', title: 'Edit alert') %>
+              <% end %>
+              <%= link_to(alert_path(alert), method: :delete, data: {confirm: 'Are you sure?'}, remote: true, title: 'Delete alert') do %>
                 <%= fa_icon('trash', size: 'lg', style: 'color: red') %>
               <% end %>
             </td>

@@ -1,4 +1,6 @@
 class Alert < ApplicationRecord
+  include SearchParams
+
   belongs_to :user
   has_many :craigslist_posts, dependent: :destroy
 
@@ -6,6 +8,8 @@ class Alert < ApplicationRecord
 
   validates :city, presence: true
   validates :search_params, presence: true
+
+  after_commit :enqueue_pull_posts_job, on: %i[create update]
 
   def pull_posts
     @posts ||= CraigslistQuery.new(city: city, search_params: filtered_search_params).posts
@@ -52,6 +56,14 @@ class Alert < ApplicationRecord
   end
 
   private
+
+  def enqueue_pull_posts_job
+    Delayed::Job.find(job_id).destroy if job_id.present?
+
+    job = PullPostsJob.perform_later(self)
+
+    update_column(:job_id, job.provider_job_id)
+  end
 
   def send_new_posts_email
     return unless emails_enabled?

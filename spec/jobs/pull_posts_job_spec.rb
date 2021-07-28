@@ -23,7 +23,7 @@ RSpec.describe PullPostsJob do
       enqueued_job = enqueued_jobs.first
       future = Time.at(enqueued_job[:at])
 
-      expect(described_class).to have_been_enqueued.with(alert)
+      expect(described_class).to have_been_enqueued.with(alert).on_queue('pull_posts')
       expect(future).to be_within(600.seconds).of(Time.now)
     end
   end

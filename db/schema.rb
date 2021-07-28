@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_22_232141) do
+ActiveRecord::Schema.define(version: 2021_07_27_013457) do
 
   create_table "alerts", force: :cascade do |t|
     t.string "city"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_07_22_232141) do
     t.integer "average_post_time_count", default: 0
     t.datetime "last_pulled_at"
     t.boolean "emails_enabled"
+    t.integer "job_id"
     t.index ["user_id"], name: "index_alerts_on_user_id"
   end
 

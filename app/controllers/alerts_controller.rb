@@ -1,6 +1,6 @@
 class AlertsController < ApplicationController
-  before_action :load_alert, only: %i(show destroy refresh)
-  before_action :check_user_authorization, only: %i(show)
+  before_action :load_alert, only: %i[show edit update destroy refresh]
+  before_action :check_user_authorization, only: %i[show edit update]
   decorates_assigned :craigslist_posts, :alert
 
   def index
@@ -15,7 +15,7 @@ class AlertsController < ApplicationController
   end
 
   def new
-    @alert = Alert.new
+    @alert = Alert.new(search_params: {})
   end
 
   def create
@@ -37,6 +37,17 @@ class AlertsController < ApplicationController
       else
         format.html { redirect_to(root_path, notice: 'Alert could not be deleted.') }
       end
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @alert.update(alert_params)
+      redirect_to alert_path(@alert), flash: { success: 'Alert updated successfully.' }
+    else
+      redirect_to edit_alert_path, flash: { error: 'Something went wrong; please try again.' }
     end
   end
 

@@ -1,5 +1,8 @@
 <h2>
   <%= @alert.name %>
+  <%= link_to(edit_alert_path(alert)) do %>
+    <%= fa_icon('edit', size: 'xs', title: 'Edit alert') %>
+  <% end %>
   <%= link_to(refresh_alert_path(@alert), method: :post) do %>
     <%= fa_icon('sync-alt', size: 'xs', title: 'Refresh listings') %>
   <% end %>

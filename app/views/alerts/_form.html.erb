@@ -1,0 +1,148 @@
+<%= form_with(model: @alert) do |f| %>
+  <div class="form-row">
+    <div class="formg-group col-sm-4">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: 'form-control' %>
+    </div>
+    <%= f.fields_for :search_params, @alert do |ff| %>
+      <div class="form-group col">
+        <%= f.label :query, 'Keywords' %>
+        <%= ff.text_field :query, title: 'Search titles and descriptions for keywords.', class: 'form-control' %>
+      </div>
+  </div>
+    <div class="form-group">
+      <%= ff.label :hasPic do %>
+        <%= ff.check_box :hasPic %>
+        Has picture
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :miles, 'Miles From Zip' %>
+      <div class="form-row">
+        <div class="col">
+          <%= ff.number_field :search_distance, placeholder: 'miles', class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= ff.number_field :postal, placeholder: 'from zip', class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label :price %>
+      <div class="form-row">
+        <div class="col">
+          <%= ff.number_field :min_price, placeholder: 'min', class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= ff.number_field :max_price, placeholder: 'max', class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label :bedrooms %>
+      <div class="form-row">
+        <div class="col">
+          <%= ff.number_field :min_bedrooms, placeholder: 'min', class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= ff.number_field :max_bedrooms, placeholder: 'max', class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label :bathrooms %>
+      <div class="form-row">
+        <div class="col">
+          <%= ff.number_field :min_bathrooms, placeholder: 'min', class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= ff.number_field :max_bathrooms, placeholder: 'max', class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label :sqft, 'Square Footage' %>
+      <div class="form-row">
+        <div class="col">
+          <%= ff.number_field :minSqft, placeholder: 'min', class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= ff.number_field :maxSqft, placeholder: 'max', class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+
+    <div id='checkboxes' class="form-group row">
+      <div class="col-sm-4">
+        <div class="form-check">
+          <%= ff.label :pets_cat, class: 'form-check-label' do %>
+            <%= ff.check_box :pets_cat, class: 'form-check-input' %>
+            Cats
+          <% end %>
+        </div>
+        <div class="form-check">
+          <%= ff.label :pets_dog, class: 'form-check-label' do %>
+            <%= ff.check_box :pets_dog, class: 'form-check-input' %>
+            Dogs
+          <% end %>
+        </div>
+        <div class="form-check">
+          <%= ff.label :is_furnished, class: 'form-check-label' do %>
+            <%= ff.check_box :is_furnished, class: 'form-check-input' %>
+            Furnished
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-check">
+          <%= ff.label :no_smoking, class: 'form-check-label' do %>
+            <%= ff.check_box :no_smoking, class: 'form-check-input' %>
+            No smoking
+          <% end %>
+        </div>
+        <div class="form-check">
+          <%= ff.label :wheelchaccess, class: 'form-check-label' do %>
+            <%= ff.check_box :wheelchaccess, class: 'form-check-input' %>
+            Wheelchair access
+          <% end %>
+        </div>
+        <div class="form-check">
+          <%= ff.label :ev_charging, class: 'form-check-label' do %>
+            <%= ff.check_box :ev_charging, class: 'form-check-input' %>
+            Ev charging
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-check">
+          <%= ff.label :application_fee, class: 'form-check-label' do %>
+            <%= ff.check_box :application_fee, class: 'form-check-input' %>
+            No application fee
+          <% end %>
+        </div>
+        <div class="form-check">
+          <%= ff.label :broker_fee, class: 'form-check-label' do %>
+            <%= ff.check_box :broker_fee, class: 'form-check-input' %>
+            No broker fee
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :emails_enabled do %>
+      <%= f.check_box :emails_enabled, title: 'Receive Emails when new matches for you Alert are found.' %>
+      Email Notifications
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.submit @alert.new_record? ? 'Create' : 'Update', class: 'btn btn-primary' %>
+  </div>
+<% end %>
