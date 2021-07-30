@@ -6,6 +6,7 @@ class Alert < ApplicationRecord
 
   serialize :search_params
 
+  validates :name, presence: true
   validates :city, presence: true
   validates :search_params, presence: true
 

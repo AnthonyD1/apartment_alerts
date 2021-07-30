@@ -24,7 +24,7 @@ class AlertsController < ApplicationController
     if @alert.save
       redirect_to root_path, flash: { success: 'Alert created successfully.' } 
     else
-      redirect_to new_alert_path, flash: { error: 'Something went wrong; please try again.' }
+      render :new
     end
   end
 
@@ -46,7 +46,7 @@ class AlertsController < ApplicationController
     if @alert.update(alert_params)
       redirect_to alert_path(@alert), flash: { success: 'Alert updated successfully.' }
     else
-      redirect_to edit_alert_path, flash: { error: 'Something went wrong; please try again.' }
+      render :new
     end
   end
 

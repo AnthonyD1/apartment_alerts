@@ -6,6 +6,7 @@ RSpec.describe Alert do
 
     @user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
     @alert = Alert.create(user: @user,
+                          name: 'Foobar',
                           city: 'des moines',
                           search_params: { hasPic: '1', max_bedrooms: '1' },
                           average_post_time: 600,
@@ -42,6 +43,19 @@ RSpec.describe Alert do
 
       it 'updates the job_id on the alert' do
         expect(@alert.job_id).to_not eq(@old_job_id)
+      end
+    end
+  end
+
+  context 'validations' do
+    context 'presence' do
+      it 'is valid' do
+        alert = Alert.new
+        validated_fields = %i(city name user search_params)
+
+        alert.valid?
+
+        expect(alert.errors.messages).to include(*validated_fields)
       end
     end
   end
