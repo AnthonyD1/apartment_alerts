@@ -51,7 +51,7 @@ class AlertsController < ApplicationController
   end
 
   def refresh
-    @alert.pull_posts
+    @alert.refresh
 
     redirect_to alert_path(@alert)
   end

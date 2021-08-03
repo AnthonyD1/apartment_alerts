@@ -12,15 +12,18 @@ class Alert < ApplicationRecord
 
   after_commit :enqueue_pull_posts_job, on: %i[create update]
 
+  def refresh
+    pull_posts
+    return if new_posts.count.zero?
+
+    update_average_post_time
+    update_craigslist_posts
+    send_new_posts_email
+  end
+
   def pull_posts
     @posts ||= CraigslistQuery.new(city: city, search_params: filtered_search_params).posts
     touch(:last_pulled_at)
-
-    return if new_posts.count.zero?
-
-    update_average_post_time if new_posts.count > 1
-    self.craigslist_posts << new_posts
-    send_new_posts_email
   end
 
   def average_price
@@ -72,8 +75,12 @@ class Alert < ApplicationRecord
     AlertMailer.with(user: self.user, alert: self, new_posts: new_posts).new_posts_email.deliver_later
   end
 
+  def update_craigslist_posts
+    self.craigslist_posts << new_posts
+  end
+
   def update_average_post_time
-    return if new_posts.count < 1
+    return if new_posts.count <= 1
 
     old_average       = average_post_time
     old_count         = average_post_time_count

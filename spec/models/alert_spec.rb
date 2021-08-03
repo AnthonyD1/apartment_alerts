@@ -60,11 +60,12 @@ RSpec.describe Alert do
     end
   end
 
-  describe '#pull_posts' do
+  describe '#refresh' do
     context 'no new posts' do
       before do
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([])
-        @alert.pull_posts
+
+        @alert.refresh
       end
 
       it 'does not update the average' do
@@ -81,30 +82,22 @@ RSpec.describe Alert do
     end
 
     context '1 new post' do
+      before do
+        posts = [ CraigslistPost.new(post_id: 123, date: DateTime.current, post: {})]
+        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return(posts)
+
+        @alert.refresh
+      end
+
       it 'does not update the average' do
-        post = CraigslistPost.new(id: 1)
-        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
-
-        @alert.pull_posts
-
         expect(@alert.average_post_time).to eq(600)
       end
 
       it 'adds new posts to #craigslist_posts' do
-        posts = [ CraigslistPost.new(post_id: 123, date: DateTime.current, post: {})]
-        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return(posts)
-
-        @alert.pull_posts
-
         expect(@alert.craigslist_posts.count).to eq(1)
       end
 
       it 'enqueues new posts email' do
-        post = CraigslistPost.new(id: 1)
-        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
-
-        @alert.pull_posts
-
         expect(enqueued_jobs(queue: 'mailers').count).to eq(1)
       end
     end
@@ -121,14 +114,14 @@ RSpec.describe Alert do
         @alert.average_post_time = 600
         @alert.average_post_time_count = 1
 
-        @alert.pull_posts
+        @alert.refresh
 
         expect(@alert.average_post_time).to eq(450)
         expect(@alert.average_post_time_count).to eq(2)
       end
 
       it 'updates #craigslist_posts with new posts' do
-        @alert.pull_posts
+        @alert.refresh
 
         expect(@alert.craigslist_posts.count).to eq(2)
       end
@@ -137,7 +130,7 @@ RSpec.describe Alert do
         post = CraigslistPost.new(id: 1)
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
 
-        @alert.pull_posts
+        @alert.refresh
 
         expect(enqueued_jobs(queue: 'mailers').count).to eq(1)
       end
@@ -149,15 +142,21 @@ RSpec.describe Alert do
         post = CraigslistPost.new(id: 1)
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
 
-        @alert.pull_posts
+        @alert.refresh
 
         expect(enqueued_jobs(queue: 'mailers').count).to eq(0)
       end
     end
   end
 
-  context '#last_pulled_at' do
-    it 'is updated' do
+  describe '#pull_posts' do
+    it 'calls CraigslistQuery' do
+      expect(CraigslistQuery).to receive_message_chain(:new, :posts)
+
+      @alert.pull_posts
+    end
+
+    it '#last_pulled_at is updated' do
       allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([])
       allow(@alert).to receive(:touch)
 
@@ -169,27 +168,27 @@ RSpec.describe Alert do
 
   describe '#filtered_search_params' do
     it 'returns non empty params' do
-      alert = Alert.new(search_params: { hasPic: '0', postal: '', postedToday: '1'})
+      @alert.search_params = { hasPic: '0', postal: '', postedToday: '1'}
 
-      expect(alert.filtered_search_params).to eq({postedToday: '1'})
+      expect(@alert.filtered_search_params).to eq({postedToday: '1'})
     end
   end
 
   describe '#repull_delay' do
     context 'average_pull_time is zero' do
       it 'returns the default delay' do
-        alert = Alert.new
+        @alert.average_post_time = 0
         default_delay = 1.hour.seconds
 
-        expect(alert.repull_delay).to eq(default_delay)
+        expect(@alert.repull_delay).to eq(default_delay)
       end
     end
 
     context 'average_pull_time is not zero' do
       it 'returns the average_post_time' do
-        alert = Alert.new(average_post_time: 600)
+        @alert.average_post_time =  600
 
-        expect(alert.repull_delay).to eq(600)
+        expect(@alert.repull_delay).to eq(600)
       end
     end
   end

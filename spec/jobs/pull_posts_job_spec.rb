@@ -6,18 +6,18 @@ RSpec.describe PullPostsJob do
   end
 
   describe '#perform' do
-    it 'calls Alert#pull_posts' do
+    it 'calls Alert#refresh' do
       alert = spy('alert')
 
       described_class.perform_now(alert)
 
-      expect(alert).to have_received(:pull_posts)
+      expect(alert).to have_received(:refresh)
     end
 
     it 'enqueues another PullPostsJob for the future' do
       alert = Alert.new(id: 1, average_post_time: 600)
       allow(Alert).to receive(:find).and_return(alert)
-      allow(alert).to receive(:pull_posts)
+      allow(alert).to receive(:refresh)
 
       described_class.perform_now(alert)
       enqueued_job = enqueued_jobs.first
