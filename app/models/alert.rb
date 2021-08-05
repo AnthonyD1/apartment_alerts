@@ -27,13 +27,13 @@ class Alert < ApplicationRecord
   end
 
   def average_price
-    return if craigslist_posts.count.zero?
-    craigslist_posts.pluck(:price).sum / craigslist_posts.count
+    return if craigslist_posts.active.count.zero?
+    craigslist_posts.active.pluck(:price).sum / craigslist_posts.active.count
   end
 
   def median_price
-    size = craigslist_posts.size
-    sorted_prices = craigslist_posts.pluck(:price).sort
+    size = craigslist_posts.active.size
+    sorted_prices = craigslist_posts.active.pluck(:price).sort
     mid = size / 2
 
     if size % 2 == 1
@@ -44,11 +44,11 @@ class Alert < ApplicationRecord
   end
 
   def max_price
-    craigslist_posts.pluck(:price).sort.max
+    craigslist_posts.active.pluck(:price).sort.max
   end
 
   def min_price
-    craigslist_posts.pluck(:price).sort.min
+    craigslist_posts.active.pluck(:price).sort.min
   end
 
   def filtered_search_params
