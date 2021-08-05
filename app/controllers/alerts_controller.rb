@@ -9,7 +9,7 @@ class AlertsController < ApplicationController
   def show
     parse_ransack_multiple_sort_params_to_array
 
-    @q = @alert.craigslist_posts.ransack(params[:q])
+    @q = @alert.craigslist_posts.active.ransack(params[:q])
     @q.sorts = ['favorite desc', 'date desc'] if @q.sorts.empty?
     @pagy, @craigslist_posts = pagy(@q.result, items: 15)
   end

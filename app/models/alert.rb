@@ -107,8 +107,8 @@ class Alert < ApplicationRecord
 
   def deduped_post_ids
     new_post_ids = @posts.pluck(:post_id)
-    duplicate_post_ids = craigslist_posts.where(post_id: new_post_ids).pluck(:post_id)
+    @duplicate_post_ids ||= craigslist_posts.where(post_id: new_post_ids).pluck(:post_id)
 
-    new_post_ids - duplicate_post_ids
+    new_post_ids - @duplicate_post_ids
   end
 end
