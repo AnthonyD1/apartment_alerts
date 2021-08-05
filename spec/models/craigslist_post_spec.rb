@@ -4,7 +4,8 @@ RSpec.describe CraigslistPost do
   context 'validations' do
     it 'is valid' do
       user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
-      alert = Alert.create(city: 'des moines',
+      alert = Alert.create(name: 'Foobar',
+                           city: 'des moines',
                            search_params: { hasPic: '1' },
                            user_id: user.id)
       craigslist_post = described_class.new(post: 'Foobar', alert_id: alert.id)
