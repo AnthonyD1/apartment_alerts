@@ -49,4 +49,15 @@ RSpec.describe AlertDecorator do
       end
     end
   end
+
+  describe '#next_pull_time_remaining' do
+    it 'returns the time remaining until next pull in minutes' do
+      alert = Alert.new
+      allow(alert).to receive(:next_pull_time).and_return(DateTime.current.utc + 10.minutes)
+
+      alert_decorator = alert.decorate
+
+      expect(alert_decorator.next_pull_time_remaining).to eq(10)
+    end
+  end
 end

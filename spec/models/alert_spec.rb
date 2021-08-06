@@ -192,4 +192,15 @@ RSpec.describe Alert do
       end
     end
   end
+
+  describe '#next_pull_time' do
+    it 'returns the time of the next pull' do
+      last_pulled_at = DateTime.parse('2021-01-01')
+      @alert.update(last_pulled_at: last_pulled_at, average_post_time: 600)
+
+      expected_time = last_pulled_at + 10.minutes
+
+      expect(@alert.next_pull_time).to eq(expected_time)
+    end
+  end
 end

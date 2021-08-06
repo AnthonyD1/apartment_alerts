@@ -18,6 +18,10 @@ class AlertDecorator < ApplicationDecorator
     [format(tags, :price), format(tags, :bedrooms), format(tags, :bathrooms), format(tags, :Sqft), regular_tags].flatten.compact
   end
 
+  def next_pull_time_remaining
+    ((model.next_pull_time - DateTime.current) / 60).ceil
+  end
+
   private
 
   def format(tags, key)

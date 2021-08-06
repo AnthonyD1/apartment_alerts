@@ -59,6 +59,10 @@ class Alert < ApplicationRecord
     average_post_time.zero? ? 1.hour.seconds : average_post_time
   end
 
+  def next_pull_time
+    last_pulled_at + repull_delay
+  end
+
   private
 
   def enqueue_pull_posts_job
