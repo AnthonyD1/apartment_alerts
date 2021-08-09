@@ -139,7 +139,7 @@
 
   <div class="form-group">
     <%= f.label :emails_enabled do %>
-      <%= f.check_box :emails_enabled, title: 'Receive Emails when new matches for you Alert are found.' %>
+      <%= f.check_box :emails_enabled, title: 'Receive Emails when new matches for you Alert are found.', checked: @alert.new_record? ? true : @alert.emails_enabled? %>
       Email Notifications
     <% end %>
   </div>
