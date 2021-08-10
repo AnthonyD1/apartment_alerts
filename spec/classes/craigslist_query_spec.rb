@@ -1,6 +1,6 @@
-RSpec.describe CraigslistQuery do
-  require 'spec_helper'
+require 'rails_helper'
 
+RSpec.describe CraigslistQuery, type: :model do
   describe '#city' do
     it 'formats all caps properly' do
       city = 'DES MOINES'

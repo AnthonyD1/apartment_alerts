@@ -1,7 +1,7 @@
-RSpec.describe CraigslistPostParams do
-  include Tor
-  require 'spec_helper'
+require 'rails_helper'
+include Tor
 
+RSpec.describe CraigslistPostParams do
   before do
     VCR.use_cassette('craigslist-success') do
       post = craigslist_posts.first
@@ -68,17 +68,17 @@ RSpec.describe CraigslistPostParams do
       end
     end
   end
+end
 
-  def craigslist_posts
-    parsed_html ||= Nokogiri::HTML(html)
-    parsed_html.css('.result-info')
-  end
+def craigslist_posts
+  parsed_html ||= Nokogiri::HTML(html)
+  parsed_html.css('.result-info')
+end
 
-  def html
-    response = http.get(URI(search_url))
-  end
+def html
+  response = http.get(URI(search_url))
+end
 
-  def search_url
-    "https://desmoines.craigslist.org/search/apa?hasPic=1&max_price=800"
-  end
+def search_url
+  "https://desmoines.craigslist.org/search/apa?hasPic=1&max_price=800"
 end
