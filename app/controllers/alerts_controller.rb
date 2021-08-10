@@ -22,6 +22,7 @@ class AlertsController < ApplicationController
     @alert = Alert.new(alert_params)
 
     if @alert.save
+      @alert.enqueue_pull_posts_job
       redirect_to root_path, flash: { success: 'Alert created successfully.' } 
     else
       render :new
@@ -44,6 +45,7 @@ class AlertsController < ApplicationController
 
   def update
     if @alert.update(alert_params)
+      @alert.enqueue_pull_posts_job
       redirect_to alert_path(@alert), flash: { success: 'Alert updated successfully.' }
     else
       render :new

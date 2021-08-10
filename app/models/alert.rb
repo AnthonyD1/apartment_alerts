@@ -10,8 +10,6 @@ class Alert < ApplicationRecord
   validates :city, presence: true
   validates :search_params, presence: true
 
-  after_commit :enqueue_pull_posts_job, on: %i[create update]
-
   def refresh
     pull_posts
     return if new_posts.count.zero?
@@ -63,8 +61,6 @@ class Alert < ApplicationRecord
     last_pulled_at + repull_delay
   end
 
-  private
-
   def enqueue_pull_posts_job
     Delayed::Job.find(job_id).destroy if job_id.present?
 
@@ -72,6 +68,8 @@ class Alert < ApplicationRecord
 
     update_column(:job_id, job.provider_job_id)
   end
+
+  private
 
   def send_new_posts_email
     return unless emails_enabled?

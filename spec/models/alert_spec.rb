@@ -13,8 +13,12 @@ RSpec.describe Alert do
                           emails_enabled: true)
   end
 
-  describe '#after_commit' do
-    context 'after create' do
+  describe '#enqueue_pull_posts_job' do
+    context 'a job does not exist' do
+      before do
+        @alert.enqueue_pull_posts_job
+      end
+
       it 'sets the job_id on the alert' do
         expect(@alert.job_id).to_not be_nil
       end
@@ -24,11 +28,11 @@ RSpec.describe Alert do
       end
     end
 
-    context 'after update' do
+    context 'a job already exists' do
       before do
         @old_job_id = @alert.job_id
 
-        @alert.update(name: 'foobar')
+        @alert.enqueue_pull_posts_job
       end
 
       it 'destroys old pull posts job' do
