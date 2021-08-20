@@ -10,14 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_03_024202) do
+ActiveRecord::Schema.define(version: 2021_08_20_021258) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "alerts", force: :cascade do |t|
     t.string "city"
     t.text "search_params"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "name"
     t.integer "average_post_time", default: 0
     t.integer "average_post_time_count", default: 0
@@ -31,10 +34,10 @@ ActiveRecord::Schema.define(version: 2021_08_03_024202) do
     t.string "post"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "alert_id", null: false
+    t.bigint "alert_id", null: false
     t.string "title"
     t.string "link"
-    t.integer "post_id"
+    t.bigint "post_id"
     t.datetime "date"
     t.integer "price"
     t.string "hood"
