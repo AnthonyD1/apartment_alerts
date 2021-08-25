@@ -17,6 +17,7 @@ class Alert < ApplicationRecord
     update_average_post_time
     update_craigslist_posts
     send_new_posts_email
+    enqueue_pull_posts_job
   end
 
   def pull_posts
@@ -64,7 +65,7 @@ class Alert < ApplicationRecord
   def enqueue_pull_posts_job
     Delayed::Job.find(job_id).destroy if job_id.present?
 
-    job = PullPostsJob.perform_later(self)
+    job = PullPostsJob.set(wait: repull_delay).perform_later(self)
 
     update_column(:job_id, job.provider_job_id)
   end

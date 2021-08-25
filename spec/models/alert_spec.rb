@@ -39,9 +39,11 @@ RSpec.describe Alert do
         expect{ Delayed::Job.find(@old_job_id) }.to raise_error(ActiveRecord::RecordNotFound)
       end
 
-      it 'enqueues new pull posts job' do
+      it 'enqueues new pull posts job for the future' do
         new_job = Delayed::Job.find(@alert.job_id)
+        future = Time.at(new_job.run_at)
 
+        expect(future).to be_within(600.seconds).of(Time.now)
         expect(new_job).to_not be_nil
       end
 
@@ -83,6 +85,10 @@ RSpec.describe Alert do
       it 'does not send new posts email' do
         expect(enqueued_jobs(queue: 'mailers').count).to eq(0)
       end
+
+      it 'does not enqueue a new pull posts job' do
+        expect(enqueued_jobs(queue: 'pull_posts').count).to eq(0)
+      end
     end
 
     context '1 new post' do
@@ -103,6 +109,10 @@ RSpec.describe Alert do
 
       it 'enqueues new posts email' do
         expect(enqueued_jobs(queue: 'mailers').count).to eq(1)
+      end
+
+      it 'enqueue a new pull posts job' do
+        expect(enqueued_jobs(queue: 'pull_posts').count).to eq(1)
       end
     end
 
