@@ -51,7 +51,9 @@ class Alert < ApplicationRecord
   end
 
   def filtered_search_params
-    search_params.reject { |k,v| v.to_i.zero? }
+    temp = search_params.reject { |k,v| v.to_i.zero? }
+    temp.merge!(query: search_params[:query]) if search_params[:query].present?
+    temp
   end
 
   def repull_delay
