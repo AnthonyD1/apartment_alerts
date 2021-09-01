@@ -32,7 +32,7 @@ class CraigslistQuery
 
   def non_duplicate_non_nearby_posts
     return non_duplicate_posts if nearby_area_node_index.blank?
-    return [] if nearby_area_node_index.zero?
+    return [] if nearby_area_node_index < 2
 
     # Divide by 2 to account for the newline nodes
     last_non_nearby_post = (nearby_area_node_index / 2) - 1
@@ -57,7 +57,7 @@ class CraigslistQuery
 
   def search_params_string
     search = ''
-    search_params.reject { |k,v| v.to_i.zero? }.each do |param|
+    search_params.each do |param|
       search << param.first.to_s
       search << '='
       search << param.last.to_s
