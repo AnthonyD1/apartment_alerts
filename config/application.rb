@@ -22,5 +22,9 @@ module ApartmentAlerts
 
     # Sets default queue for mailers
     config.action_mailer.deliver_later_queue_name = 'mailers'
+
+    ActionView::Base.field_error_proc = proc do |html_tag, instance|
+      html_tag.gsub("form-control", "form-control is-invalid").html_safe
+    end
   end
 end

@@ -27,7 +27,3 @@
   margin-right: 5px;
   padding: 5px 10px;
 }
-
-.field_with_errors input, select, textarea {
-  @extend .is-invalid;
-}
