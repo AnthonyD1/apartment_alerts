@@ -8,7 +8,7 @@
     </div>
     <div class="form-group col-md-2">
       <%= f.label :city %>
-      <%= f.text_field :city, class: 'form-control' %>
+      <%= f.select :city, CraigslistSites.cities_by_state, {}, title: 'Choose a city', class: 'selectpicker form-control', data: { 'live-search': true, style: 'btn-white grey-border' } %>
     </div>
     <%= f.fields_for :search_params, @alert do |ff| %>
       <div class="form-group col">

@@ -1,0 +1,1029 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://ipinfo.io/ip
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - ipinfo.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '13'
+      Date:
+      - Tue, 07 Sep 2021 00:23:04 GMT
+      X-Envoy-Upstream-Service-Time:
+      - '0'
+      Via:
+      - 1.1 google
+      Alt-Svc:
+      - clear
+    body:
+      encoding: UTF-8
+      string: 185.65.205.10
+  recorded_at: Tue, 07 Sep 2021 00:23:04 GMT
+- request:
+    method: get
+    uri: https://www.craigslist.org/about/sites
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.craigslist.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - public, max-age=14400
+      Last-Modified:
+      - Wed, 18 Aug 2021 15:53:02 GMT
+      Date:
+      - Wed, 18 Aug 2021 15:53:01 GMT
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '12120'
+      Content-Type:
+      - text/html; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Mcp-Cache-Control:
+      - max-age=2592000, public
+      Server:
+      - Apache
+      Expires:
+      - Wed, 18 Aug 2021 15:58:02 GMT
+      Set-Cookie:
+      - cl_b=4|148593fac322a00286c1abf9428d1eaaba790cc5|1630974186V7wGw;path=/;domain=.craigslist.org;expires=Fri,
+        01-Jan-2038 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=63072000
+    body:
+      encoding: ASCII-8BIT
+      string: "<!DOCTYPE html>\n<html>\n<head>\n    <title>craigslist &gt; sites</title>\n
+        \   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n
+        \   <meta name=\"description\" content=\"List of all international craigslist.org
+        online classifieds sites\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link
+        type=\"text/css\" rel=\"stylesheet\" media=\"all\" href=\"//www.craigslist.org/styles/cl.css?v=6f112c5b20333b3a4055760b0ef35bd9\"><link
+        type=\"text/css\" rel=\"stylesheet\" media=\"all\" href=\"//www.craigslist.org/styles/leaflet.css?v=d604b055c4c11b9fd29d0c071b394312\"><link
+        type=\"text/css\" rel=\"stylesheet\" media=\"all\" href=\"//www.craigslist.org/styles/MarkerCluster.css?v=9bea97021e746649c6837e95dd9723e8\"></head>\n\n<body
+        class=\"sites\">\n\n<script type=\"text/javascript\"><!--\n    function C(k){return(document.cookie.match('(^|;
+        )'+k+'=([^;]*)')||0)[2]}\n    var pagetype, pagemode;\n    (function(){\n
+        \       var h = document.documentElement;\n        h.className = h.className.replace('no-js',
+        'js');\n        var b = document.body;\n        var bodyClassList = b.className.split(/\\s+/);;\n
+        \       pagetype = bodyClassList[0]; // dangerous assumption\n        var
+        fmt = C('cl_fmt');\n        if ( fmt === 'regular' || fmt === 'mobile' ) {\n
+        \           pagemode = fmt;\n        } else if (screen.width <= 480) {\n            pagemode
+        = 'mobile';\n        } else {\n            pagemode = 'regular';\n        }\n
+        \       pagemode = pagemode === 'mobile' ? 'mobile' : 'desktop';\n        bodyClassList.push(pagemode);\n
+        \       if (C('hidesearch') === '1' && pagemode !== 'mobile') {\n            bodyClassList.push('hide-search');\n
+        \       }\n        var width = window.innerWidth || document.documentElement.clientWidth;\n
+        \       if (width > 1000) { bodyClassList.push('w1024'); }\n        if (typeof
+        window.sectionBase !== 'undefined') {\n            var mode = (decodeURIComponent(C('cl_tocmode')
+        || '').match(new RegExp(window.sectionBase + ':([^,]+)', 'i')) || {})[1] ||
+        window.defaultView;\n            if (mode) {\n                bodyClassList.push(mode);\n
+        \           }\n        }\n        b.className = bodyClassList.join(' ');\n
+        \   }());\n--></script>\n\n    <article class=\"page-container\">\n        <div
+        id=\"logo\">craigslist<sup>&reg;</sup></div>\n\n        <section class=\"body\">\n
+        \           <div class=\"jump_to_continents\">\n              <a href=\"#US\">US</a>\n
+        \             <a href=\"#CA\">Canada</a>\n              <a href=\"#EU\">Europe</a>\n
+        \             <a href=\"#ASIA\">Asia/Pacific/Middle East</a>\n              <a
+        href=\"#OCEANIA\">Oceania</a>\n              <a href=\"#LATAM\">Latin America</a>\n
+        \             <a href=\"#AF\">Africa</a>\n            </div>\n\n            <div
+        id=\"map\" style=\"border: 1px solid #551A8B; background-color: #71A4CD;\"></div>\n\n
+        \           <h1><a name=\"US\"></a>US</h1>\n            <div class=\"colmask\">\n
+        \               <div class=\"box box_1\">\n                    <h4>Alabama</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://auburn.craigslist.org/\">auburn</a></li>\n
+        \                       <li><a href=\"https://bham.craigslist.org/\">birmingham</a></li>\n
+        \                       <li><a href=\"https://dothan.craigslist.org/\">dothan</a></li>\n
+        \                       <li><a href=\"https://shoals.craigslist.org/\">florence
+        / muscle shoals</a></li>\n                        <li><a href=\"https://gadsden.craigslist.org/\">gadsden-anniston</a></li>\n
+        \                       <li><a href=\"https://huntsville.craigslist.org/\">huntsville
+        / decatur</a></li>\n                        <li><a href=\"https://mobile.craigslist.org/\">mobile</a></li>\n
+        \                       <li><a href=\"https://montgomery.craigslist.org/\">montgomery</a></li>\n
+        \                       <li><a href=\"https://tuscaloosa.craigslist.org/\">tuscaloosa</a></li>\n
+        \                   </ul>\n                    <h4>Alaska</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://anchorage.craigslist.org/\">anchorage
+        / mat-su</a></li>\n                        <li><a href=\"https://fairbanks.craigslist.org/\">fairbanks</a></li>\n
+        \                       <li><a href=\"https://kenai.craigslist.org/\">kenai
+        peninsula</a></li>\n                        <li><a href=\"https://juneau.craigslist.org/\">southeast
+        alaska</a></li>\n                    </ul>\n                    <h4>Arizona</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://flagstaff.craigslist.org/\">flagstaff
+        / sedona</a></li>\n                        <li><a href=\"https://mohave.craigslist.org/\">mohave
+        county</a></li>\n                        <li><a href=\"https://phoenix.craigslist.org/\">phoenix</a></li>\n
+        \                       <li><a href=\"https://prescott.craigslist.org/\">prescott</a></li>\n
+        \                       <li><a href=\"https://showlow.craigslist.org/\">show
+        low</a></li>\n                        <li><a href=\"https://sierravista.craigslist.org/\">sierra
+        vista</a></li>\n                        <li><a href=\"https://tucson.craigslist.org/\">tucson</a></li>\n
+        \                       <li><a href=\"https://yuma.craigslist.org/\">yuma</a></li>\n
+        \                   </ul>\n                    <h4>Arkansas</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://fayar.craigslist.org/\">fayetteville
+        </a></li>\n                        <li><a href=\"https://fortsmith.craigslist.org/\">fort
+        smith</a></li>\n                        <li><a href=\"https://jonesboro.craigslist.org/\">jonesboro</a></li>\n
+        \                       <li><a href=\"https://littlerock.craigslist.org/\">little
+        rock</a></li>\n                        <li><a href=\"https://texarkana.craigslist.org/\">texarkana</a></li>\n
+        \                       </ul>\n                    <h4>California</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://bakersfield.craigslist.org/\">bakersfield</a></li>\n
+        \                       <li><a href=\"https://chico.craigslist.org/\">chico</a></li>\n
+        \                       <li><a href=\"https://fresno.craigslist.org/\">fresno
+        / madera</a></li>\n                        <li><a href=\"https://goldcountry.craigslist.org/\">gold
+        country</a></li>\n                        <li><a href=\"https://hanford.craigslist.org/\">hanford-corcoran</a></li>\n
+        \                       <li><a href=\"https://humboldt.craigslist.org/\">humboldt
+        county</a></li>\n                        <li><a href=\"https://imperial.craigslist.org/\">imperial
+        county</a></li>\n                        <li><a href=\"https://inlandempire.craigslist.org/\">inland
+        empire</a></li>\n                        <li><a href=\"https://losangeles.craigslist.org/\">los
+        angeles</a></li>\n                        <li><a href=\"https://mendocino.craigslist.org/\">mendocino
+        county</a></li>\n                        <li><a href=\"https://merced.craigslist.org/\">merced</a></li>\n
+        \                       <li><a href=\"https://modesto.craigslist.org/\">modesto</a></li>\n
+        \                       <li><a href=\"https://monterey.craigslist.org/\">monterey
+        bay</a></li>\n                        <li><a href=\"https://orangecounty.craigslist.org/\">orange
+        county</a></li>\n                        <li><a href=\"https://palmsprings.craigslist.org/\">palm
+        springs</a></li>\n                        <li><a href=\"https://redding.craigslist.org/\">redding</a></li>\n
+        \                       <li><a href=\"https://sacramento.craigslist.org/\">sacramento</a></li>\n
+        \                       <li><a href=\"https://sandiego.craigslist.org/\">san
+        diego</a></li>\n                        <li><a href=\"https://sfbay.craigslist.org/\">san
+        francisco bay area</a></li>\n                        <li><a href=\"https://slo.craigslist.org/\">san
+        luis obispo</a></li>\n                        <li><a href=\"https://santabarbara.craigslist.org/\">santa
+        barbara</a></li>\n                        <li><a href=\"https://santamaria.craigslist.org/\">santa
+        maria</a></li>\n                        <li><a href=\"https://siskiyou.craigslist.org/\">siskiyou
+        county</a></li>\n                        <li><a href=\"https://stockton.craigslist.org/\">stockton</a></li>\n
+        \                       <li><a href=\"https://susanville.craigslist.org/\">susanville</a></li>\n
+        \                       <li><a href=\"https://ventura.craigslist.org/\">ventura
+        county</a></li>\n                        <li><a href=\"https://visalia.craigslist.org/\">visalia-tulare</a></li>\n
+        \                       <li><a href=\"https://yubasutter.craigslist.org/\">yuba-sutter</a></li>\n
+        \                       </ul>\n                    <h4>Colorado</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://boulder.craigslist.org/\">boulder</a></li>\n
+        \                       <li><a href=\"https://cosprings.craigslist.org/\">colorado
+        springs</a></li>\n                        <li><a href=\"https://denver.craigslist.org/\">denver</a></li>\n
+        \                       <li><a href=\"https://eastco.craigslist.org/\">eastern
+        CO</a></li>\n                        <li><a href=\"https://fortcollins.craigslist.org/\">fort
+        collins / north CO</a></li>\n                        <li><a href=\"https://rockies.craigslist.org/\">high
+        rockies</a></li>\n                        <li><a href=\"https://pueblo.craigslist.org/\">pueblo</a></li>\n
+        \                       <li><a href=\"https://westslope.craigslist.org/\">western
+        slope</a></li>\n                        </ul>\n                    <h4>Connecticut</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://newlondon.craigslist.org/\">eastern
+        CT</a></li>\n                        <li><a href=\"https://hartford.craigslist.org/\">hartford</a></li>\n
+        \                       <li><a href=\"https://newhaven.craigslist.org/\">new
+        haven</a></li>\n                        <li><a href=\"https://nwct.craigslist.org/\">northwest
+        CT</a></li>\n                    </ul>\n                    <h4>Delaware</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://delaware.craigslist.org/\">delaware</a></li>\n
+        \                   </ul>\n                    <h4>District of Columbia</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://washingtondc.craigslist.org/\">washington</a></li>\n
+        \                   </ul>\n                    <h4>Florida</h4>\n                    <ul>\n
+        \                       <li><a href=\"http://miami.craigslist.org/brw/\">broward
+        county</a></li>\n                        <li><a href=\"https://daytona.craigslist.org/\">daytona
+        beach</a></li>\n                        <li><a href=\"https://keys.craigslist.org/\">florida
+        keys</a></li>\n                        <li><a href=\"https://fortlauderdale.craigslist.org/\">fort
+        lauderdale</a></li>\n                        <li><a href=\"https://fortmyers.craigslist.org/\">ft
+        myers / SW florida</a></li>\n                        <li><a href=\"https://gainesville.craigslist.org/\">gainesville</a></li>\n
+        \                       <li><a href=\"https://cfl.craigslist.org/\">heartland
+        florida</a></li>\n                        <li><a href=\"https://jacksonville.craigslist.org/\">jacksonville</a></li>\n
+        \                       <li><a href=\"https://lakeland.craigslist.org/\">lakeland</a></li>\n
+        \                       <li><a href=\"http://miami.craigslist.org/mdc/\">miami
+        / dade</a></li>\n                        <li><a href=\"https://lakecity.craigslist.org/\">north
+        central FL</a></li>\n                        <li><a href=\"https://ocala.craigslist.org/\">ocala</a></li>\n
+        \                       <li><a href=\"https://okaloosa.craigslist.org/\">okaloosa
+        / walton</a></li>\n                        <li><a href=\"https://orlando.craigslist.org/\">orlando</a></li>\n
+        \                       <li><a href=\"https://panamacity.craigslist.org/\">panama
+        city</a></li>\n                        <li><a href=\"https://pensacola.craigslist.org/\">pensacola</a></li>\n
+        \                       <li><a href=\"https://sarasota.craigslist.org/\">sarasota-bradenton</a></li>\n
+        \                       <li><a href=\"https://miami.craigslist.org/\">south
+        florida</a></li>\n                        <li><a href=\"https://spacecoast.craigslist.org/\">space
+        coast</a></li>\n                        <li><a href=\"https://staugustine.craigslist.org/\">st
+        augustine</a></li>\n                        <li><a href=\"https://tallahassee.craigslist.org/\">tallahassee</a></li>\n
+        \                       <li><a href=\"https://tampa.craigslist.org/\">tampa
+        bay area</a></li>\n                        <li><a href=\"https://treasure.craigslist.org/\">treasure
+        coast</a></li>\n                        <li><a href=\"http://miami.craigslist.org/pbc/\">palm
+        beach county</a></li>\n                    </ul>\n                    <h4>Georgia</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://albanyga.craigslist.org/\">albany
+        </a></li>\n                        <li><a href=\"https://athensga.craigslist.org/\">athens</a></li>\n
+        \                       <li><a href=\"https://atlanta.craigslist.org/\">atlanta</a></li>\n
+        \                       <li><a href=\"https://augusta.craigslist.org/\">augusta</a></li>\n
+        \                       <li><a href=\"https://brunswick.craigslist.org/\">brunswick</a></li>\n
+        \                       <li><a href=\"https://columbusga.craigslist.org/\">columbus
+        </a></li>\n                        <li><a href=\"https://macon.craigslist.org/\">macon
+        / warner robins</a></li>\n                        <li><a href=\"https://nwga.craigslist.org/\">northwest
+        GA</a></li>\n                        <li><a href=\"https://savannah.craigslist.org/\">savannah
+        / hinesville</a></li>\n                        <li><a href=\"https://statesboro.craigslist.org/\">statesboro</a></li>\n
+        \                       <li><a href=\"https://valdosta.craigslist.org/\">valdosta</a></li>\n
+        \                   </ul>\n                    <h4>Hawaii</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://honolulu.craigslist.org/\">hawaii</a></li>\n
+        \                   </ul>\n                    <h4>Idaho</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://boise.craigslist.org/\">boise</a></li>\n
+        \                       <li><a href=\"https://eastidaho.craigslist.org/\">east
+        idaho</a></li>\n                        <li><a href=\"https://lewiston.craigslist.org/\">lewiston
+        / clarkston</a></li>\n                        <li><a href=\"https://twinfalls.craigslist.org/\">twin
+        falls</a></li>\n                    </ul></div><div class=\"box box_2\">\n
+        \                       <h4>Illinois</h4>\n                    <ul>\n                        <li><a
+        href=\"https://bn.craigslist.org/\">bloomington-normal</a></li>\n                        <li><a
+        href=\"https://chambana.craigslist.org/\">champaign urbana</a></li>\n                        <li><a
+        href=\"https://chicago.craigslist.org/\">chicago</a></li>\n                        <li><a
+        href=\"https://decatur.craigslist.org/\">decatur</a></li>\n                        <li><a
+        href=\"https://lasalle.craigslist.org/\">la salle co</a></li>\n                        <li><a
+        href=\"https://mattoon.craigslist.org/\">mattoon-charleston</a></li>\n                        <li><a
+        href=\"https://peoria.craigslist.org/\">peoria</a></li>\n                        <li><a
+        href=\"https://rockford.craigslist.org/\">rockford</a></li>\n                        <li><a
+        href=\"https://carbondale.craigslist.org/\">southern illinois</a></li>\n                        <li><a
+        href=\"https://springfieldil.craigslist.org/\">springfield </a></li>\n                        <li><a
+        href=\"https://quincy.craigslist.org/\">western IL</a></li>\n                    </ul>\n
+        \                   <h4>Indiana</h4>\n                    <ul>\n                        <li><a
+        href=\"https://bloomington.craigslist.org/\">bloomington</a></li>\n                        <li><a
+        href=\"https://evansville.craigslist.org/\">evansville</a></li>\n                        <li><a
+        href=\"https://fortwayne.craigslist.org/\">fort wayne</a></li>\n                        <li><a
+        href=\"https://indianapolis.craigslist.org/\">indianapolis</a></li>\n                        <li><a
+        href=\"https://kokomo.craigslist.org/\">kokomo</a></li>\n                        <li><a
+        href=\"https://tippecanoe.craigslist.org/\">lafayette / west lafayette</a></li>\n
+        \                       <li><a href=\"https://muncie.craigslist.org/\">muncie
+        / anderson</a></li>\n                        <li><a href=\"https://richmondin.craigslist.org/\">richmond
+        </a></li>\n                        <li><a href=\"https://southbend.craigslist.org/\">south
+        bend / michiana</a></li>\n                        <li><a href=\"https://terrehaute.craigslist.org/\">terre
+        haute</a></li>\n                    </ul>\n                    <h4>Iowa</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://ames.craigslist.org/\">ames</a></li>\n
+        \                       <li><a href=\"https://cedarrapids.craigslist.org/\">cedar
+        rapids</a></li>\n                        <li><a href=\"https://desmoines.craigslist.org/\">des
+        moines</a></li>\n                        <li><a href=\"https://dubuque.craigslist.org/\">dubuque</a></li>\n
+        \                       <li><a href=\"https://fortdodge.craigslist.org/\">fort
+        dodge</a></li>\n                        <li><a href=\"https://iowacity.craigslist.org/\">iowa
+        city</a></li>\n                        <li><a href=\"https://masoncity.craigslist.org/\">mason
+        city</a></li>\n                        <li><a href=\"https://quadcities.craigslist.org/\">quad
+        cities</a></li>\n                        <li><a href=\"https://siouxcity.craigslist.org/\">sioux
+        city</a></li>\n                        <li><a href=\"https://ottumwa.craigslist.org/\">southeast
+        IA</a></li>\n                        <li><a href=\"https://waterloo.craigslist.org/\">waterloo
+        / cedar falls</a></li>\n                    </ul>\n                    <h4>Kansas</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://lawrence.craigslist.org/\">lawrence</a></li>\n
+        \                       <li><a href=\"https://ksu.craigslist.org/\">manhattan</a></li>\n
+        \                       <li><a href=\"https://nwks.craigslist.org/\">northwest
+        KS</a></li>\n                        <li><a href=\"https://salina.craigslist.org/\">salina</a></li>\n
+        \                       <li><a href=\"https://seks.craigslist.org/\">southeast
+        KS</a></li>\n                        <li><a href=\"https://swks.craigslist.org/\">southwest
+        KS</a></li>\n                        <li><a href=\"https://topeka.craigslist.org/\">topeka</a></li>\n
+        \                       <li><a href=\"https://wichita.craigslist.org/\">wichita</a></li>\n
+        \                   </ul>\n                    <h4>Kentucky</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://bgky.craigslist.org/\">bowling
+        green</a></li>\n                        <li><a href=\"https://eastky.craigslist.org/\">eastern
+        kentucky</a></li>\n                        <li><a href=\"https://lexington.craigslist.org/\">lexington</a></li>\n
+        \                       <li><a href=\"https://louisville.craigslist.org/\">louisville</a></li>\n
+        \                       <li><a href=\"https://owensboro.craigslist.org/\">owensboro</a></li>\n
+        \                       <li><a href=\"https://westky.craigslist.org/\">western
+        KY</a></li>\n                    </ul>\n                    <h4>Louisiana</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://batonrouge.craigslist.org/\">baton
+        rouge</a></li>\n                        <li><a href=\"https://cenla.craigslist.org/\">central
+        louisiana</a></li>\n                        <li><a href=\"https://houma.craigslist.org/\">houma</a></li>\n
+        \                       <li><a href=\"https://lafayette.craigslist.org/\">lafayette</a></li>\n
+        \                       <li><a href=\"https://lakecharles.craigslist.org/\">lake
+        charles</a></li>\n                        <li><a href=\"https://monroe.craigslist.org/\">monroe</a></li>\n
+        \                       <li><a href=\"https://neworleans.craigslist.org/\">new
+        orleans</a></li>\n                        <li><a href=\"https://shreveport.craigslist.org/\">shreveport</a></li>\n
+        \                   </ul>\n                    <h4>Maine</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://maine.craigslist.org/\">maine</a></li>\n
+        \                   </ul>\n                    <h4>Maryland</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://annapolis.craigslist.org/\">annapolis</a></li>\n
+        \                       <li><a href=\"https://baltimore.craigslist.org/\">baltimore</a></li>\n
+        \                       <li><a href=\"https://easternshore.craigslist.org/\">eastern
+        shore</a></li>\n                        <li><a href=\"https://frederick.craigslist.org/\">frederick</a></li>\n
+        \                       <li><a href=\"https://smd.craigslist.org/\">southern
+        maryland</a></li>\n                        <li><a href=\"https://westmd.craigslist.org/\">western
+        maryland</a></li>\n                    </ul>\n                    <h4>Massachusetts</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://boston.craigslist.org/\">boston</a></li>\n
+        \                       <li><a href=\"https://capecod.craigslist.org/\">cape
+        cod / islands</a></li>\n                        <li><a href=\"https://southcoast.craigslist.org/\">south
+        coast</a></li>\n                        <li><a href=\"https://westernmass.craigslist.org/\">western
+        massachusetts</a></li>\n                        <li><a href=\"https://worcester.craigslist.org/\">worcester
+        / central MA</a></li>\n                    </ul>\n                    <h4>Michigan</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://annarbor.craigslist.org/\">ann
+        arbor</a></li>\n                        <li><a href=\"https://battlecreek.craigslist.org/\">battle
+        creek</a></li>\n                        <li><a href=\"https://centralmich.craigslist.org/\">central
+        michigan</a></li>\n                        <li><a href=\"https://detroit.craigslist.org/\">detroit
+        metro</a></li>\n                        <li><a href=\"https://flint.craigslist.org/\">flint</a></li>\n
+        \                       <li><a href=\"https://grandrapids.craigslist.org/\">grand
+        rapids</a></li>\n                        <li><a href=\"https://holland.craigslist.org/\">holland</a></li>\n
+        \                       <li><a href=\"https://jxn.craigslist.org/\">jackson
+        </a></li>\n                        <li><a href=\"https://kalamazoo.craigslist.org/\">kalamazoo</a></li>\n
+        \                       <li><a href=\"https://lansing.craigslist.org/\">lansing</a></li>\n
+        \                       <li><a href=\"https://monroemi.craigslist.org/\">monroe
+        </a></li>\n                        <li><a href=\"https://muskegon.craigslist.org/\">muskegon</a></li>\n
+        \                       <li><a href=\"https://nmi.craigslist.org/\">northern
+        michigan</a></li>\n                        <li><a href=\"https://porthuron.craigslist.org/\">port
+        huron</a></li>\n                        <li><a href=\"https://saginaw.craigslist.org/\">saginaw-midland-baycity</a></li>\n
+        \                       <li><a href=\"https://swmi.craigslist.org/\">southwest
+        michigan</a></li>\n                        <li><a href=\"https://thumb.craigslist.org/\">the
+        thumb</a></li>\n                        <li><a href=\"https://up.craigslist.org/\">upper
+        peninsula</a></li>\n                    </ul>\n                    <h4>Minnesota</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://bemidji.craigslist.org/\">bemidji</a></li>\n
+        \                       <li><a href=\"https://brainerd.craigslist.org/\">brainerd</a></li>\n
+        \                       <li><a href=\"https://duluth.craigslist.org/\">duluth
+        / superior</a></li>\n                        <li><a href=\"https://mankato.craigslist.org/\">mankato</a></li>\n
+        \                       <li><a href=\"https://minneapolis.craigslist.org/\">minneapolis
+        / st paul</a></li>\n                        <li><a href=\"https://rmn.craigslist.org/\">rochester
+        </a></li>\n                        <li><a href=\"https://marshall.craigslist.org/\">southwest
+        MN</a></li>\n                        <li><a href=\"https://stcloud.craigslist.org/\">st
+        cloud</a></li>\n                    </ul>\n                    <h4>Mississippi</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://gulfport.craigslist.org/\">gulfport
+        / biloxi</a></li>\n                        <li><a href=\"https://hattiesburg.craigslist.org/\">hattiesburg</a></li>\n
+        \                       <li><a href=\"https://jackson.craigslist.org/\">jackson</a></li>\n
+        \                       <li><a href=\"https://meridian.craigslist.org/\">meridian</a></li>\n
+        \                       <li><a href=\"https://northmiss.craigslist.org/\">north
+        mississippi</a></li>\n                        <li><a href=\"https://natchez.craigslist.org/\">southwest
+        MS</a></li>\n                    </ul>\n                    <h4>Missouri</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://columbiamo.craigslist.org/\">columbia
+        / jeff city</a></li>\n                        <li><a href=\"https://joplin.craigslist.org/\">joplin</a></li>\n
+        \                       <li><a href=\"https://kansascity.craigslist.org/\">kansas
+        city</a></li>\n                        <li><a href=\"https://kirksville.craigslist.org/\">kirksville</a></li>\n
+        \                       <li><a href=\"https://loz.craigslist.org/\">lake of
+        the ozarks</a></li>\n                        <li><a href=\"https://semo.craigslist.org/\">southeast
+        missouri</a></li>\n                        <li><a href=\"https://springfield.craigslist.org/\">springfield</a></li>\n
+        \                       <li><a href=\"https://stjoseph.craigslist.org/\">st
+        joseph</a></li>\n                        <li><a href=\"https://stlouis.craigslist.org/\">st
+        louis</a></li>\n                    </ul></div><div class=\"box box_3\">\n
+        \                       <h4>Montana</h4>\n                    <ul>\n                        <li><a
+        href=\"https://billings.craigslist.org/\">billings</a></li>\n                        <li><a
+        href=\"https://bozeman.craigslist.org/\">bozeman</a></li>\n                        <li><a
+        href=\"https://butte.craigslist.org/\">butte</a></li>\n                        <li><a
+        href=\"https://greatfalls.craigslist.org/\">great falls</a></li>\n                        <li><a
+        href=\"https://helena.craigslist.org/\">helena</a></li>\n                        <li><a
+        href=\"https://kalispell.craigslist.org/\">kalispell</a></li>\n                        <li><a
+        href=\"https://missoula.craigslist.org/\">missoula</a></li>\n                        <li><a
+        href=\"https://montana.craigslist.org/\">eastern montana</a></li>\n                    </ul>\n
+        \                   <h4>Nebraska</h4>\n                    <ul>\n                        <li><a
+        href=\"https://grandisland.craigslist.org/\">grand island</a></li>\n                        <li><a
+        href=\"https://lincoln.craigslist.org/\">lincoln</a></li>\n                        <li><a
+        href=\"https://northplatte.craigslist.org/\">north platte</a></li>\n                        <li><a
+        href=\"https://omaha.craigslist.org/\">omaha / council bluffs</a></li>\n                        <li><a
+        href=\"https://scottsbluff.craigslist.org/\">scottsbluff / panhandle</a></li>\n
+        \                   </ul>\n                    <h4>Nevada</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://elko.craigslist.org/\">elko</a></li>\n
+        \                       <li><a href=\"https://lasvegas.craigslist.org/\">las
+        vegas</a></li>\n                        <li><a href=\"https://reno.craigslist.org/\">reno
+        / tahoe</a></li>\n                    </ul>\n                    <h4>New Hampshire</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://nh.craigslist.org/\">new
+        hampshire</a></li>\n                    </ul>\n                    <h4>New
+        Jersey</h4>\n                    <ul>\n                        <li><a href=\"https://cnj.craigslist.org/\">central
+        NJ</a></li>\n                        <li><a href=\"https://jerseyshore.craigslist.org/\">jersey
+        shore</a></li>\n                        <li><a href=\"https://newjersey.craigslist.org/\">north
+        jersey</a></li>\n                        <li><a href=\"https://southjersey.craigslist.org/\">south
+        jersey</a></li>\n                    </ul>\n                    <h4>New Mexico</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://albuquerque.craigslist.org/\">albuquerque</a></li>\n
+        \                       <li><a href=\"https://clovis.craigslist.org/\">clovis
+        / portales</a></li>\n                        <li><a href=\"https://farmington.craigslist.org/\">farmington</a></li>\n
+        \                       <li><a href=\"https://lascruces.craigslist.org/\">las
+        cruces</a></li>\n                        <li><a href=\"https://roswell.craigslist.org/\">roswell
+        / carlsbad</a></li>\n                        <li><a href=\"https://santafe.craigslist.org/\">santa
+        fe / taos</a></li>\n                    </ul>\n                    <h4>New
+        York</h4>\n                    <ul>\n                        <li><a href=\"https://albany.craigslist.org/\">albany</a></li>\n
+        \                       <li><a href=\"https://binghamton.craigslist.org/\">binghamton</a></li>\n
+        \                       <li><a href=\"https://buffalo.craigslist.org/\">buffalo</a></li>\n
+        \                       <li><a href=\"https://catskills.craigslist.org/\">catskills</a></li>\n
+        \                       <li><a href=\"https://chautauqua.craigslist.org/\">chautauqua</a></li>\n
+        \                       <li><a href=\"https://elmira.craigslist.org/\">elmira-corning</a></li>\n
+        \                       <li><a href=\"https://fingerlakes.craigslist.org/\">finger
+        lakes</a></li>\n                        <li><a href=\"https://glensfalls.craigslist.org/\">glens
+        falls</a></li>\n                        <li><a href=\"https://hudsonvalley.craigslist.org/\">hudson
+        valley</a></li>\n                        <li><a href=\"https://ithaca.craigslist.org/\">ithaca</a></li>\n
+        \                       <li><a href=\"https://longisland.craigslist.org/\">long
+        island</a></li>\n                        <li><a href=\"https://newyork.craigslist.org/\">new
+        york city</a></li>\n                        <li><a href=\"https://oneonta.craigslist.org/\">oneonta</a></li>\n
+        \                       <li><a href=\"https://plattsburgh.craigslist.org/\">plattsburgh-adirondacks</a></li>\n
+        \                       <li><a href=\"https://potsdam.craigslist.org/\">potsdam-canton-massena</a></li>\n
+        \                       <li><a href=\"https://rochester.craigslist.org/\">rochester</a></li>\n
+        \                       <li><a href=\"https://syracuse.craigslist.org/\">syracuse</a></li>\n
+        \                       <li><a href=\"https://twintiers.craigslist.org/\">twin
+        tiers NY/PA</a></li>\n                        <li><a href=\"https://utica.craigslist.org/\">utica-rome-oneida</a></li>\n
+        \                       <li><a href=\"https://watertown.craigslist.org/\">watertown</a></li>\n
+        \                   </ul>\n                    <h4>North Carolina</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://asheville.craigslist.org/\">asheville</a></li>\n
+        \                       <li><a href=\"https://boone.craigslist.org/\">boone</a></li>\n
+        \                       <li><a href=\"https://charlotte.craigslist.org/\">charlotte</a></li>\n
+        \                       <li><a href=\"https://eastnc.craigslist.org/\">eastern
+        NC</a></li>\n                        <li><a href=\"https://fayetteville.craigslist.org/\">fayetteville</a></li>\n
+        \                       <li><a href=\"https://greensboro.craigslist.org/\">greensboro</a></li>\n
+        \                       <li><a href=\"https://hickory.craigslist.org/\">hickory
+        / lenoir</a></li>\n                        <li><a href=\"https://onslow.craigslist.org/\">jacksonville
+        </a></li>\n                        <li><a href=\"https://outerbanks.craigslist.org/\">outer
+        banks</a></li>\n                        <li><a href=\"https://raleigh.craigslist.org/\">raleigh
+        / durham / CH</a></li>\n                        <li><a href=\"https://wilmington.craigslist.org/\">wilmington</a></li>\n
+        \                       <li><a href=\"https://winstonsalem.craigslist.org/\">winston-salem</a></li>\n
+        \                   </ul>\n                    <h4>North Dakota</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://bismarck.craigslist.org/\">bismarck</a></li>\n
+        \                       <li><a href=\"https://fargo.craigslist.org/\">fargo
+        / moorhead</a></li>\n                        <li><a href=\"https://grandforks.craigslist.org/\">grand
+        forks</a></li>\n                        <li><a href=\"https://nd.craigslist.org/\">north
+        dakota</a></li>\n                    </ul>\n                    <h4>Ohio</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://akroncanton.craigslist.org/\">akron
+        / canton</a></li>\n                        <li><a href=\"https://ashtabula.craigslist.org/\">ashtabula</a></li>\n
+        \                       <li><a href=\"https://athensohio.craigslist.org/\">athens
+        </a></li>\n                        <li><a href=\"https://chillicothe.craigslist.org/\">chillicothe</a></li>\n
+        \                       <li><a href=\"https://cincinnati.craigslist.org/\">cincinnati</a></li>\n
+        \                       <li><a href=\"https://cleveland.craigslist.org/\">cleveland</a></li>\n
+        \                       <li><a href=\"https://columbus.craigslist.org/\">columbus</a></li>\n
+        \                       <li><a href=\"https://dayton.craigslist.org/\">dayton
+        / springfield</a></li>\n                        <li><a href=\"https://limaohio.craigslist.org/\">lima
+        / findlay</a></li>\n                        <li><a href=\"https://mansfield.craigslist.org/\">mansfield</a></li>\n
+        \                       <li><a href=\"https://sandusky.craigslist.org/\">sandusky</a></li>\n
+        \                       <li><a href=\"https://toledo.craigslist.org/\">toledo</a></li>\n
+        \                       <li><a href=\"https://tuscarawas.craigslist.org/\">tuscarawas
+        co</a></li>\n                        <li><a href=\"https://youngstown.craigslist.org/\">youngstown</a></li>\n
+        \                       <li><a href=\"https://zanesville.craigslist.org/\">zanesville
+        / cambridge</a></li>\n                    </ul>\n                    <h4>Oklahoma</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://lawton.craigslist.org/\">lawton</a></li>\n
+        \                       <li><a href=\"https://enid.craigslist.org/\">northwest
+        OK</a></li>\n                        <li><a href=\"https://oklahomacity.craigslist.org/\">oklahoma
+        city</a></li>\n                        <li><a href=\"https://stillwater.craigslist.org/\">stillwater</a></li>\n
+        \                       <li><a href=\"https://tulsa.craigslist.org/\">tulsa</a></li>\n
+        \                   </ul>\n                    <h4>Oregon</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://bend.craigslist.org/\">bend</a></li>\n
+        \                       <li><a href=\"https://corvallis.craigslist.org/\">corvallis/albany</a></li>\n
+        \                       <li><a href=\"https://eastoregon.craigslist.org/\">east
+        oregon</a></li>\n                        <li><a href=\"https://eugene.craigslist.org/\">eugene</a></li>\n
+        \                       <li><a href=\"https://klamath.craigslist.org/\">klamath
+        falls</a></li>\n                        <li><a href=\"https://medford.craigslist.org/\">medford-ashland</a></li>\n
+        \                       <li><a href=\"https://oregoncoast.craigslist.org/\">oregon
+        coast</a></li>\n                        <li><a href=\"https://portland.craigslist.org/\">portland</a></li>\n
+        \                       <li><a href=\"https://roseburg.craigslist.org/\">roseburg</a></li>\n
+        \                       <li><a href=\"https://salem.craigslist.org/\">salem</a></li>\n
+        \                   </ul>\n                    <h4>Pennsylvania</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://altoona.craigslist.org/\">altoona-johnstown</a></li>\n
+        \                       <li><a href=\"https://chambersburg.craigslist.org/\">cumberland
+        valley</a></li>\n                        <li><a href=\"https://erie.craigslist.org/\">erie</a></li>\n
+        \                       <li><a href=\"https://harrisburg.craigslist.org/\">harrisburg</a></li>\n
+        \                       <li><a href=\"https://lancaster.craigslist.org/\">lancaster</a></li>\n
+        \                       <li><a href=\"https://allentown.craigslist.org/\">lehigh
+        valley</a></li>\n                        <li><a href=\"https://meadville.craigslist.org/\">meadville</a></li>\n
+        \                       <li><a href=\"https://philadelphia.craigslist.org/\">philadelphia</a></li>\n
+        \                       <li><a href=\"https://pittsburgh.craigslist.org/\">pittsburgh</a></li>\n
+        \                       <li><a href=\"https://poconos.craigslist.org/\">poconos</a></li>\n
+        \                       <li><a href=\"https://reading.craigslist.org/\">reading</a></li>\n
+        \                       <li><a href=\"https://scranton.craigslist.org/\">scranton
+        / wilkes-barre</a></li>\n                        <li><a href=\"https://pennstate.craigslist.org/\">state
+        college</a></li>\n                        <li><a href=\"https://williamsport.craigslist.org/\">williamsport</a></li>\n
+        \                       <li><a href=\"https://york.craigslist.org/\">york</a></li>\n
+        \                   </ul></div><div class=\"box box_4\">\n                        <h4>Rhode
+        Island</h4>\n                    <ul>\n                        <li><a href=\"https://providence.craigslist.org/\">rhode
+        island</a></li>\n                    </ul>\n                    <h4>South
+        Carolina</h4>\n                    <ul>\n                        <li><a href=\"https://charleston.craigslist.org/\">charleston</a></li>\n
+        \                       <li><a href=\"https://columbia.craigslist.org/\">columbia</a></li>\n
+        \                       <li><a href=\"https://florencesc.craigslist.org/\">florence</a></li>\n
+        \                       <li><a href=\"https://greenville.craigslist.org/\">greenville
+        / upstate</a></li>\n                        <li><a href=\"https://hiltonhead.craigslist.org/\">hilton
+        head</a></li>\n                        <li><a href=\"https://myrtlebeach.craigslist.org/\">myrtle
+        beach</a></li>\n                    </ul>\n                    <h4>South Dakota</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://nesd.craigslist.org/\">northeast
+        SD</a></li>\n                        <li><a href=\"https://csd.craigslist.org/\">pierre
+        / central SD</a></li>\n                        <li><a href=\"https://rapidcity.craigslist.org/\">rapid
+        city / west SD</a></li>\n                        <li><a href=\"https://siouxfalls.craigslist.org/\">sioux
+        falls / SE SD</a></li>\n                        <li><a href=\"https://sd.craigslist.org/\">south
+        dakota</a></li>\n                    </ul>\n                    <h4>Tennessee</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://chattanooga.craigslist.org/\">chattanooga</a></li>\n
+        \                       <li><a href=\"https://clarksville.craigslist.org/\">clarksville</a></li>\n
+        \                       <li><a href=\"https://cookeville.craigslist.org/\">cookeville</a></li>\n
+        \                       <li><a href=\"https://jacksontn.craigslist.org/\">jackson
+        \ </a></li>\n                        <li><a href=\"https://knoxville.craigslist.org/\">knoxville</a></li>\n
+        \                       <li><a href=\"https://memphis.craigslist.org/\">memphis</a></li>\n
+        \                       <li><a href=\"https://nashville.craigslist.org/\">nashville</a></li>\n
+        \                       <li><a href=\"https://tricities.craigslist.org/\">tri-cities</a></li>\n
+        \                   </ul>\n                    <h4>Texas</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://abilene.craigslist.org/\">abilene</a></li>\n
+        \                       <li><a href=\"https://amarillo.craigslist.org/\">amarillo</a></li>\n
+        \                       <li><a href=\"https://austin.craigslist.org/\">austin</a></li>\n
+        \                       <li><a href=\"https://beaumont.craigslist.org/\">beaumont
+        / port arthur</a></li>\n                        <li><a href=\"https://brownsville.craigslist.org/\">brownsville</a></li>\n
+        \                       <li><a href=\"https://collegestation.craigslist.org/\">college
+        station</a></li>\n                        <li><a href=\"https://corpuschristi.craigslist.org/\">corpus
+        christi</a></li>\n                        <li><a href=\"https://dallas.craigslist.org/\">dallas
+        / fort worth</a></li>\n                        <li><a href=\"https://nacogdoches.craigslist.org/\">deep
+        east texas</a></li>\n                        <li><a href=\"https://delrio.craigslist.org/\">del
+        rio / eagle pass</a></li>\n                        <li><a href=\"https://elpaso.craigslist.org/\">el
+        paso</a></li>\n                        <li><a href=\"https://galveston.craigslist.org/\">galveston</a></li>\n
+        \                       <li><a href=\"https://houston.craigslist.org/\">houston</a></li>\n
+        \                       <li><a href=\"https://killeen.craigslist.org/\">killeen
+        / temple / ft hood</a></li>\n                        <li><a href=\"https://laredo.craigslist.org/\">laredo</a></li>\n
+        \                       <li><a href=\"https://lubbock.craigslist.org/\">lubbock</a></li>\n
+        \                       <li><a href=\"https://mcallen.craigslist.org/\">mcallen
+        / edinburg</a></li>\n                        <li><a href=\"https://odessa.craigslist.org/\">odessa
+        / midland</a></li>\n                        <li><a href=\"https://sanangelo.craigslist.org/\">san
+        angelo</a></li>\n                        <li><a href=\"https://sanantonio.craigslist.org/\">san
+        antonio</a></li>\n                        <li><a href=\"https://sanmarcos.craigslist.org/\">san
+        marcos</a></li>\n                        <li><a href=\"https://bigbend.craigslist.org/\">southwest
+        TX</a></li>\n                        <li><a href=\"https://texoma.craigslist.org/\">texoma</a></li>\n
+        \                       <li><a href=\"https://easttexas.craigslist.org/\">tyler
+        / east TX</a></li>\n                        <li><a href=\"https://victoriatx.craigslist.org/\">victoria
+        </a></li>\n                        <li><a href=\"https://waco.craigslist.org/\">waco</a></li>\n
+        \                       <li><a href=\"https://wichitafalls.craigslist.org/\">wichita
+        falls</a></li>\n                    </ul>\n                    <h4>Utah</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://logan.craigslist.org/\">logan</a></li>\n
+        \                       <li><a href=\"https://ogden.craigslist.org/\">ogden-clearfield</a></li>\n
+        \                       <li><a href=\"https://provo.craigslist.org/\">provo
+        / orem</a></li>\n                        <li><a href=\"https://saltlakecity.craigslist.org/\">salt
+        lake city</a></li>\n                        <li><a href=\"https://stgeorge.craigslist.org/\">st
+        george</a></li>\n                    </ul>\n                    <h4>Vermont</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://vermont.craigslist.org/\">vermont</a></li>\n
+        \                   </ul>\n                    <h4>Virginia</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://charlottesville.craigslist.org/\">charlottesville</a></li>\n
+        \                       <li><a href=\"https://danville.craigslist.org/\">danville</a></li>\n
+        \                       <li><a href=\"https://fredericksburg.craigslist.org/\">fredericksburg</a></li>\n
+        \                       <li><a href=\"https://norfolk.craigslist.org/\">hampton
+        roads</a></li>\n                        <li><a href=\"https://harrisonburg.craigslist.org/\">harrisonburg</a></li>\n
+        \                       <li><a href=\"https://lynchburg.craigslist.org/\">lynchburg</a></li>\n
+        \                       <li><a href=\"https://blacksburg.craigslist.org/\">new
+        river valley</a></li>\n                        <li><a href=\"https://richmond.craigslist.org/\">richmond</a></li>\n
+        \                       <li><a href=\"https://roanoke.craigslist.org/\">roanoke</a></li>\n
+        \                       <li><a href=\"https://swva.craigslist.org/\">southwest
+        VA</a></li>\n                        <li><a href=\"https://winchester.craigslist.org/\">winchester</a></li>\n
+        \                   </ul>\n                    <h4>Washington</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://bellingham.craigslist.org/\">bellingham</a></li>\n
+        \                       <li><a href=\"https://kpr.craigslist.org/\">kennewick-pasco-richland</a></li>\n
+        \                       <li><a href=\"https://moseslake.craigslist.org/\">moses
+        lake</a></li>\n                        <li><a href=\"https://olympic.craigslist.org/\">olympic
+        peninsula</a></li>\n                        <li><a href=\"https://pullman.craigslist.org/\">pullman
+        / moscow</a></li>\n                        <li><a href=\"https://seattle.craigslist.org/\">seattle-tacoma</a></li>\n
+        \                       <li><a href=\"https://skagit.craigslist.org/\">skagit
+        / island / SJI</a></li>\n                        <li><a href=\"https://spokane.craigslist.org/\">spokane
+        / coeur d'alene</a></li>\n                        <li><a href=\"https://wenatchee.craigslist.org/\">wenatchee</a></li>\n
+        \                       <li><a href=\"https://yakima.craigslist.org/\">yakima</a></li>\n
+        \                   </ul>\n                    <h4>West Virginia</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://charlestonwv.craigslist.org/\">charleston
+        </a></li>\n                        <li><a href=\"https://martinsburg.craigslist.org/\">eastern
+        panhandle</a></li>\n                        <li><a href=\"https://huntington.craigslist.org/\">huntington-ashland</a></li>\n
+        \                       <li><a href=\"https://morgantown.craigslist.org/\">morgantown</a></li>\n
+        \                       <li><a href=\"https://wheeling.craigslist.org/\">northern
+        panhandle</a></li>\n                        <li><a href=\"https://parkersburg.craigslist.org/\">parkersburg-marietta</a></li>\n
+        \                       <li><a href=\"https://swv.craigslist.org/\">southern
+        WV</a></li>\n                        <li><a href=\"https://wv.craigslist.org/\">west
+        virginia (old)</a></li>\n                    </ul>\n                    <h4>Wisconsin</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://appleton.craigslist.org/\">appleton-oshkosh-FDL</a></li>\n
+        \                       <li><a href=\"https://eauclaire.craigslist.org/\">eau
+        claire</a></li>\n                        <li><a href=\"https://greenbay.craigslist.org/\">green
+        bay</a></li>\n                        <li><a href=\"https://janesville.craigslist.org/\">janesville</a></li>\n
+        \                       <li><a href=\"https://racine.craigslist.org/\">kenosha-racine</a></li>\n
+        \                       <li><a href=\"https://lacrosse.craigslist.org/\">la
+        crosse</a></li>\n                        <li><a href=\"https://madison.craigslist.org/\">madison</a></li>\n
+        \                       <li><a href=\"https://milwaukee.craigslist.org/\">milwaukee</a></li>\n
+        \                       <li><a href=\"https://northernwi.craigslist.org/\">northern
+        WI</a></li>\n                        <li><a href=\"https://sheboygan.craigslist.org/\">sheboygan</a></li>\n
+        \                       <li><a href=\"https://wausau.craigslist.org/\">wausau</a></li>\n
+        \                   </ul>\n                    <h4>Wyoming</h4>\n                    <ul>\n
+        \                           <li><a href=\"https://wyoming.craigslist.org/\">wyoming</a></li>\n
+        \                   </ul>\n\n\n                    <h4>Territories</h4>\n
+        \                   <ul>\n                            <li><a href=\"https://micronesia.craigslist.org/\">guam-micronesia</a></li>\n
+        \                           <li><a href=\"https://puertorico.craigslist.org/\">puerto
+        rico</a></li>\n                            <li><a href=\"https://virgin.craigslist.org/\">U.S.
+        virgin islands</a></li>\n                    </ul>\n                </div>\n
+        \           </div>\n\n            <h1><a name=\"CA\"></a>Canada</h1>\n            <div
+        class=\"colmask\">\n                <div class=\"box box_1\">\n                    <h4>Alberta</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://calgary.craigslist.org/\">calgary</a></li>\n
+        \                       <li><a href=\"https://edmonton.craigslist.org/\">edmonton</a></li>\n
+        \                       <li><a href=\"https://ftmcmurray.craigslist.org/\">ft
+        mcmurray</a></li>\n                        <li><a href=\"https://lethbridge.craigslist.org/\">lethbridge</a></li>\n
+        \                       <li><a href=\"https://hat.craigslist.org/\">medicine
+        hat</a></li>\n                        <li><a href=\"https://peace.craigslist.org/\">peace
+        river country</a></li>\n                        <li><a href=\"https://reddeer.craigslist.org/\">red
+        deer</a></li>\n                    </ul>\n                    <h4>British
+        Columbia</h4>\n                    <ul>\n                        <li><a href=\"https://cariboo.craigslist.org/\">cariboo</a></li>\n
+        \                       <li><a href=\"https://comoxvalley.craigslist.org/\">comox
+        valley</a></li>\n                        <li><a href=\"https://abbotsford.craigslist.org/\">fraser
+        valley</a></li>\n                        <li><a href=\"https://kamloops.craigslist.org/\">kamloops</a></li>\n
+        \                       <li><a href=\"https://kelowna.craigslist.org/\">kelowna
+        / okanagan</a></li>\n                        <li><a href=\"https://kootenays.craigslist.org/\">kootenays</a></li>\n
+        \                       <li><a href=\"https://nanaimo.craigslist.org/\">nanaimo</a></li>\n
+        \                       <li><a href=\"https://princegeorge.craigslist.org/\">prince
+        george</a></li>\n                        <li><a href=\"https://skeena.craigslist.org/\">skeena-bulkley</a></li>\n
+        \                       <li><a href=\"https://sunshine.craigslist.org/\">sunshine
+        coast</a></li>\n                        <li><a href=\"https://vancouver.craigslist.org/\">vancouver</a></li>\n
+        \                       <li><a href=\"https://victoria.craigslist.org/\">victoria</a></li>\n
+        \                       <li><a href=\"https://whistler.craigslist.org/\">whistler</a></li>\n
+        \                   </ul></div><div class=\"box box_2\">\n                        <h4>Manitoba</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://winnipeg.craigslist.org/\">winnipeg</a></li>\n
+        \                   </ul>\n                    <h4>New Brunswick</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://newbrunswick.craigslist.org/\">new
+        brunswick</a></li>\n                    </ul>\n                    <h4>Newfoundland
+        and Labrador</h4>\n                    <ul>\n                        <li><a
+        href=\"https://newfoundland.craigslist.org/\">st john's</a></li>\n                    </ul>\n
+        \                   <h4>Northwest Territories</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://territories.craigslist.org/\">territories</a></li>\n
+        \                       <li><a href=\"https://yellowknife.craigslist.org/\">yellowknife</a></li>\n
+        \                   </ul>\n                    <h4>Nova Scotia</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://halifax.craigslist.org/\">halifax</a></li>\n
+        \                   </ul></div><div class=\"box box_3\">\n                    <h4>Ontario</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://barrie.craigslist.org/\">barrie</a></li>\n
+        \                       <li><a href=\"https://belleville.craigslist.org/\">belleville</a></li>\n
+        \                       <li><a href=\"https://brantford.craigslist.org/\">brantford-woodstock</a></li>\n
+        \                       <li><a href=\"https://chatham.craigslist.org/\">chatham-kent</a></li>\n
+        \                       <li><a href=\"https://cornwall.craigslist.org/\">cornwall</a></li>\n
+        \                       <li><a href=\"https://guelph.craigslist.org/\">guelph</a></li>\n
+        \                       <li><a href=\"https://hamilton.craigslist.org/\">hamilton-burlington</a></li>\n
+        \                       <li><a href=\"https://kingston.craigslist.org/\">kingston</a></li>\n
+        \                       <li><a href=\"https://kitchener.craigslist.org/\">kitchener-waterloo-cambridge</a></li>\n
+        \                       <li><a href=\"https://londonon.craigslist.org/\">london
+        </a></li>\n                        <li><a href=\"https://niagara.craigslist.org/\">niagara
+        region</a></li>\n                        <li><a href=\"https://ottawa.craigslist.org/\">ottawa-hull-gatineau</a></li>\n
+        \                       <li><a href=\"https://owensound.craigslist.org/\">owen
+        sound</a></li>\n                        <li><a href=\"https://peterborough.craigslist.org/\">peterborough</a></li>\n
+        \                       <li><a href=\"https://sarnia.craigslist.org/\">sarnia</a></li>\n
+        \                       <li><a href=\"https://soo.craigslist.org/\">sault
+        ste marie</a></li>\n                        <li><a href=\"https://sudbury.craigslist.org/\">sudbury</a></li>\n
+        \                       <li><a href=\"https://thunderbay.craigslist.org/\">thunder
+        bay</a></li>\n                        <li><a href=\"https://toronto.craigslist.org/\">toronto</a></li>\n
+        \                       <li><a href=\"https://windsor.craigslist.org/\">windsor</a></li>\n
+        \                   </ul></div><div class=\"box box_4\">\n                    <h4>Prince
+        Edward Island</h4>\n                    <ul>\n                        <li><a
+        href=\"https://pei.craigslist.org/\">prince edward island</a></li>\n                    </ul>\n
+        \                   <h4>Quebec</h4>\n                    <ul>\n                        <li><a
+        href=\"https://montreal.craigslist.org/\">montreal</a></li>\n                        <li><a
+        href=\"https://quebec.craigslist.org/\">quebec city</a></li>\n                        <li><a
+        href=\"https://saguenay.craigslist.org/\">saguenay</a></li>\n                        <li><a
+        href=\"https://sherbrooke.craigslist.org/\">sherbrooke</a></li>\n                        <li><a
+        href=\"https://troisrivieres.craigslist.org/\">trois-rivieres</a></li>\n                    </ul>\n
+        \                   <h4>Saskatchewan</h4>\n                    <ul>\n                        <li><a
+        href=\"https://regina.craigslist.org/\">regina</a></li>\n                        <li><a
+        href=\"https://saskatoon.craigslist.org/\">saskatoon</a></li>\n                    </ul>\n
+        \                   <h4>Yukon Territory</h4>\n                    <ul>\n                        <li><a
+        href=\"https://whitehorse.craigslist.org/\">whitehorse</a></li>\n                    </ul>\n
+        \               </div>\n            </div>\n\n            <h1><a name=\"EU\"></a>Europe</h1>\n
+        \           <div class=\"colmask\">\n                <div class=\"box box_1\">\n
+        \                   <h4>Austria</h4>\n                    <ul>\n                        <li><a
+        href=\"https://vienna.craigslist.at/\">vienna</a></li>\n                    </ul>\n
+        \                   <h4>Belgium</h4>\n                    <ul>\n                        <li><a
+        href=\"https://brussels.craigslist.org/\">belgium</a></li>\n                    </ul>\n
+        \                   <h4>Bulgaria</h4>\n                    <ul>\n                        <li><a
+        href=\"https://bulgaria.craigslist.org/\">bulgaria</a></li>\n                    </ul>\n
+        \                   <h4>Croatia</h4>\n                    <ul>\n                        <li><a
+        href=\"https://zagreb.craigslist.org/\">croatia</a></li>\n                    </ul>\n
+        \                   <h4>Czech Republic</h4>\n                    <ul>\n                        <li><a
+        href=\"https://prague.craigslist.cz/\">prague</a></li>\n                    </ul>\n
+        \                   <h4>Denmark</h4>\n                    <ul>\n                        <li><a
+        href=\"https://copenhagen.craigslist.org/\">copenhagen</a></li>\n                    </ul>\n
+        \                   <h4>Finland</h4>\n                    <ul>\n                        <li><a
+        href=\"https://helsinki.craigslist.fi/\">finland</a></li>\n                    </ul>\n
+        \                   <h4>France</h4>\n                    <ul>\n                        <li><a
+        href=\"https://bordeaux.craigslist.org/\">bordeaux</a></li>\n                        <li><a
+        href=\"https://rennes.craigslist.org/\">brittany</a></li>\n                        <li><a
+        href=\"https://grenoble.craigslist.org/\">grenoble</a></li>\n                        <li><a
+        href=\"https://lille.craigslist.org/\">lille</a></li>\n                        <li><a
+        href=\"https://loire.craigslist.org/\">loire valley</a></li>\n                        <li><a
+        href=\"https://lyon.craigslist.org/\">lyon</a></li>\n                        <li><a
+        href=\"https://marseilles.craigslist.org/\">marseille</a></li>\n                        <li><a
+        href=\"https://montpellier.craigslist.org/\">montpellier</a></li>\n                        <li><a
+        href=\"https://cotedazur.craigslist.org/\">nice / cote d'azur</a></li>\n                        <li><a
+        href=\"https://rouen.craigslist.org/\">normandy</a></li>\n                        <li><a
+        href=\"https://paris.craigslist.org/\">paris</a></li>\n                        <li><a
+        href=\"https://strasbourg.craigslist.org/\">strasbourg</a></li>\n                        <li><a
+        href=\"https://toulouse.craigslist.org/\">toulouse</a></li>\n                    </ul></div><div
+        class=\"box box_2\">\n                        <h4>Germany</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://berlin.craigslist.de/\">berlin</a></li>\n
+        \                       <li><a href=\"https://bremen.craigslist.de/\">bremen</a></li>\n
+        \                       <li><a href=\"https://cologne.craigslist.de/\">cologne</a></li>\n
+        \                       <li><a href=\"https://dresden.craigslist.de/\">dresden</a></li>\n
+        \                       <li><a href=\"https://dusseldorf.craigslist.de/\">dusseldorf</a></li>\n
+        \                       <li><a href=\"https://essen.craigslist.de/\">essen
+        / ruhr</a></li>\n                        <li><a href=\"https://frankfurt.craigslist.de/\">frankfurt</a></li>\n
+        \                       <li><a href=\"https://hamburg.craigslist.de/\">hamburg</a></li>\n
+        \                       <li><a href=\"https://hannover.craigslist.de/\">hannover</a></li>\n
+        \                       <li><a href=\"https://heidelberg.craigslist.de/\">heidelberg</a></li>\n
+        \                       <li><a href=\"https://kaiserslautern.craigslist.de/\">kaiserslautern</a></li>\n
+        \                       <li><a href=\"https://leipzig.craigslist.de/\">leipzig</a></li>\n
+        \                       <li><a href=\"https://munich.craigslist.de/\">munich</a></li>\n
+        \                       <li><a href=\"https://nuremberg.craigslist.de/\">nuremberg</a></li>\n
+        \                       <li><a href=\"https://stuttgart.craigslist.de/\">stuttgart</a></li>\n
+        \                   </ul>\n                    <h4>Greece</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://athens.craigslist.gr/\">greece</a></li>\n
+        \                   </ul>\n                    <h4>Hungary</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://budapest.craigslist.org/\">budapest</a></li>\n
+        \                   </ul>\n                    <h4>Iceland</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://reykjavik.craigslist.org/\">reykjavik</a></li>\n
+        \                   </ul>\n                    <h4>Ireland</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://dublin.craigslist.org/\">dublin</a></li>\n
+        \                   </ul>\n                    <h4>Italy</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://bologna.craigslist.it/\">bologna</a></li>\n
+        \                       <li><a href=\"https://florence.craigslist.it/\">florence
+        / tuscany</a></li>\n                        <li><a href=\"https://genoa.craigslist.it/\">genoa</a></li>\n
+        \                       <li><a href=\"https://milan.craigslist.it/\">milan</a></li>\n
+        \                       <li><a href=\"https://naples.craigslist.it/\">napoli
+        / campania</a></li>\n                        <li><a href=\"https://perugia.craigslist.it/\">perugia</a></li>\n
+        \                       <li><a href=\"https://rome.craigslist.it/\">rome</a></li>\n
+        \                       <li><a href=\"https://sardinia.craigslist.it/\">sardinia</a></li>\n
+        \                       <li><a href=\"https://sicily.craigslist.it/\">sicilia</a></li>\n
+        \                       <li><a href=\"https://torino.craigslist.it/\">torino</a></li>\n
+        \                       <li><a href=\"https://venice.craigslist.it/\">venice
+        / veneto</a></li>\n                    </ul></div><div class=\"box box_3\">\n
+        \                       <h4>Luxembourg</h4>\n                    <ul>\n                        <li><a
+        href=\"https://luxembourg.craigslist.org/\">luxembourg</a></li>\n                    </ul>\n
+        \                   <h4>Netherlands</h4>\n                    <ul>\n                        <li><a
+        href=\"https://amsterdam.craigslist.org/\">amsterdam / randstad</a></li>\n
+        \                   </ul>\n                    <h4>Norway</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://oslo.craigslist.org/\">norway</a></li>\n
+        \                   </ul>\n                    <h4>Poland</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://warsaw.craigslist.pl/\">poland</a></li>\n
+        \                   </ul>\n                    <h4>Portugal</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://faro.craigslist.pt/\">faro /
+        algarve</a></li>\n                        <li><a href=\"https://lisbon.craigslist.pt/\">lisbon</a></li>\n
+        \                       <li><a href=\"https://porto.craigslist.pt/\">porto</a></li>\n
+        \                   </ul>\n                    <h4>Romania</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://bucharest.craigslist.org/\">romania</a></li>\n
+        \                   </ul>\n                    <h4>Russian Federation</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://moscow.craigslist.org/\">moscow</a></li>\n
+        \                       <li><a href=\"https://stpetersburg.craigslist.org/\">st
+        petersburg</a></li>\n                    </ul>\n                    <h4>Spain</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://alicante.craigslist.es/\">alicante</a></li>\n
+        \                       <li><a href=\"https://baleares.craigslist.es/\">baleares</a></li>\n
+        \                       <li><a href=\"https://barcelona.craigslist.es/\">barcelona</a></li>\n
+        \                       <li><a href=\"https://bilbao.craigslist.es/\">bilbao</a></li>\n
+        \                       <li><a href=\"https://cadiz.craigslist.es/\">cadiz</a></li>\n
+        \                       <li><a href=\"https://canarias.craigslist.es/\">canarias</a></li>\n
+        \                       <li><a href=\"https://granada.craigslist.es/\">granada</a></li>\n
+        \                       <li><a href=\"https://madrid.craigslist.es/\">madrid</a></li>\n
+        \                       <li><a href=\"https://malaga.craigslist.es/\">malaga</a></li>\n
+        \                       <li><a href=\"https://sevilla.craigslist.es/\">sevilla</a></li>\n
+        \                       <li><a href=\"https://valencia.craigslist.es/\">valencia</a></li>\n
+        \                   </ul></div><div class=\"box box_4\">\n                        <h4>Sweden</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://stockholm.craigslist.se/\">sweden</a></li>\n
+        \                   </ul>\n                    <h4>Switzerland</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://basel.craigslist.ch/\">basel</a></li>\n
+        \                       <li><a href=\"https://bern.craigslist.ch/\">bern</a></li>\n
+        \                       <li><a href=\"https://geneva.craigslist.ch/\">geneva</a></li>\n
+        \                       <li><a href=\"https://lausanne.craigslist.ch/\">lausanne</a></li>\n
+        \                       <li><a href=\"https://zurich.craigslist.ch/\">zurich</a></li>\n
+        \                   </ul>\n                    <h4>Turkey</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://istanbul.craigslist.com.tr/\">turkey</a></li>\n
+        \                   </ul>\n                    <h4>Ukraine</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://ukraine.craigslist.org/\">ukraine</a></li>\n
+        \                   </ul>\n                    <h4>United Kingdom</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://aberdeen.craigslist.co.uk/\">aberdeen</a></li>\n
+        \                       <li><a href=\"https://bath.craigslist.co.uk/\">bath</a></li>\n
+        \                       <li><a href=\"https://belfast.craigslist.co.uk/\">belfast</a></li>\n
+        \                       <li><a href=\"https://birmingham.craigslist.co.uk/\">birmingham
+        / west mids</a></li>\n                        <li><a href=\"https://brighton.craigslist.co.uk/\">brighton</a></li>\n
+        \                       <li><a href=\"https://bristol.craigslist.co.uk/\">bristol</a></li>\n
+        \                       <li><a href=\"https://cambridge.craigslist.co.uk/\">cambridge,
+        UK</a></li>\n                        <li><a href=\"https://cardiff.craigslist.co.uk/\">cardiff
+        / wales</a></li>\n                        <li><a href=\"https://coventry.craigslist.co.uk/\">coventry</a></li>\n
+        \                       <li><a href=\"https://derby.craigslist.co.uk/\">derby</a></li>\n
+        \                       <li><a href=\"https://devon.craigslist.co.uk/\">devon
+        &amp; cornwall</a></li>\n                        <li><a href=\"https://dundee.craigslist.co.uk/\">dundee</a></li>\n
+        \                       <li><a href=\"https://norwich.craigslist.co.uk/\">east
+        anglia</a></li>\n                        <li><a href=\"https://eastmids.craigslist.co.uk/\">east
+        midlands</a></li>\n                        <li><a href=\"https://edinburgh.craigslist.co.uk/\">edinburgh</a></li>\n
+        \                       <li><a href=\"https://essex.craigslist.co.uk/\">essex</a></li>\n
+        \                       <li><a href=\"https://glasgow.craigslist.co.uk/\">glasgow</a></li>\n
+        \                       <li><a href=\"https://hampshire.craigslist.co.uk/\">hampshire</a></li>\n
+        \                       <li><a href=\"https://kent.craigslist.co.uk/\">kent</a></li>\n
+        \                       <li><a href=\"https://leeds.craigslist.co.uk/\">leeds</a></li>\n
+        \                       <li><a href=\"https://liverpool.craigslist.co.uk/\">liverpool</a></li>\n
+        \                       <li><a href=\"https://london.craigslist.co.uk/\">london</a></li>\n
+        \                       <li><a href=\"https://manchester.craigslist.co.uk/\">manchester</a></li>\n
+        \                       <li><a href=\"https://newcastle.craigslist.co.uk/\">newcastle
+        / NE england</a></li>\n                        <li><a href=\"https://nottingham.craigslist.co.uk/\">nottingham</a></li>\n
+        \                       <li><a href=\"https://oxford.craigslist.co.uk/\">oxford</a></li>\n
+        \                       <li><a href=\"https://sheffield.craigslist.co.uk/\">sheffield</a></li>\n
+        \                   </ul>\n                </div>\n            </div>\n\n
+        \           <h1><a name=\"ASIA\"></a>Asia, Pacific and Middle East</h1>\n
+        \           <div class=\"colmask\">\n                <div class=\"box box_1\">\n
+        \                   <h4>Bangladesh</h4>\n                    <ul>\n                        <li><a
+        href=\"https://bangladesh.craigslist.org/\">bangladesh</a></li>\n                    </ul>\n
+        \                   <h4>China</h4>\n                    <ul>\n                        <li><a
+        href=\"https://beijing.craigslist.com.cn/\">beijing</a></li>\n                        <li><a
+        href=\"https://chengdu.craigslist.com.cn/\">chengdu</a></li>\n                        <li><a
+        href=\"https://chongqing.craigslist.com.cn/\">chongqing</a></li>\n                        <li><a
+        href=\"https://dalian.craigslist.com.cn/\">dalian</a></li>\n                        <li><a
+        href=\"https://guangzhou.craigslist.com.cn/\">guangzhou</a></li>\n                        <li><a
+        href=\"https://hangzhou.craigslist.com.cn/\">hangzhou</a></li>\n                        <li><a
+        href=\"https://nanjing.craigslist.com.cn/\">nanjing</a></li>\n                        <li><a
+        href=\"https://shanghai.craigslist.com.cn/\">shanghai</a></li>\n                        <li><a
+        href=\"https://shenyang.craigslist.com.cn/\">shenyang</a></li>\n                        <li><a
+        href=\"https://shenzhen.craigslist.com.cn/\">shenzhen</a></li>\n                        <li><a
+        href=\"https://wuhan.craigslist.com.cn/\">wuhan</a></li>\n                        <li><a
+        href=\"https://xian.craigslist.com.cn/\">xi'an</a></li>\n                    </ul>\n
+        \                   <h4>Guam / Micronesia</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://micronesia.craigslist.org/\">guam-micronesia</a></li>\n
+        \                   </ul>\n                    <h4>Hong Kong</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://hongkong.craigslist.hk/\">hong
+        kong</a></li>\n                    </ul></div><div class=\"box box_2\">\n
+        \                       <h4>India</h4>\n                    <ul>\n                        <li><a
+        href=\"https://ahmedabad.craigslist.co.in/\">ahmedabad</a></li>\n                        <li><a
+        href=\"https://bangalore.craigslist.co.in/\">bangalore</a></li>\n                        <li><a
+        href=\"https://bhubaneswar.craigslist.co.in/\">bhubaneswar</a></li>\n                        <li><a
+        href=\"https://chandigarh.craigslist.co.in/\">chandigarh</a></li>\n                        <li><a
+        href=\"https://chennai.craigslist.co.in/\">chennai (madras)</a></li>\n                        <li><a
+        href=\"https://delhi.craigslist.co.in/\">delhi</a></li>\n                        <li><a
+        href=\"https://goa.craigslist.co.in/\">goa</a></li>\n                        <li><a
+        href=\"https://hyderabad.craigslist.co.in/\">hyderabad</a></li>\n                        <li><a
+        href=\"https://indore.craigslist.co.in/\">indore</a></li>\n                        <li><a
+        href=\"https://jaipur.craigslist.co.in/\">jaipur</a></li>\n                        <li><a
+        href=\"https://kerala.craigslist.co.in/\">kerala</a></li>\n                        <li><a
+        href=\"https://kolkata.craigslist.co.in/\">kolkata (calcutta)</a></li>\n                        <li><a
+        href=\"https://lucknow.craigslist.co.in/\">lucknow</a></li>\n                        <li><a
+        href=\"https://mumbai.craigslist.co.in/\">mumbai</a></li>\n                        <li><a
+        href=\"https://pune.craigslist.co.in/\">pune</a></li>\n                        <li><a
+        href=\"https://surat.craigslist.co.in/\">surat surat</a></li>\n                    </ul>\n
+        \                   <h4>Indonesia</h4>\n                    <ul>\n                        <li><a
+        href=\"https://jakarta.craigslist.org/\">indonesia</a></li>\n                    </ul>\n
+        \                   <h4>Iran</h4>\n                    <ul>\n                        <li><a
+        href=\"https://tehran.craigslist.org/\">iran</a></li>\n                    </ul>\n
+        \                   <h4>Iraq</h4>\n                    <ul>\n                        <li><a
+        href=\"https://baghdad.craigslist.org/\">iraq</a></li>\n                    </ul>\n
+        \                   <h4>Israel and Palestine</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://haifa.craigslist.org/\">haifa</a></li>\n
+        \                       <li><a href=\"https://jerusalem.craigslist.org/\">jerusalem</a></li>\n
+        \                       <li><a href=\"https://telaviv.craigslist.org/\">tel
+        aviv</a></li>\n                        <li><a href=\"https://ramallah.craigslist.org/\">west
+        bank</a></li>\n                    </ul></div><div class=\"box box_3\">\n
+        \                       <h4>Japan</h4>\n                    <ul>\n                        <li><a
+        href=\"https://fukuoka.craigslist.jp/\">fukuoka</a></li>\n                        <li><a
+        href=\"https://hiroshima.craigslist.jp/\">hiroshima</a></li>\n                        <li><a
+        href=\"https://nagoya.craigslist.jp/\">nagoya</a></li>\n                        <li><a
+        href=\"https://okinawa.craigslist.jp/\">okinawa</a></li>\n                        <li><a
+        href=\"https://osaka.craigslist.jp/\">osaka-kobe-kyoto</a></li>\n                        <li><a
+        href=\"https://sapporo.craigslist.jp/\">sapporo</a></li>\n                        <li><a
+        href=\"https://sendai.craigslist.jp/\">sendai</a></li>\n                        <li><a
+        href=\"https://tokyo.craigslist.jp/\">tokyo</a></li>\n                    </ul>\n
+        \                   <h4>Korea</h4>\n                    <ul>\n                        <li><a
+        href=\"https://seoul.craigslist.co.kr/\">seoul</a></li>\n                    </ul>\n
+        \                   <h4>Kuwait</h4>\n                    <ul>\n                        <li><a
+        href=\"https://kuwait.craigslist.org/\">kuwait</a></li>\n                    </ul>\n
+        \                   <h4>Lebanon</h4>\n                    <ul>\n                        <li><a
+        href=\"https://beirut.craigslist.org/\">beirut, lebanon</a></li>\n                    </ul>\n
+        \                   <h4>Malaysia</h4>\n                    <ul>\n                        <li><a
+        href=\"https://malaysia.craigslist.org/\">malaysia</a></li>\n                    </ul>\n
+        \                   <h4>Pakistan</h4>\n                    <ul>\n                        <li><a
+        href=\"https://pakistan.craigslist.org/\">pakistan</a></li>\n                    </ul></div><div
+        class=\"box box_4\">\n                        <h4>Philippines</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://bacolod.craigslist.com.ph/\">bacolod</a></li>\n
+        \                       <li><a href=\"https://naga.craigslist.com.ph/\">bicol
+        region</a></li>\n                        <li><a href=\"https://cdo.craigslist.com.ph/\">cagayan
+        de oro</a></li>\n                        <li><a href=\"https://cebu.craigslist.com.ph/\">cebu</a></li>\n
+        \                       <li><a href=\"https://davaocity.craigslist.com.ph/\">davao
+        city</a></li>\n                        <li><a href=\"https://iloilo.craigslist.com.ph/\">iloilo</a></li>\n
+        \                       <li><a href=\"https://manila.craigslist.com.ph/\">manila</a></li>\n
+        \                       <li><a href=\"https://pampanga.craigslist.com.ph/\">pampanga</a></li>\n
+        \                       <li><a href=\"https://zamboanga.craigslist.com.ph/\">zamboanga</a></li>\n
+        \                   </ul>\n                    <h4>Singapore</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://singapore.craigslist.com.sg/\">singapore</a></li>\n
+        \                   </ul>\n                    <h4>Taiwan</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://taipei.craigslist.com.tw/\">taiwan</a></li>\n
+        \                   </ul>\n                    <h4>Thailand</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://bangkok.craigslist.co.th/\">thailand</a></li>\n
+        \                   </ul>\n                    <h4>United Arab Emirates</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://dubai.craigslist.org/\">united
+        arab emirates</a></li>\n                    </ul>\n                    <h4>Vietnam</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://vietnam.craigslist.org/\">vietnam</a></li>\n
+        \                   </ul>\n                </div>\n            </div>\n\n
+        \           <h1><a name=\"OCEANIA\"></a>Oceania</h1>\n            <div class=\"colmask\">\n
+        \               <div class=\"box box_1\">\n                    <h4>Australia</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://adelaide.craigslist.com.au/\">adelaide</a></li>\n
+        \                       <li><a href=\"https://brisbane.craigslist.com.au/\">brisbane</a></li>\n
+        \                       <li><a href=\"https://cairns.craigslist.com.au/\">cairns</a></li>\n
+        \                       <li><a href=\"https://canberra.craigslist.com.au/\">canberra</a></li>\n
+        \                       <li><a href=\"https://darwin.craigslist.com.au/\">darwin</a></li>\n
+        \                       <li><a href=\"https://goldcoast.craigslist.com.au/\">gold
+        coast</a></li>\n                        <li><a href=\"https://melbourne.craigslist.com.au/\">melbourne</a></li>\n
+        \                       <li><a href=\"https://ntl.craigslist.com.au/\">newcastle,
+        NSW</a></li>\n                        <li><a href=\"https://perth.craigslist.com.au/\">perth</a></li>\n
+        \                       <li><a href=\"https://sydney.craigslist.com.au/\">sydney</a></li>\n
+        \                       <li><a href=\"https://hobart.craigslist.com.au/\">tasmania</a></li>\n
+        \                       <li><a href=\"https://wollongong.craigslist.com.au/\">wollongong</a></li>\n
+        \                   </ul></div><div class=\"box box_2\">\n                        <h4>New
+        Zealand</h4>\n                    <ul>\n                        <li><a href=\"https://auckland.craigslist.org/\">auckland</a></li>\n
+        \                       <li><a href=\"https://christchurch.craigslist.org/\">christchurch</a></li>\n
+        \                       <li><a href=\"https://dunedin.craigslist.co.nz/\">dunedin</a></li>\n
+        \                       <li><a href=\"https://wellington.craigslist.org/\">wellington</a></li>\n
+        \                   </ul>\n                </div>\n            </div>\n\n
+        \           <h1><a name=\"LATAM\"></a>Latin America and Caribbean</h1>\n            <div
+        class=\"colmask\">\n                <div class=\"box box_1\">\n                    <h4>Argentina</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://buenosaires.craigslist.org/\">buenos
+        aires</a></li>\n                    </ul>\n                    <h4>Bolivia</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://lapaz.craigslist.org/\">bolivia</a></li>\n
+        \                   </ul>\n                    <h4>Brazil</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://belohorizonte.craigslist.org/\">belo
+        horizonte</a></li>\n                        <li><a href=\"https://brasilia.craigslist.org/\">brasilia</a></li>\n
+        \                       <li><a href=\"https://curitiba.craigslist.org/\">curitiba</a></li>\n
+        \                       <li><a href=\"https://fortaleza.craigslist.org/\">fortaleza</a></li>\n
+        \                       <li><a href=\"https://portoalegre.craigslist.org/\">porto
+        alegre</a></li>\n                        <li><a href=\"https://recife.craigslist.org/\">recife</a></li>\n
+        \                       <li><a href=\"https://rio.craigslist.org/\">rio de
+        janeiro</a></li>\n                        <li><a href=\"https://salvador.craigslist.org/\">salvador,
+        bahia</a></li>\n                        <li><a href=\"https://saopaulo.craigslist.org/\">sao
+        paulo</a></li>\n                    </ul>\n                    <h4>Caribbean
+        Islands</h4>\n                    <ul>\n                        <li><a href=\"https://caribbean.craigslist.org/\">caribbean
+        islands</a></li>\n                    </ul></div><div class=\"box box_2\">\n
+        \                       <h4>Chile</h4>\n                    <ul>\n                        <li><a
+        href=\"https://santiago.craigslist.org/\">chile</a></li>\n                    </ul>\n
+        \                   <h4>Colombia</h4>\n                    <ul>\n                        <li><a
+        href=\"https://colombia.craigslist.org/\">colombia</a></li>\n                    </ul>\n
+        \                   <h4>Costa Rica</h4>\n                    <ul>\n                        <li><a
+        href=\"https://costarica.craigslist.org/\">costa rica</a></li>\n                    </ul>\n
+        \                   <h4>Dominican Republic</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://santodomingo.craigslist.org/\">dominican
+        republic</a></li>\n                    </ul>\n                    <h4>Ecuador</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://quito.craigslist.org/\">ecuador</a></li>\n
+        \                   </ul>\n                    <h4>El Salvador</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://elsalvador.craigslist.org/\">el
+        salvador</a></li>\n                    </ul></div><div class=\"box box_3\">\n
+        \                       <h4>Guatemala</h4>\n                    <ul>\n                        <li><a
+        href=\"https://guatemala.craigslist.org/\">guatemala</a></li>\n                    </ul>\n
+        \                   <h4>Mexico</h4>\n                    <ul>\n                        <li><a
+        href=\"https://acapulco.craigslist.com.mx/\">acapulco</a></li>\n                        <li><a
+        href=\"https://bajasur.craigslist.com.mx/\">baja california sur</a></li>\n
+        \                       <li><a href=\"https://chihuahua.craigslist.com.mx/\">chihuahua</a></li>\n
+        \                       <li><a href=\"https://juarez.craigslist.com.mx/\">ciudad
+        juarez</a></li>\n                        <li><a href=\"https://guadalajara.craigslist.com.mx/\">guadalajara</a></li>\n
+        \                       <li><a href=\"https://guanajuato.craigslist.com.mx/\">guanajuato</a></li>\n
+        \                       <li><a href=\"https://hermosillo.craigslist.com.mx/\">hermosillo</a></li>\n
+        \                       <li><a href=\"https://mazatlan.craigslist.com.mx/\">mazatlan</a></li>\n
+        \                       <li><a href=\"https://mexicocity.craigslist.com.mx/\">mexico
+        city</a></li>\n                        <li><a href=\"https://monterrey.craigslist.com.mx/\">monterrey</a></li>\n
+        \                       <li><a href=\"https://oaxaca.craigslist.com.mx/\">oaxaca</a></li>\n
+        \                       <li><a href=\"https://puebla.craigslist.com.mx/\">puebla</a></li>\n
+        \                       <li><a href=\"https://pv.craigslist.com.mx/\">puerto
+        vallarta</a></li>\n                        <li><a href=\"https://tijuana.craigslist.com.mx/\">tijuana</a></li>\n
+        \                       <li><a href=\"https://veracruz.craigslist.com.mx/\">veracruz</a></li>\n
+        \                       <li><a href=\"https://yucatan.craigslist.com.mx/\">yucatan</a></li>\n
+        \                   </ul>\n                    <h4>Nicaragua</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://managua.craigslist.org/\">nicaragua</a></li>\n
+        \                   </ul></div><div class=\"box box_4\">\n                        <h4>Panama</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://panama.craigslist.org/\">panama</a></li>\n
+        \                   </ul>\n                    <h4>Peru</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://lima.craigslist.org/\">peru</a></li>\n
+        \                   </ul>\n                    <h4>Puerto Rico</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://puertorico.craigslist.org/\">puerto
+        rico</a></li>\n                    </ul>\n                    <h4>Uruguay</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://montevideo.craigslist.org/\">montevideo</a></li>\n
+        \                   </ul>\n                    <h4>Venezuela</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://caracas.craigslist.org/\">venezuela</a></li>\n
+        \                   </ul>\n                    <h4>Virgin Islands, U.S.</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://virgin.craigslist.org/\">virgin
+        islands</a></li>\n                    </ul>\n                </div>\n            </div>\n\n
+        \           <h1><a name=\"AF\"></a>Africa</h1>\n            <div class=\"colmask\">\n
+        \               <div class=\"box box_1\">\n                    <h4>Egypt</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://cairo.craigslist.org/\">egypt</a></li>\n
+        \                   </ul>\n                    <h4>Ethiopia</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://addisababa.craigslist.org/\">ethiopia</a></li>\n
+        \                   </ul></div><div class=\"box box_2\">\n                        <h4>Ghana</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://accra.craigslist.org/\">ghana</a></li>\n
+        \                   </ul>\n                    <h4>Kenya</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://kenya.craigslist.org/\">kenya</a></li>\n
+        \                   </ul></div><div class=\"box box_3\">\n                        <h4>Morocco</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://casablanca.craigslist.org/\">morocco</a></li>\n
+        \                   </ul>\n                    <h4>South Africa</h4>\n                    <ul>\n
+        \                       <li><a href=\"https://capetown.craigslist.co.za/\">cape
+        town</a></li>\n                        <li><a href=\"https://durban.craigslist.co.za/\">durban</a></li>\n
+        \                       <li><a href=\"https://johannesburg.craigslist.co.za/\">johannesburg</a></li>\n
+        \                       <li><a href=\"https://pretoria.craigslist.co.za/\">pretoria</a></li>\n
+        \                   </ul></div><div class=\"box box_4\">\n                        <h4>Tunisia</h4>\n
+        \                   <ul>\n                        <li><a href=\"https://tunis.craigslist.org/\">tunisia</a></li>\n
+        \                   </ul>\n                </div>\n            </div>\n        </section>\n\n<footer>\n
+        \   <ul class=\"clfooter\">\n        <li>&copy; 2021 <span class=\"desktop\">craigslist</span><span
+        class=\"mobile\">CL</span></li>\n        <li><a href=\"https://www.craigslist.org/about/help/\">help</a></li>\n
+        \       <li><a href=\"https://www.craigslist.org/about/scams\">safety</a></li>\n
+        \       <li class=\"desktop\"><a href=\"https://www.craigslist.org/about/privacy.policy\">privacy</a><sup
+        class=\"neu\">new</sup></li>\n        <li class=\"desktop\"><a href=\"https://forums.craigslist.org/?forumID=8\">feedback</a></li>\n
+        \       <li><a href=\"https://www.craigslist.org/about/terms.of.use\">terms</a></li>\n
+        \       <li><a href=\"https://www.craigslist.org/about/\">about</a></li>\n
+        \       <li class=\"fsel desktop linklike\" data-mode=\"mobile\">mobile</li>\n
+        \       <li class=\"fsel mobile linklike\" data-mode=\"regular\">desktop</li>\n
+        \   </ul>\n</footer>\n\n    </article>\n\n        <script type=\"text/javascript\"><!--\nvar
+        maptileBaseUrl = \"//map{s}.craigslist.org/t09/{z}/{x}/{y}.png\";\n--></script>\n
+        \   \n                <script>\n                (function(){\n                    var
+        cl = window.CL = window.cl = window.cl || window.CL || {};\n                    cl.sandbox
+        = \"\";\n                })();\n                try {\n                    var
+        p = document.createElement(\"p\");\n                    if (\n                        !/\\/\\/.+\\.craigslist\\.org\\/about\\//.test(window.location.href)
+        &&\n                        window.location.pathname.length > 1 &&\n                        (!window.addEventListener
+        || JSON.parse(JSON.stringify('x')) !== 'x' || (p.style.flex!=='' && p.style['-webkit-flex']
+        !== ''))\n                    ) {\n                        throw \"unsupported
+        browser\";\n                    }\n                } catch (e) {\n                    function
+        cleanup() {\n                        document.body.innerHTML = '<div id=\"cl-unsupported-browser\"
+        style=\"margin:1em;font-size:150%;text-align:center;\">We have detected you
+        are using a browser that is missing critical features.<br><br>Please visit
+        craigslist from a modern browser.</div>';\n                        document.body.style
+        = \"display:block\";\n                    }\n\n                    try {\n
+        \                       document.body.style = \"display:none\";\n                    }
+        catch (e) {\n                    }\n                    window.onload = cleanup;\n
+        \                   window.clUnsupportedBrowser = true;\n                }\n
+        \               </script>\n            <script src=\"//www.craigslist.org/js/general-concat.min.js?v=f070dd8c6b2743c9596eaf9d621ed8b6\"
+        type=\"text/javascript\" ></script>\n<script src=\"//www.craigslist.org/js/leaflet-concat.min.js?v=46e08592552fd5e22ababf25fdabd013\"
+        type=\"text/javascript\" ></script>\n<script src=\"//www.craigslist.org/js/sites-concat.min.js?v=17bcb2480fa483a31a39db20d28275ba\"
+        type=\"text/javascript\" ></script>\n</body>\n</html>\n"
+  recorded_at: Tue, 07 Sep 2021 00:23:06 GMT
+recorded_with: VCR 6.0.0

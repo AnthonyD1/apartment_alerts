@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'font_awesome5_webfont';
+@import 'bootstrap-select/sass/bootstrap-select.scss';
 
 .star-outline {
   color: yellow;
@@ -27,3 +28,5 @@
   margin-right: 5px;
   padding: 5px 10px;
 }
+
+.grey-border { border: 1px solid #ced4da }

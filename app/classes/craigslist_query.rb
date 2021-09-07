@@ -5,7 +5,7 @@ class CraigslistQuery
   attr_accessor :search_params
 
   def initialize(params)
-    @city = normalize_city(params[:city])
+    @city = params[:city]
     @search_params = params[:search_params]
   end
 
@@ -20,10 +20,6 @@ class CraigslistQuery
   end
 
   private
-
-  def normalize_city(city)
-    city.downcase.strip.delete(' ')
-  end
 
   def nearby_area_node_index
     node = parsed_html.css('.rows').children.css('.ban.nearby').first
@@ -48,7 +44,7 @@ class CraigslistQuery
   end
 
   def base_url
-    "https://#{city}.craigslist.org/search/apa?"
+    "#{CraigslistSites.cities[city]}search/apa?"
   end
 
   def search_url

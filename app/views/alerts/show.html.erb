@@ -1,6 +1,6 @@
 <h2>
   <%= @alert.name %>
-  <%= link_to(edit_alert_path(alert)) do %>
+  <%= link_to(edit_alert_path(alert), data: { turbolinks: false }) do %>
     <%= fa_icon('edit', size: 'xs', title: 'Edit alert') %>
   <% end %>
   <%= link_to(refresh_alert_path(@alert), method: :post) do %>

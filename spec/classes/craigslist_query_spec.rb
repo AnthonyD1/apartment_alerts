@@ -1,24 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CraigslistQuery, type: :model do
-  describe '#city' do
-    it 'formats all caps properly' do
-      city = 'DES MOINES'
-
-      query = described_class.new(city: city)
-
-      expect(query.city).to eq('desmoines')
-    end
-
-    it 'formats extra spaces proerly' do
-      city = 'des moines  '
-
-      query = described_class.new(city: city)
-
-      expect(query.city).to eq('desmoines')
-    end
-  end
-
+RSpec.describe CraigslistQuery do
   around(:each) do |example|
     VCR.use_cassette('craigslist-success') do
       VCR.use_cassette('ip-address') do
