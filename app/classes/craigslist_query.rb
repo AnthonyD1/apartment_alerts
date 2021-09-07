@@ -44,7 +44,14 @@ class CraigslistQuery
   end
 
   def base_url
-    "#{CraigslistSites.cities[city]}search/apa?"
+    base_site = CraigslistSites.cities[city]
+    base_site_suffix = base_site.last(4)
+
+    if base_site_suffix == 'org/'
+      "#{base_site}search/apa?"
+    else
+      "#{base_site.delete_suffix(base_site_suffix)}search/#{base_site_suffix}apa?"
+    end
   end
 
   def search_url

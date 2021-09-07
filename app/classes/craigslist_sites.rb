@@ -3,7 +3,7 @@ class CraigslistSites
     tmp_states = parsed_html.at_css('.colmask').css('h4').map(&:text)
     tmp_cities = parsed_html.at_css('.colmask').css('ul').map do |ul|
       city = {}
-      ul.css('a').each { |li| city[li.text] =  li['href']}
+      ul.css('a').each { |li| city[li.text] =  force_ssl(li['href']) }
       city
     end
     tmp_sites = {}
@@ -44,6 +44,10 @@ class CraigslistSites
     include Tor
 
     private
+
+    def force_ssl(link)
+      link.gsub('http:', 'https:')
+    end
 
     def parsed_html
       @parsed_html ||= Nokogiri::HTML.parse(html)
