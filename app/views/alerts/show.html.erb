@@ -39,9 +39,16 @@
   </div>
 </div>
 
-<%= form_tag batch_delete_craigslist_posts_path, id: 'batch-delete-form', method: :patch do%>
-  <%= submit_tag('Delete selected', id: 'delete-all', class: 'btn btn-primary', disabled: true, form: 'batch-delete-form') %>
-<% end %>
+<div class="row">
+  <div class="col-lg-9">
+    <%= form_tag batch_delete_craigslist_posts_path, id: 'batch-delete-form', method: :patch do%>
+      <%= submit_tag('Delete selected', id: 'delete-all', class: 'btn btn-primary', disabled: true, form: 'batch-delete-form') %>
+    <% end %>
+  </div>
+  <div class="col-lg-3 text-lg-right align-self-end">
+    <em>Total matches found: <%= alert.craigslist_posts_count %></em>
+  </div>
+</div>
 
 <div class="table-responsive">
   <table class="table table-hover table-bordered">
