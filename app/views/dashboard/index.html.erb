@@ -9,10 +9,10 @@
     <table class="table table-hover table-bordered">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>City</th>
+          <th><%= sort_link(@q, :name)%></th>
+          <th><%= sort_link(@q, :city)%></th>
           <th>Search Params</th>
-          <th>Matches</th>
+          <th><%= sort_link(@q, :craigslist_posts_count, 'Matches')%></th>
           <th>
         </tr>
       </thead>
@@ -24,7 +24,7 @@
             <td>
               <%= render 'shared/tags', tags_hash: alert.search_param_tags %>
             </td>
-            <td><%= alert.craigslist_posts.count %></td>
+            <td><%= alert.craigslist_posts_count %></td>
             <td>
               <%= link_to(edit_alert_path(alert), data: { turbolinks: false }) do %>
                 <%= fa_icon('edit', size: 'lg', title: 'Edit alert') %>

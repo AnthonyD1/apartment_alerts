@@ -2,6 +2,8 @@ class DashboardController < ApplicationController
   decorates_assigned :alerts
 
   def index
-    @pagy, @alerts = pagy(current_user.alerts, items: 10)
+    @q = current_user.alerts.ransack(params[:q])
+    @q.sorts =['created_at'] if @q.sorts.blank?
+    @pagy, @alerts = pagy(@q.result(distinct: true), items: 10)
   end
 end
