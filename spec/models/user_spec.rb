@@ -5,6 +5,14 @@ RSpec.describe 'User' do
 
       expect(user).to be_valid
     end
+
+    it 'requires a username' do
+      user = User.new
+
+      user.valid?
+
+      expect(user.errors[:username]).to include("can't be blank")
+    end
   end
 
   describe '#guest?' do

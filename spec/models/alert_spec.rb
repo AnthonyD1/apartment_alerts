@@ -4,13 +4,8 @@ RSpec.describe Alert do
   before do
     ActiveJob::Base.queue_adapter = :delayed_job
 
-    @user = User.create(email: 'a@foo.com', username: 'foo', password: 'password')
-    @alert = Alert.create(user: @user,
-                          name: 'Foobar',
-                          city: 'des moines',
-                          search_params: { hasPic: '1', max_bedrooms: '1' },
-                          average_post_time: 600,
-                          emails_enabled: true)
+    @user = build_stubbed(:user)
+    @alert = create(:alert, :emails_enabled, average_post_time: 600)
   end
 
   describe '#enqueue_pull_posts_job' do
@@ -55,7 +50,7 @@ RSpec.describe Alert do
 
   context 'validations' do
     context 'presence' do
-      it 'is valid' do
+      it 'includes expected fields' do
         alert = Alert.new
         validated_fields = %i(city name user search_params)
 

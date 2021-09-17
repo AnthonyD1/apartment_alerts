@@ -42,6 +42,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rexml'
   gem 'dotenv-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
