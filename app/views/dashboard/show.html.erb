@@ -1,6 +1,6 @@
 <% if @alerts.present? %>
   <h2> Alerts
-    <%= link_to(new_alert_path, data: { turbolinks: false }) do %>
+    <%= link_to(new_alert_path, title: 'New alert', data: { turbolinks: false }) do %>
       <%= fa_icon('plus-circle') %>
     <% end %>
   </h2>
@@ -26,10 +26,10 @@
             </td>
             <td><%= alert.craigslist_posts_count %></td>
             <td>
-              <%= link_to(edit_alert_path(alert), data: { turbolinks: false }) do %>
-                <%= fa_icon('edit', size: 'lg', title: 'Edit alert') %>
+              <%= link_to(edit_alert_path(alert), title: "Edit alert #{alert.id}",data: { turbolinks: false }) do %>
+                <%= fa_icon('edit', size: 'lg') %>
               <% end %>
-              <%= link_to(alert_path(alert), method: :delete, data: {confirm: 'Are you sure?'}, remote: true, title: 'Delete alert') do %>
+              <%= link_to(alert_path(alert), title: "Delete alert #{alert.id}", method: :delete, data: {confirm: 'Are you sure?'}, remote: true) do %>
                 <%= fa_icon('trash', size: 'lg', style: 'color: red') %>
               <% end %>
             </td>
@@ -40,7 +40,7 @@
   </div>
   <%== pagy_bootstrap_nav(@pagy) %>
 <% else %>
-  <%= link_to(new_alert_path) do %>
+  <%= link_to(new_alert_path, title: 'New alert', data: { turbolinks: false }) do %>
     <div class="alert alert-warning text-center">
       <div class="text-center">
         <%= fa_icon('frown-open', size: '5x') %>

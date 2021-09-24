@@ -14,10 +14,6 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  # Configure Capybara default Javascript driver to use chrome headless instead
-  # of selenium (which is firefox). Ran into weird bugs with Firefox related to
-  # feature specs, but these bugs are not present in chrome.
-  Capybara.javascript_driver = :selenium_chrome_headless
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

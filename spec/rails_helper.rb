@@ -34,6 +34,11 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  # Configure Capybara default Javascript driver to use chrome headless instead
+  # of selenium (which is firefox). Ran into weird bugs with Firefox related to
+  # feature specs, but these bugs are not present in chrome.
+  Capybara.javascript_driver = :selenium_chrome_headless
+
   # include devise rspec helpers
   config.include Devise::Test::IntegrationHelpers, type: :feature
 
