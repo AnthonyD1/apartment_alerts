@@ -49,10 +49,10 @@
       <%= ff.label :bedrooms %>
       <div class="form-row">
         <div class="col">
-          <%= ff.number_field :min_bedrooms, placeholder: 'min', class: 'form-control' %>
+          <%= ff.select :min_bedrooms, AlertDecorator::SELECT_NUMBER_OPTION, { include_blank: 'min' }, class: 'form-control' %>
         </div>
         <div class="col">
-          <%= ff.number_field :max_bedrooms, placeholder: 'max', class: 'form-control' %>
+          <%= ff.select :max_bedrooms, AlertDecorator::SELECT_NUMBER_OPTION, { include_blank: 'max' }, class: 'form-control' %>
         </div>
       </div>
     </div>
@@ -60,10 +60,10 @@
       <%= ff.label :bathrooms %>
       <div class="form-row">
         <div class="col">
-          <%= ff.number_field :min_bathrooms, placeholder: 'min', class: 'form-control' %>
+          <%= ff.select :min_bathrooms, AlertDecorator::SELECT_NUMBER_OPTION, { include_blank: 'min' }, class: 'form-control' %>
         </div>
         <div class="col">
-          <%= ff.number_field :max_bathrooms, placeholder: 'max', class: 'form-control' %>
+          <%= ff.select :max_bathrooms, AlertDecorator::SELECT_NUMBER_OPTION, { include_blank: 'max' }, class: 'form-control' %>
         </div>
       </div>
     </div>

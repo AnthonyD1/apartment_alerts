@@ -3,6 +3,7 @@ class AlertDecorator < ApplicationDecorator
 
   BOOLEAN_TAGS = HashWithIndifferentAccess.new({ hasPic: 'has pics', pets_cat: 'cat friendly', pets_dog: 'dog friendly', is_furnished: 'furnished', no_smoking: 'non smoking', wheelchaccess: 'wheelchair access', ev_charging: 'ev charging', application_fee: 'application fee', broker_fee: 'broker fee' })
   COMPOUND_TAGS = %i[min_price max_price min_bedrooms max_bedrooms min_bathrooms max_bathrooms minSqft maxSqft]
+  SELECT_NUMBER_OPTION = [1,2,3,4,5,6,7,8]
 
   def search_param_tags
     tags = model.filtered_search_params.except(:postedToday)
