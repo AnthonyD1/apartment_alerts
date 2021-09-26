@@ -88,7 +88,7 @@ RSpec.describe Alert do
 
     context '1 new post' do
       before do
-        posts = [ CraigslistPost.new(post_id: 123, date: DateTime.current, post: {})]
+        posts = [ build(:craigslist_post, alert: @alert) ]
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return(posts)
 
         @alert.refresh
@@ -113,8 +113,8 @@ RSpec.describe Alert do
 
     context 'more than 1 new posts' do
       before do
-        posts = [ CraigslistPost.new(post_id: 123, date: DateTime.current, post: {}),
-                   CraigslistPost.new(post_id: 1234, date: DateTime.current + 300.seconds, post: {})]
+        posts = [ build(:craigslist_post, alert: @alert),
+                  build(:craigslist_post, alert: @alert, date: DateTime.current + 300.seconds)]
 
         allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return(posts)
       end
@@ -167,11 +167,10 @@ RSpec.describe Alert do
 
     it '#last_pulled_at is updated' do
       allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([])
-      allow(@alert).to receive(:touch)
+
+      expect(@alert).to receive(:touch).with(:last_pulled_at)
 
       @alert.pull_posts
-
-      expect(@alert).to have_received(:touch).with(:last_pulled_at)
     end
   end
 
@@ -205,11 +204,20 @@ RSpec.describe Alert do
   describe '#next_pull_time' do
     it 'returns the time of the next pull' do
       last_pulled_at = DateTime.parse('2021-01-01')
-      @alert.update(last_pulled_at: last_pulled_at, average_post_time: 600)
+      @alert.assign_attributes(last_pulled_at: last_pulled_at, average_post_time: 600)
 
       expected_time = last_pulled_at + 10.minutes
 
       expect(@alert.next_pull_time).to eq(expected_time)
+    end
+
+    context 'when nil' do
+      it 'returns the default repull delay' do
+        @alert.assign_attributes(last_pulled_at: nil, average_post_time: 0)
+        expected_time = 1.hour.seconds
+
+        expect(@alert.next_pull_time).to be_within(expected_time).of(DateTime.current)
+      end
     end
   end
 end

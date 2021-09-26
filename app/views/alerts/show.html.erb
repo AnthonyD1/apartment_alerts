@@ -84,9 +84,9 @@
     <tbody>
       <% craigslist_posts.order(created_at: :desc).each do |post| %>
         <tr scope="row" id="post_<%= post.id %>" class="<%= post.seen? ? '' : 'table-primary' %>">
-          <td><%= check_box_tag('posts[]', post.id, false, onclick: 'toggleMassDeleteButton()', form: 'batch-delete-form') %></td>
+          <td><%= check_box_tag('posts[]', post.id, false, onclick: 'toggleMassDeleteButton()', form: 'batch-delete-form', id: "delete-checkbox-#{post.id}") %></td>
           <td>
-            <%= link_to(favorite_craigslist_post_path(post), class: 'favorite', method: :post, remote: true) do %>
+            <%= link_to(favorite_craigslist_post_path(post), title: "Favorite post #{post.id}", class: 'favorite', method: :post, remote: true) do %>
               <%= post.favorite? ? fa_icon('star', size: 'lg', class: 'star-outline') : fa_icon('star', size: 'lg', type: :regular) %>
             <% end %>
           </td>
@@ -97,7 +97,7 @@
           <td><%= post.hood %></td>
           <td><%= post.date %></td>
           <td>
-            <%= link_to( craigslist_post_path(post), method: :delete, title: 'Delete', remote: true) do %>
+            <%= link_to( craigslist_post_path(post), method: :delete, title: "Delete post #{post.id}", remote: true) do %>
               <%= fa_icon('trash', size: 'lg',  style: 'color: red') %>
             <% end %>
           </td>

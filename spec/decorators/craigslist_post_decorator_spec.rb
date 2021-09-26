@@ -42,16 +42,26 @@ RSpec.describe CraigslistPostDecorator do
       expect(@decorated_post.square_feet).to eq('900 ft')
     end
 
-    it 'returns empty string when blank' do
-      @decorated_post.model.square_feet = nil
+    context 'when nil' do
+      it 'returns empty string' do
+        @decorated_post.model.square_feet = nil
 
-      expect(@decorated_post.square_feet).to eq('')
+        expect(@decorated_post.square_feet).to eq('')
+      end
     end
   end
 
   describe '#hood' do
     it 'is formatted correctly' do
       expect(@decorated_post.hood).to eq('Foo')
+    end
+
+    context 'when nil' do
+      it 'returns empty string' do
+        @decorated_post.model.hood = nil
+
+        expect(@decorated_post.hood).to eq('')
+      end
     end
   end
 end

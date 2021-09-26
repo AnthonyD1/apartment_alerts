@@ -17,7 +17,11 @@ FactoryBot.define do
   end
 
   factory :craigslist_post do
-    post { "Some HTML"}
+    sequence(:title) { |n| "#{n} Bedrooms" }
+    link { 'https:://www.example.com' }
+    post { 'Some HTML'}
+    price { 800 }
+    date { DateTime.current }
     alert
   end
 end

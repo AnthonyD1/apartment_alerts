@@ -7,7 +7,7 @@ window.markSeen = function (event, post_id) {
 }
 
 window.toggleMassDeleteButton = function () {
-  checkedBoxes = document.querySelectorAll('#posts_:checked')
+  checkedBoxes = document.querySelectorAll('[id^="delete-checkbox"]:checked')
   deleteSelectedButton = document.querySelector('#delete-all')
 
   if (checkedBoxes.length > 0) {

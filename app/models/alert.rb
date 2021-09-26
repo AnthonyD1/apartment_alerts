@@ -27,6 +27,7 @@ class Alert < ApplicationRecord
 
   def average_post_price
     return if craigslist_posts.active.count.zero?
+
     craigslist_posts.active.pluck(:price).sum / craigslist_posts.active.count
   end
 
@@ -57,10 +58,12 @@ class Alert < ApplicationRecord
   end
 
   def repull_delay
-    average_post_time.zero? ? 1.hour.seconds : average_post_time
+    average_post_time.zero? ? 1.hour.seconds : average_post_time.seconds
   end
 
   def next_pull_time
+    return DateTime.current + repull_delay if last_pulled_at.blank?
+
     last_pulled_at + repull_delay
   end
 

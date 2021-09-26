@@ -9,12 +9,13 @@ RSpec.describe CraigslistPost do
     end
 
     context 'presence' do
-      it 'requires post' do
-        craigslist_post = described_class.new(post: nil)
+      it 'requires expected fields' do
+        craigslist_post = described_class.new
+        validated_fields = %i(post price date title link)
 
         craigslist_post.valid?
 
-        expect(craigslist_post.errors.messages[:post]).to eq(["can't be blank"])
+        expect(craigslist_post.errors.messages).to include(*validated_fields)
       end
     end
   end

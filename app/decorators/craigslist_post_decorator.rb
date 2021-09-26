@@ -16,6 +16,8 @@ class CraigslistPostDecorator < ApplicationDecorator
   end
 
   def hood
+    return '' if model.hood.blank?
+
     model.hood.delete('()').strip.titleize
   end
 
