@@ -9,3 +9,4 @@ function removeFadeOut( el, speed ) {
 }
 
 removeFadeOut(document.querySelector("#post_<%= @post.id %>"), 300);
+document.querySelector('#total-matches').textContent = "<%= @post.alert.reload.decorate.total_matches_found %>"

@@ -220,4 +220,17 @@ RSpec.describe Alert do
       end
     end
   end
+
+  describe '#craigslist_posts_count' do
+    context 'when post is soft deleted' do
+      it 'should update the count appropriately' do
+        alert = create(:alert)
+        post1, post2 = create_pair(:craigslist_post, alert: alert)
+
+        expect(alert.reload.craigslist_posts_count).to eq(2)
+        post1.update_deleted_at
+        expect(alert.reload.craigslist_posts_count).to eq(1)
+      end
+    end
+  end
 end

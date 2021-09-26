@@ -1,7 +1,8 @@
 class CraigslistPost < ApplicationRecord
   scope :active, -> { where(deleted_at: nil) }
 
-  belongs_to :alert, counter_cache: true
+  belongs_to :alert
+  counter_culture :alert, column_name: proc { |model| model.deleted_at? ? nil : 'craigslist_posts_count' }
 
   validates :post, presence: true
   validates :price, presence: true
@@ -11,5 +12,9 @@ class CraigslistPost < ApplicationRecord
 
   def parsed_post
     Nokogiri::XML(self[:post])
+  end
+
+  def update_deleted_at
+    update_attribute(:deleted_at, DateTime.current)
   end
 end

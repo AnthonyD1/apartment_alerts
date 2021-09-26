@@ -22,6 +22,10 @@ class AlertDecorator < ApplicationDecorator
     ((model.next_pull_time - DateTime.current) / 60).ceil
   end
 
+  def total_matches_found
+    "Total matches found: #{model.craigslist_posts_count}"
+  end
+
   private
 
   def format(tags, key)

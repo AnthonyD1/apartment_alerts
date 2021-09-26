@@ -14,7 +14,7 @@ class CraigslistPostsController < ApplicationController
 
   def destroy
     respond_to do |format|
-      if @post.touch(:deleted_at)
+      if @post.update_deleted_at
         format.html { redirect_to(alert_path(@post.alert), notice: 'Post deleted.') }
         format.js
       else
@@ -38,7 +38,7 @@ class CraigslistPostsController < ApplicationController
     posts = CraigslistPost.where(id: batch_delete_params[:posts])
     alert_id = posts.first.alert_id
 
-    if posts.touch_all(:deleted_at)
+    if posts.map(&:update_deleted_at)
       redirect_to(alert_path(alert_id), notice: 'Posts deleted.')
     else
       redirect_to(alert_path(alert_id), notice: 'Posts could not be deleted.')

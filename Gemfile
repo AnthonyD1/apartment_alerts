@@ -34,6 +34,7 @@ gem 'draper'
 gem 'font_awesome5_rails'
 gem 'pagy'
 gem 'delayed_job_active_record'
+gem 'counter_culture'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -60,4 +60,14 @@ RSpec.describe AlertDecorator do
       expect(alert_decorator.next_pull_time_remaining).to eq(10)
     end
   end
+
+  describe '#total_matches_found' do
+    it 'returns correct phrase' do
+      alert = Alert.new(craigslist_posts_count: 2)
+
+      alert_decorator = alert.decorate
+
+      expect(alert_decorator.total_matches_found).to eq('Total matches found: 2')
+    end
+  end
 end
