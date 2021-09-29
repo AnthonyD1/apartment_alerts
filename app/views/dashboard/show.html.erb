@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <% alerts.each do |alert| %>
-          <tr id="post_<%= alert.id %>">
+          <tr id="<%= dom_id(alert) %>">
             <td><%= link_to(alert.name, alert_path(alert)) %></td>
             <td><%= alert.city %></td>
             <td>
