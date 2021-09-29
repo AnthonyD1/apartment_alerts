@@ -40,12 +40,12 @@
   </div>
   <%== pagy_bootstrap_nav(@pagy) %>
 <% else %>
-  <%= link_to(new_alert_path, title: 'New alert', data: { turbolinks: false }) do %>
-    <div class="alert alert-warning text-center">
-      <div class="text-center">
-        <%= fa_icon('frown-open', size: '5x') %>
-      </div>
-      Things look empty. Click to make a new Alert!
-    </div>
-  <% end %>
+  <div class="text-center", style="margin-top: 30vh">
+    <%= fa_icon('box-open', size: '5x') %>
+    <p>You haven't setup any Alerts yet.
+    <p>Alerts allow you to keep track of Apartment listings you are interested in, and be notified when new ones are available.
+    </p>
+    </p>
+    <%= link_to('Create an Alert', new_alert_path, title: 'New alert', class: 'btn btn-primary', data: { turbolinks: false }) %>
+  </div>
 <% end %>

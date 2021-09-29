@@ -10,7 +10,7 @@ feature 'User creates an Alert' do
   scenario 'with valid input', js: true do
     visit root_path
 
-    click_link 'New alert'
+    click_link 'Create an Alert'
     fill_in 'Name', with: '1bd Under $800'
     select 'des moines', from: 'alert_city', visible: :all
     fill_in 'alert[search_params][max_price]', with: 800
