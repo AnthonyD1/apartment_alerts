@@ -16,6 +16,7 @@ class Alert < ApplicationRecord
 
     update_average_post_time
     update_craigslist_posts
+    mark_unseen
     send_new_posts_email
     enqueue_pull_posts_job
   end
@@ -54,6 +55,7 @@ class Alert < ApplicationRecord
   def filtered_search_params
     temp = search_params.reject { |k,v| v.to_i.zero? }
     temp.merge!(query: search_params[:query]) if search_params[:query].present?
+    temp.merge!(postedToday: '1')
     temp
   end
 
@@ -73,6 +75,14 @@ class Alert < ApplicationRecord
     job = PullPostsJob.set(wait: repull_delay).perform_later(self)
 
     update_column(:job_id, job.provider_job_id)
+  end
+
+  def mark_seen
+    self.update_column(:seen, true) if seen.blank?
+  end
+
+  def mark_unseen
+    self.update_column(:seen, false) if seen
   end
 
   private

@@ -7,6 +7,7 @@ class AlertsController < ApplicationController
   end
 
   def show
+    @alert.mark_seen
     parse_ransack_multiple_sort_params_to_array
 
     @q = @alert.craigslist_posts.active.ransack(params[:q])
@@ -44,11 +45,16 @@ class AlertsController < ApplicationController
   end
 
   def update
-    if @alert.update(alert_params)
-      @alert.refresh
-      redirect_to alert_path(@alert), flash: { success: 'Alert updated successfully.' }
-    else
-      render :new
+    respond_to do |format|
+      if @alert.update(alert_params)
+        format.html do
+          @alert.refresh
+          redirect_to alert_path(@alert), flash: { success: 'Alert updated successfully.' }
+        end
+        format.js
+      else
+        format.html { render :new }
+      end
     end
   end
 
@@ -84,8 +90,6 @@ class AlertsController < ApplicationController
   end
 
   def alert_params
-    @alert_params = params.require(:alert).permit(:name, :city, :emails_enabled, search_params: {}).merge(user_id: current_user.id)
-    @alert_params[:search_params].merge!('postedToday' => '1')
-    @alert_params
+    @alert_params = params.require(:alert).permit(:name, :city, :emails_enabled, :seen, search_params: {}).merge(user_id: current_user.id)
   end
 end

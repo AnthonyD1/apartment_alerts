@@ -5,7 +5,7 @@ RSpec.describe Alert do
     ActiveJob::Base.queue_adapter = :delayed_job
 
     @user = build_stubbed(:user)
-    @alert = create(:alert, :emails_enabled, average_post_time: 600)
+    @alert = create(:alert, :emails_enabled, seen: true, average_post_time: 600)
   end
 
   describe '#enqueue_pull_posts_job' do
@@ -84,6 +84,10 @@ RSpec.describe Alert do
       it 'does not enqueue a new pull posts job' do
         expect(enqueued_jobs(queue: 'pull_posts').count).to eq(0)
       end
+
+      it 'does not mark unseen' do
+        expect(@alert.seen).to eq(true)
+      end
     end
 
     context '1 new post' do
@@ -108,6 +112,10 @@ RSpec.describe Alert do
 
       it 'enqueue a new pull posts job' do
         expect(enqueued_jobs(queue: 'pull_posts').count).to eq(1)
+      end
+
+      it 'marks as unseen' do
+        expect(@alert.seen).to eq(false)
       end
     end
 
@@ -134,15 +142,6 @@ RSpec.describe Alert do
 
         expect(@alert.craigslist_posts.count).to eq(2)
       end
-
-      it 'enqueues new posts email' do
-        post = CraigslistPost.new(id: 1)
-        allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([post])
-
-        @alert.refresh
-
-        expect(enqueued_jobs(queue: 'mailers').count).to eq(1)
-      end
     end
 
     context 'emails not enabled' do
@@ -165,7 +164,7 @@ RSpec.describe Alert do
       @alert.pull_posts
     end
 
-    it '#last_pulled_at is updated' do
+    it 'updates #last_pulled_at' do
       allow_any_instance_of(CraigslistQuery).to receive(:posts).and_return([])
 
       expect(@alert).to receive(:touch).with(:last_pulled_at)
@@ -176,9 +175,21 @@ RSpec.describe Alert do
 
   describe '#filtered_search_params' do
     it 'returns non empty params' do
-      @alert.search_params = { hasPic: '0', postal: '', postedToday: '1'}
+      alert = described_class.new(search_params: { hasPic: '0', postal: '', postedToday: '1'})
 
-      expect(@alert.filtered_search_params).to eq({postedToday: '1'})
+      expect(alert.filtered_search_params).to eq({postedToday: '1'})
+    end
+
+    it 'defaults postedToday to true' do
+      alert = described_class.new(search_params: {})
+
+      expect(alert.filtered_search_params).to eq({postedToday: '1'})
+    end
+
+    it 'returns query if present' do
+      alert = described_class.new(search_params: {query: 'foo'})
+
+      expect(alert.filtered_search_params).to include(query: 'foo')
     end
   end
 
@@ -231,6 +242,26 @@ RSpec.describe Alert do
         post1.update_deleted_at
         expect(alert.reload.craigslist_posts_count).to eq(1)
       end
+    end
+  end
+
+  describe '#mark_seen' do
+    it 'updates seen to true' do
+      @alert.seen = false
+
+      @alert.mark_seen
+
+      expect(@alert.seen).to be_truthy
+    end
+  end
+
+  describe '#mark_unseen' do
+    it 'updates seen to false' do
+      @alert.seen = true
+
+      @alert.mark_unseen
+
+      expect(@alert.seen).to be_falsey
     end
   end
 end

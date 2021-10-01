@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <% alerts.each do |alert| %>
-          <tr id="<%= dom_id(alert) %>">
+          <tr id="<%= dom_id(alert) %>" class="<%= alert.seen? ? '' : 'table-primary' %>">
             <td><%= link_to(alert.name, alert_path(alert)) %></td>
             <td><%= alert.city %></td>
             <td>
