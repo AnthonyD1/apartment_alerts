@@ -69,6 +69,14 @@ class CraigslistQuery
     search
   end
 
+  def http
+    if ENV['USE_TOR'] == 'true'
+      super
+    else
+      HTTParty
+    end
+  end
+
   def html
     p '*' * 100
     p http.get(URI('https://ipinfo.io/ip'))

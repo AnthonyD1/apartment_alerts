@@ -31,7 +31,7 @@ Rails.application.configure do
   end
 
   # Need to disable in order to send Emails from Devlopment. DO NOT Disable in PROD.
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+  # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
