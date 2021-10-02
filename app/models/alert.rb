@@ -12,13 +12,13 @@ class Alert < ApplicationRecord
 
   def refresh
     pull_posts
+    enqueue_pull_posts_job
     return if new_posts.count.zero?
 
     update_average_post_time
     update_craigslist_posts
     mark_unseen
     send_new_posts_email
-    enqueue_pull_posts_job
   end
 
   def pull_posts

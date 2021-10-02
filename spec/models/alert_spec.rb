@@ -82,7 +82,7 @@ RSpec.describe Alert do
       end
 
       it 'does not enqueue a new pull posts job' do
-        expect(enqueued_jobs(queue: 'pull_posts').count).to eq(0)
+        expect(enqueued_jobs(queue: 'pull_posts').count).to eq(1)
       end
 
       it 'does not mark unseen' do
