@@ -6,6 +6,6 @@ class AlertMailer < ApplicationMailer
     @alert = params[:alert]
     @new_posts = params[:new_posts]
 
-    mail(to: @user.email, subject: "#{@new_posts.count} New Listings Found for #{@alert.name}")
+    mail(to: @user.email, subject: "New Listings Found for #{@alert.name}")
   end
 end

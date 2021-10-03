@@ -21,7 +21,7 @@ RSpec.describe AlertMailer do
       end
 
       it 'renders the subject' do
-        expect(@mailer.subject).to eq('1 New Listings Found for 2bd under $900')
+        expect(@mailer.subject).to eq('New Listings Found for 2bd under $900')
       end
     end
 
