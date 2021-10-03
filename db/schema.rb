@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_29_024129) do
+ActiveRecord::Schema.define(version: 2021_10_03_033727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_09_29_024129) do
     t.datetime "last_pulled_at"
     t.boolean "emails_enabled"
     t.integer "job_id"
-    t.integer "craigslist_posts_count"
+    t.integer "craigslist_posts_count", default: 0, null: false
     t.boolean "seen", default: true
     t.index ["user_id"], name: "index_alerts_on_user_id"
   end
