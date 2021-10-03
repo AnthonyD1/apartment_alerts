@@ -65,7 +65,7 @@ Rails.application.configure do
   # Mailer Options
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: '<APPNAME>.heroku.com' }
+  config.action_mailer.default_url_options = { host: 'polar-waters-53263.herokuapp.com' }
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
