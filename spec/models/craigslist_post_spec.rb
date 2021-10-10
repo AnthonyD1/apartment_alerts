@@ -35,4 +35,33 @@ RSpec.describe CraigslistPost do
       expect(craigslist_post.update_deleted_at).to_not be(nil)
     end
   end
+
+  describe '.batch_delete' do
+    before do
+      create(:craigslist_post)
+    end
+
+    it 'fixes counter culture counts' do
+      expect(described_class).to receive(:counter_culture_fix_counts)
+
+      described_class.batch_delete(described_class.all)
+    end
+
+    context 'when soft delete' do
+      it 'does not actually delete posts' do
+        described_class.batch_delete(described_class.all, soft_delete: true)
+
+        expect(described_class.count).to eq(1)
+        expect(described_class.active.count).to eq(0)
+      end
+    end
+
+    context 'when hard delete' do
+      it 'actually deletes post' do
+        described_class.batch_delete(described_class.all, soft_delete: false)
+
+        expect(described_class.count).to eq(0)
+      end
+    end
+  end
 end

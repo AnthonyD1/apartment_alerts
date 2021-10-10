@@ -46,6 +46,7 @@ class AlertsController < ApplicationController
 
   def update
     if @alert.update(alert_params)
+      @alert.delete_non_favorite_posts
       @alert.refresh
       redirect_to alert_path(@alert), flash: { success: 'Alert updated successfully.' }
     else

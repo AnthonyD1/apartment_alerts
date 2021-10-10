@@ -264,4 +264,16 @@ RSpec.describe Alert do
       expect(@alert.seen).to be_falsey
     end
   end
+
+  describe '#delete_non_favorite_posts' do
+    it 'deletes all non-favorite posts' do
+      alert = create(:alert)
+      create(:craigslist_post, :favorite, alert: alert)
+      create(:craigslist_post, alert: alert)
+
+      alert.delete_non_favorite_posts
+
+      expect(alert.craigslist_posts.count).to eq(1)
+    end
+  end
 end

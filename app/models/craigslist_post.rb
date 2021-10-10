@@ -1,6 +1,7 @@
 class CraigslistPost < ApplicationRecord
   scope :active, -> { where(deleted_at: nil) }
   scope :favorite, -> { where(favorite: true) }
+  scope :not_favorite, -> { where(favorite: false) }
   scope :user, -> (user_id) { joins(:alert).where('alerts.user_id = ?', user_id) }
 
   delegate :city, to: :alert
@@ -22,5 +23,15 @@ class CraigslistPost < ApplicationRecord
 
   def update_deleted_at
     update_attribute(:deleted_at, DateTime.current)
+  end
+
+  def self.batch_delete(posts, soft_delete: true)
+    if soft_delete
+      posts.update_all(deleted_at: DateTime.current)
+    else
+      posts.delete_all
+    end
+
+    self.counter_culture_fix_counts
   end
 end

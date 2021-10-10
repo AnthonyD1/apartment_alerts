@@ -6,6 +6,7 @@ feature 'User updates an Alert' do
     user = create(:user)
     sign_in(user)
     @alert = create(:alert, user: user, name: '1bd under $800')
+    @post = create(:craigslist_post, alert: @alert)
   end
 
   scenario 'with valid input', js: true do
@@ -18,6 +19,7 @@ feature 'User updates an Alert' do
 
     expect(page).to have_content('Alert updated successfully.')
     expect(page).to have_content('1bd under $900')
+    expect(page).to_not have_content(@post.title)
   end
 
   scenario 'with invalid input' do

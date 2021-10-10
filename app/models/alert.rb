@@ -85,6 +85,12 @@ class Alert < ApplicationRecord
     self.update_column(:seen, false) if seen
   end
 
+  def delete_non_favorite_posts
+    posts = craigslist_posts.not_favorite
+
+    CraigslistPost.batch_delete(posts, soft_delete: false)
+  end
+
   private
 
   def send_new_posts_email

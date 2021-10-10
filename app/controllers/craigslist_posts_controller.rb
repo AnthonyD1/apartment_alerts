@@ -38,7 +38,7 @@ class CraigslistPostsController < ApplicationController
     posts = CraigslistPost.where(id: batch_delete_params[:posts])
     alert_id = posts.first.alert_id
 
-    if posts.map(&:update_deleted_at)
+    if CraigslistPost.batch_delete(posts)
       redirect_back(fallback_location: root_url, notice: 'Posts deleted.')
     else
       redirect_back(fallback_location: root_url, notice: 'Posts could not be deleted.')
