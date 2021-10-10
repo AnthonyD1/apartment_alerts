@@ -45,16 +45,11 @@ class AlertsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @alert.update(alert_params)
-        format.html do
-          @alert.refresh
-          redirect_to alert_path(@alert), flash: { success: 'Alert updated successfully.' }
-        end
-        format.js
-      else
-        format.html { render :new }
-      end
+    if @alert.update(alert_params)
+      @alert.refresh
+      redirect_to alert_path(@alert), flash: { success: 'Alert updated successfully.' }
+    else
+      render :new
     end
   end
 
