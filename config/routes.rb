@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     post :favorite, on: :member
     patch :batch_delete, on: :collection
   end
+  resources :favorites, only: [:index]
 end

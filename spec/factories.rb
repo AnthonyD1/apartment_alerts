@@ -23,5 +23,9 @@ FactoryBot.define do
     price { 800 }
     date { DateTime.current }
     alert
+
+    trait :favorite do
+      favorite { true }
+    end
   end
 end

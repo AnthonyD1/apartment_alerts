@@ -39,9 +39,9 @@ class CraigslistPostsController < ApplicationController
     alert_id = posts.first.alert_id
 
     if posts.map(&:update_deleted_at)
-      redirect_to(alert_path(alert_id), notice: 'Posts deleted.')
+      redirect_back(fallback_location: root_url, notice: 'Posts deleted.')
     else
-      redirect_to(alert_path(alert_id), notice: 'Posts could not be deleted.')
+      redirect_back(fallback_location: root_url, notice: 'Posts could not be deleted.')
     end
   end
 

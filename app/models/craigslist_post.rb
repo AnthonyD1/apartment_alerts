@@ -1,5 +1,9 @@
 class CraigslistPost < ApplicationRecord
   scope :active, -> { where(deleted_at: nil) }
+  scope :favorite, -> { where(favorite: true) }
+  scope :user, -> (user_id) { joins(:alert).where('alerts.user_id = ?', user_id) }
+
+  delegate :city, to: :alert
 
   belongs_to :alert
   counter_culture :alert,
