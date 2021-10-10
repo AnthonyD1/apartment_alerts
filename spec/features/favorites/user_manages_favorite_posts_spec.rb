@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'User manages favorite posts' do
   scenario 'navigates to the favorites page' do
-    Capybara.current_driver = :selenium_chrome
     user = create(:user)
     sign_in(user)
 
