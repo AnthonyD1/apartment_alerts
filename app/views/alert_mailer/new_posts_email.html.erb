@@ -5,7 +5,7 @@
   </head>
   <body>
     <p>
-    <%= @new_posts.count %> new listing(s) have been found for "<%= @alert.name %>". Manage them at <%= link_to("Apartment Alerts.", alert_url(@alert)) %>
+    <%= @new_posts.count %> new listing(s) have been found for "<%= @alert.name %>" in <%= @alert.city.titleize %>. Manage them at <%= link_to("Apartment Alerts.", alert_url(@alert)) %>
     </p>
 
     <%= @new_posts.each_with_object(nil) do |post| %>

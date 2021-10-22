@@ -4,7 +4,7 @@ RSpec.describe AlertMailer do
   describe '#new_posts_email' do
     before do
       user = User.new(email: 'foo@example.com')
-      @alert = Alert.new(id: 1, name: '2bd under $900')
+      @alert = build_stubbed(:alert, name: '2bd under $900')
       @new_posts = [CraigslistPost.new(title: 'Awesome deal', link: 'www.example.com')]
       @mailer = described_class.with(user: user,
                                     alert: @alert,
