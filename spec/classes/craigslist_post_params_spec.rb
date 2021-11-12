@@ -20,12 +20,12 @@ RSpec.describe CraigslistPostParams do
 
   context 'params', :aggregate_failures do
     it 'is parsed correctly' do
-      expect(@craigslist_post_params.title).to eq('Sweeping Skyline Views from Your Home, Dog Park, Custom Cabinetry')
-      expect(@craigslist_post_params.link).to eq('https://desmoines.craigslist.org/apa/d/des-moines-sweeping-skyline-views-from/7335144880.html')
-      expect(@craigslist_post_params.post_id).to eq(7335144880)
-      expect(@craigslist_post_params.date).to eq(DateTime.parse('Sun 04 Jul 07:35:54 PM'))
-      expect(@craigslist_post_params.price).to eq(726)
-      expect(@craigslist_post_params.hood).to eq('')
+      expect(@craigslist_post_params.title).to eq('Looking for pet friendly apt house or trailer')
+      expect(@craigslist_post_params.link).to eq('https://desmoines.craigslist.org/apa/d/ankeny-looking-for-pet-friendly-apt/7401143287.html')
+      expect(@craigslist_post_params.post_id).to eq(7401143287)
+      expect(@craigslist_post_params.date).to eq(DateTime.parse('Thu, 11 Nov 2021 20:41:02'))
+      expect(@craigslist_post_params.price).to eq(600)
+      expect(@craigslist_post_params.hood).to eq(' (Altoona or close to it  )')
     end
 
     describe '#bedrooms' do
