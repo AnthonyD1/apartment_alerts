@@ -20,12 +20,12 @@ RSpec.describe CraigslistPostParams do
 
   context 'params', :aggregate_failures do
     it 'is parsed correctly' do
-      expect(@craigslist_post_params.title).to eq('Looking for pet friendly apt house or trailer')
-      expect(@craigslist_post_params.link).to eq('https://desmoines.craigslist.org/apa/d/ankeny-looking-for-pet-friendly-apt/7401143287.html')
-      expect(@craigslist_post_params.post_id).to eq(7401143287)
-      expect(@craigslist_post_params.date).to eq(DateTime.parse('Thu, 11 Nov 2021 20:41:02'))
-      expect(@craigslist_post_params.price).to eq(600)
-      expect(@craigslist_post_params.hood).to eq(' (Altoona or close to it  )')
+      expect(@craigslist_post_params.title).to eq('2 BEDROOM APT FOR RENT ANKENY $785')
+      expect(@craigslist_post_params.link).to eq('https://desmoines.craigslist.org/apa/d/ankeny-bedroom-apt-for-rent-ankeny-785/7406603453.html')
+      expect(@craigslist_post_params.post_id).to eq(7406603453)
+      expect(@craigslist_post_params.date).to eq(DateTime.parse('Mon, 22 Nov 2021 20:08:55'))
+      expect(@craigslist_post_params.price).to eq(785)
+      expect(@craigslist_post_params.hood).to eq(' (Ankeny  )')
     end
 
     describe '#bedrooms' do
@@ -80,5 +80,5 @@ def html
 end
 
 def search_url
-  "https://desmoines.craigslist.org/search/apa?hasPic=1&max_price=800"
+  "https://desmoines.craigslist.org/d/apartments-housing-for-rent/search/apa?hasPic=1&max_price=800"
 end

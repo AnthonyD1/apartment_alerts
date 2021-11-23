@@ -70,7 +70,7 @@ class CraigslistQuery
   end
 
   def http
-    if ENV['USE_TOR'] == 'true'
+    if use_tor?
       super
     else
       HTTParty
@@ -88,16 +88,24 @@ class CraigslistQuery
     p response.size
     p '*' * 100
    
-    if ip_blocked?(response)
-      return response
-    else
-      generate_new_tor_circuit
-      sleep(5)
-      self.html
+    if use_tor?
+      regenerate_tor_circuit if ip_blocked?(response)
     end
+
+    return response
+  end
+
+  def regenerate_tor_circuit
+    generate_new_tor_circuit
+    sleep(5)
+    self.html
+  end
+
+  def use_tor?
+    ENV['USE_TOR'] == 'true'
   end
 
   def ip_blocked?(response)
-    response.size > 300
+    response.size < 300
   end
 end

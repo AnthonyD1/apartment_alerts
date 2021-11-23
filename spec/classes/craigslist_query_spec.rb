@@ -4,13 +4,11 @@ RSpec.describe CraigslistQuery do
   context 'when url suffix ends in .org/' do
     around(:each) do |example|
       VCR.use_cassette('craigslist-success') do
-        VCR.use_cassette('ip-address') do
-          city = 'des moines'
-          search_params = { hasPic: '1', max_price: '800' }
+        city = 'des moines'
+        search_params = { hasPic: '1', max_price: '800' }
 
-          @craigslist_query = described_class.new(city: city, search_params: search_params)
-          example.run
-        end
+        @craigslist_query = described_class.new(city: city, search_params: search_params)
+        example.run
       end
     end
 
