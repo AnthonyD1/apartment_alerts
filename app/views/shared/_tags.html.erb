@@ -1,5 +1,3 @@
-<ul class="input-tag__tags">
-  <% tags_hash.each do |value| %>
-    <li><%= value %></li>
-  <% end %>
-</ul>
+<% tags_hash.each do |value| %>
+  <span class="badge badge-secondary p-2 my-1"><%= value %></span>
+<% end %>
