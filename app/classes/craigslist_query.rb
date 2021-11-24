@@ -73,7 +73,7 @@ class CraigslistQuery
     if use_tor?
       super
     else
-      HTTParty
+      HTTP.follow
     end
   end
 
@@ -82,7 +82,8 @@ class CraigslistQuery
     p http.get(URI('https://ipinfo.io/ip'))
     p '*' * 100
 
-    response = http.get(URI(search_url))
+    uri = URI(search_url)
+    response = http.get(uri).to_s
 
     p '*' * 100
     p response.size
