@@ -3,6 +3,10 @@ FactoryBot.define do
     username { 'John' }
     password { 'password' }
     sequence(:email) { |n| "#{username}#{n}@apartmentalerts.com" }
+
+    trait :guest do
+      username { 'guest' }
+    end
   end
 
   factory :alert do
