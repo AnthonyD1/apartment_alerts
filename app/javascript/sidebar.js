@@ -2,6 +2,8 @@ document.addEventListener("turbolinks:load", () => {
   var default_width = '330px',
     canvas = document.querySelector('.bs-canvas-left');
 
+  if (canvas == null) { return false }
+
   if (localStorage.getItem('showCanvas') == 'true') {
     canvas.classList.remove('bs-canvas-anim');
     canvas.style.width = default_width;
