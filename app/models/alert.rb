@@ -1,6 +1,8 @@
 class Alert < ApplicationRecord
   include SearchParams
 
+  scope :ten_most_recent, -> { order(updated_at: :desc).last(10) }
+
   belongs_to :user
   has_many :craigslist_posts, dependent: :destroy
 

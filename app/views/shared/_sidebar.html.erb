@@ -1,0 +1,28 @@
+<div id="bs-canvas-left" class="bs-canvas bs-canvas-anim bs-canvas-left shadow position-fixed bg-light h-100">
+  <header class="bs-canvas-header p-3 bg-dark">
+    <h4 class="d-inline-block text-light mb-0"> <%= link_to('Apartment Alerts', root_path, class: 'text-light text-decoration-none') %> </h4>
+    <button id="canvas-close" class="bs-canvas-close close" aria-label="Close"><span aria-hidden="true" class="text-light">&times;</span></button>
+  </header>
+
+  <div class="bs-canvas-content px-3 py-5">
+    <%= link_to(root_path, class: 'bs-canvas-item') do %>
+      <%= fa_icon('home fw') %> Home
+    <% end %>
+    <%= link_to(favorites_path, class: 'bs-canvas-item') do %>
+      <%= fa_icon('star fw') %> Favorites
+    <% end %>
+    <%= link_to("#collapseAlerts", class: "bs-canvas-item", data: { toggle: "collapse"}) do %>
+      <%= fa_icon('bell fw') %> Alerts
+    <% end %>
+    <div class="collapse" id="collapseAlerts">
+      <ul style="list-style-type: none;">
+        <% current_user.alerts.ten_most_recent.each do |alert| %>
+          <li><%= link_to(alert.name, alert_path(alert.id), class: 'bs-canvas-item') %></li>
+        <% end %>
+      </ul>
+    </div>
+    <%= link_to(edit_user_registration_path(current_user), class: 'bs-canvas-item') do %>
+      <%= fa_icon('cog fw') %> Settings
+    <% end unless current_user.guest?%>
+  </div>
+</div>

@@ -9,8 +9,11 @@ feature 'User marks alert as seen' do
     visit root_path
     page.has_css?('.table-primary', count: 1)
 
-    click_link '1bd under $800'
-    click_link 'Apartment Alerts', visible: :all
+    within("#alerts-table") do
+      click_link '1bd under $800'
+    end
+
+    visit root_path
 
     page.has_css?('.table-primary', count: 0)
   end

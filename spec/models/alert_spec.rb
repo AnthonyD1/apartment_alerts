@@ -276,4 +276,17 @@ RSpec.describe Alert do
       expect(alert.craigslist_posts.count).to eq(1)
     end
   end
+
+  describe 'scopes' do
+    describe '.ten_most_recent' do
+      it 'returns the ten most recently updated alers' do
+        create_list(:alert, 11)
+
+        alerts = described_class.ten_most_recent
+
+        expect(alerts.count).to eq(10)
+        expect(alerts).to_not include(Alert.last)
+      end
+    end
+  end
 end

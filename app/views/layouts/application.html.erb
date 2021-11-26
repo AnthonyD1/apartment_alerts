@@ -16,6 +16,7 @@
     <%= render 'shared/flash_messages' %>
 
     <body>
+      <%= render 'shared/sidebar' if current_user %>
       <%= yield %>
     </body>
 

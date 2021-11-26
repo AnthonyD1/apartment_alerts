@@ -9,3 +9,26 @@
 }
 
 .grey-border { border: 1px solid #ced4da }
+
+.bs-canvas {
+  top: 0;
+  width: 0;
+  z-index: 1110;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.bs-canvas-left {
+  left: 0;
+}
+
+.bs-canvas-anim {
+  transition: all .4s ease-out;
+  -webkit-transition: all .4s ease-out;
+  -moz-transition: all .4s ease-out;
+  -ms-transition: all .4s ease-out;
+}
+
+.bs-canvas-item {
+  @extend .btn, .btn-light, .btn-block, .btn-lg, .text-left
+}

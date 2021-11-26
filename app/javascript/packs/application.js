@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
 import "bootstrap-select"
+import "sidebar"
 
 Rails.start()
 Turbolinks.start()
