@@ -27,5 +27,9 @@ FactoryBot.define do
     trait :favorite do
       favorite { true }
     end
+
+    trait :soft_deleted do
+      deleted_at { DateTime.current }
+    end
   end
 end
