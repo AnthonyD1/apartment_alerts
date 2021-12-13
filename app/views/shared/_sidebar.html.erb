@@ -6,13 +6,13 @@
 
   <div class="bs-canvas-content px-3 py-5">
     <%= link_to(root_path, class: 'bs-canvas-item') do %>
-      <%= fa_icon('home fw') %> Home
+      <%= fa_icon('home fw', text: 'Home') %>
     <% end %>
     <%= link_to(favorites_path, class: 'bs-canvas-item') do %>
-      <%= fa_icon('star fw') %> Favorites
+      <%= fa_icon('star fw', text: 'Favorites') %>
     <% end %>
     <%= link_to("#collapseAlerts", class: "bs-canvas-item", data: { toggle: "collapse"}) do %>
-      <%= fa_icon('bell fw') %> Alerts
+      <%= fa_icon('bell fw', text: 'Alerts') %>
     <% end %>
     <div class="collapse" id="collapseAlerts">
       <ul style="list-style-type: none;">
@@ -22,7 +22,7 @@
       </ul>
     </div>
     <%= link_to(edit_user_registration_path(current_user), class: 'bs-canvas-item') do %>
-      <%= fa_icon('cog fw') %> Settings
+      <%= fa_icon('cog fw', text: 'Settings') %>
     <% end unless current_user.guest?%>
   </div>
 </div>

@@ -51,7 +51,10 @@
               <%= post.favorite? ? fa_icon('star', size: 'lg', class: 'star-outline') : fa_icon('star', size: 'lg', type: :regular) %>
             <% end %>
           </td>
-          <td><%= link_to(post.title, post.link, target: :_blank, onmouseup: "markSeen(event, #{post.id});") %></td>
+          <td><%= link_to(post.link, target: :_blank, onmouseup: "markSeen(event, #{post.id});") do%>
+            <%= fa_icon('external-link-alt', text: post.title, right: true) %>
+          <% end %>
+          </td>
           <td><%= post.price %></td>
           <td><%= post.bedrooms %></td>
           <td><%= post.square_feet %></td>
