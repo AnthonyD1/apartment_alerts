@@ -20,29 +20,29 @@ class CraigslistPostParams
   end
 
   def title
-    post.css('.result-title').text
+    post.css('.title').text
   end
 
   def link
-    post.css('.result-title').attribute('href').text
+    post.css('a').attribute('href').text
   end
 
   def post_id
-    post.css('.result-title').attribute('data-id').text.to_i
+    link.match(/\/(?<id>\d+)\.html(?:$|\?)/)[:id].to_i
   end
 
   def date
-    raw_date = post.css('.result-date').attribute('title').text
-    DateTime.parse(raw_date)
+    # raw_date = post.css('.result-date').attribute('title').text
+    # DateTime.parse(raw_date)
   end
 
   def price
-    raw_price = post.css('.result-price').text
+    raw_price = post.css(".details .price").text
     raw_price.gsub(/[$,]/, '').to_i
   end
 
   def hood
-    post.css('.result-hood').text
+    post.css('.details .location').text
   end
 
   def bedrooms

@@ -12,6 +12,8 @@ class CraigslistPostDecorator < ApplicationDecorator
   end
 
   def date
+    return '' if model.date.blank?
+
     model.date.strftime("%m-%d-%Y %I:%M:%S %P")
   end
 

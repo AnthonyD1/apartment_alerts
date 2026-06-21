@@ -21,7 +21,7 @@ class Alert < ApplicationRecord
     enqueue_pull_posts_job
     return if new_posts.count.zero?
 
-    update_average_post_time
+    # update_average_post_time
     update_craigslist_posts
     mark_unseen
     send_new_posts_email

@@ -36,7 +36,7 @@ class CraigslistQuery
   end
 
   def non_duplicate_posts
-    parsed_html.css('.result-info') - parsed_html.xpath('//ul[@class="duplicate-rows"]').css('.result-info')
+    parsed_html.css('.cl-static-search-result') - parsed_html.xpath('//ul[@class="duplicate-rows"]').css('.result-info')
   end
 
   def duplicate_posts

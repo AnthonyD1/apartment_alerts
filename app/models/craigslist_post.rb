@@ -21,7 +21,7 @@ class CraigslistPost < ApplicationRecord
 
   validates :post, presence: true
   validates :price, presence: true
-  validates :date, presence: true
+  # validates :date, presence: true
   validates :title, presence: true
   validates :link, presence: true
 
