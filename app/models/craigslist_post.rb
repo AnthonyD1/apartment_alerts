@@ -6,6 +6,14 @@ class CraigslistPost < ApplicationRecord
 
   delegate :city, to: :alert
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["alert_id", "bedrooms", "created_at", "date", "deleted_at", "favorite", "hood", "id", "id_value", "link", "post", "post_id", "price", "seen", "square_feet", "title", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["alert"]
+  end
+
   belongs_to :alert
   counter_culture :alert,
     column_name: proc { |model| model.deleted_at? ? nil : 'craigslist_posts_count' },

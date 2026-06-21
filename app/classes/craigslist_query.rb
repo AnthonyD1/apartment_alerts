@@ -79,7 +79,7 @@ class CraigslistQuery
 
   def html
     p '*' * 100
-    p http.get(URI('https://ipinfo.io/ip'))
+    p http.get(URI('https://ipinfo.io/ip')).to_s
     p '*' * 100
 
     uri = URI(search_url)

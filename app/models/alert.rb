@@ -12,6 +12,10 @@ class Alert < ApplicationRecord
   validates :city, presence: true
   validates :search_params, presence: true
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["average_post_time", "average_post_time_count", "city", "craigslist_posts_count", "created_at", "emails_enabled", "id", "id_value", "job_id", "last_pulled_at", "name", "search_params", "seen", "updated_at", "user_id"]
+  end
+
   def refresh
     pull_posts
     enqueue_pull_posts_job

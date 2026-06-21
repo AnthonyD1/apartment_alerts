@@ -23,6 +23,8 @@ module ApartmentAlerts
     # Sets default queue for mailers
     config.action_mailer.deliver_later_queue_name = 'mailers'
 
+    config.active_record.yaml_column_permitted_classes = [Symbol, Date, Time, ActiveSupport::TimeWithZone, ActiveSupport::TimeZone, ActiveSupport::HashWithIndifferentAccess, BigDecimal]
+
     ActionView::Base.field_error_proc = proc do |html_tag, instance|
       html_tag.gsub("form-control", "form-control is-invalid").html_safe
     end

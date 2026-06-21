@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '3.2.11'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.1.0'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
@@ -32,7 +32,8 @@ gem 'net-telnet'
 gem 'ransack'
 gem 'draper'
 gem 'font_awesome5_rails'
-gem 'pagy'
+gem 'pagy', "~> 4.6"
+gem 'delayed_job', '~> 4.1.13'
 gem 'delayed_job_active_record'
 gem 'counter_culture'
 gem 'http'

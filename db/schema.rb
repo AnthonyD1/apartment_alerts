@@ -10,21 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_03_033727) do
-
+ActiveRecord::Schema[7.1].define(version: 2021_10_03_033727) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "alerts", force: :cascade do |t|
     t.string "city"
     t.text "search_params"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.string "name"
     t.integer "average_post_time", default: 0
     t.integer "average_post_time_count", default: 0
-    t.datetime "last_pulled_at"
+    t.datetime "last_pulled_at", precision: nil
     t.boolean "emails_enabled"
     t.integer "job_id"
     t.integer "craigslist_posts_count", default: 0, null: false
@@ -34,20 +33,20 @@ ActiveRecord::Schema.define(version: 2021_10_03_033727) do
 
   create_table "craigslist_posts", force: :cascade do |t|
     t.string "post"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "alert_id", null: false
     t.string "title"
     t.string "link"
     t.bigint "post_id"
-    t.datetime "date"
+    t.datetime "date", precision: nil
     t.integer "price"
     t.string "hood"
     t.integer "bedrooms"
     t.integer "square_feet"
     t.boolean "seen"
     t.boolean "favorite", default: false
-    t.datetime "deleted_at"
+    t.datetime "deleted_at", precision: nil
     t.index ["alert_id"], name: "index_craigslist_posts_on_alert_id"
   end
 
@@ -56,13 +55,13 @@ ActiveRecord::Schema.define(version: 2021_10_03_033727) do
     t.integer "attempts", default: 0, null: false
     t.text "handler", null: false
     t.text "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
+    t.datetime "run_at", precision: nil
+    t.datetime "locked_at", precision: nil
+    t.datetime "failed_at", precision: nil
     t.string "locked_by"
     t.string "queue"
-    t.datetime "created_at", precision: 6
-    t.datetime "updated_at", precision: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
@@ -70,10 +69,10 @@ ActiveRecord::Schema.define(version: 2021_10_03_033727) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
