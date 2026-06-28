@@ -1,4 +1,6 @@
-RSpec.describe 'User' do
+require 'rails_helper'
+
+RSpec.describe User do
   context 'validations' do
     it 'is valid' do
       user = User.new(email: 'a@example.com', username: 'foo', password: 'password')

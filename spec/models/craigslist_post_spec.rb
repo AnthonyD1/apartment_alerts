@@ -11,7 +11,7 @@ RSpec.describe CraigslistPost do
     context 'presence' do
       it 'requires expected fields' do
         craigslist_post = described_class.new
-        validated_fields = %i(post price date title link)
+        validated_fields = %i(post price title link)
 
         craigslist_post.valid?
 
